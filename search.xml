@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Butterfily主题安装文档</title>
+    <url>/2024/01/12/hexo_installdocument/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>butterfily</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java/jdk详细安装教程</title>
     <url>/2024/01/09/java-jdk-install/</url>
     <content><![CDATA[]]></content>
@@ -10,6 +21,17 @@
       <tags>
         <tag>Java</tag>
         <tag>Jdk</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在 Hexo 中添加豆瓣个人主页</title>
+    <url>/2024/01/12/hexo-douban/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>douban</tag>
       </tags>
   </entry>
   <entry>
