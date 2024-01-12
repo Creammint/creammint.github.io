@@ -1,52 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>解决每次Github部署完成后都需要重新绑定域名的问题</title>
-    <url>/2024/01/10/githubyuming/</url>
+    <title>Butterfily主题安装文档</title>
+    <url>/2024/01/12/hexo_installdocument/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>Github</tag>
+        <tag>butterfily</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hexo增加Valine评论系统</title>
-    <url>/2024/01/11/hexoaddvalinesystem/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Git SSH公钥配置</title>
-    <url>/2024/01/09/githubshhpeizhi/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>在 Hexo 中添加豆瓣个人主页</title>
-    <url>/2024/01/12/hexo-douban/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>douban</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo博客加载时报错‘prism_plugin‘</title>
-    <url>/2024/01/09/hexobokebug01/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【图床搭建】腾讯云COS+PicGo+Typora图床搭建</title>
-    <url>/2024/01/09/txcloudtuchuang/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Java/jdk详细安装教程</title>
@@ -61,14 +24,51 @@
       </tags>
   </entry>
   <entry>
-    <title>Butterfily主题安装文档</title>
-    <url>/2024/01/12/hexo_installdocument/</url>
+    <title>在 Hexo 中添加豆瓣个人主页</title>
+    <url>/2024/01/12/hexo-douban/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>butterfily</tag>
+        <tag>douban</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hexo增加Valine评论系统</title>
+    <url>/2024/01/11/hexoaddvalinesystem/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>解决每次Github部署完成后都需要重新绑定域名的问题</title>
+    <url>/2024/01/10/githubyuming/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【图床搭建】腾讯云COS+PicGo+Typora图床搭建</title>
+    <url>/2024/01/09/txcloudtuchuang/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>hexo博客加载时报错‘prism_plugin‘</title>
+    <url>/2024/01/09/hexobokebug01/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Git SSH公钥配置</title>
+    <url>/2024/01/09/githubshhpeizhi/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
