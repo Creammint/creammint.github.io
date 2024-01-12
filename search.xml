@@ -814,7 +814,7 @@
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240105092825784.png" alt="image-20240105092825784"></p>
 <p>点击“New SSH key”，将复制的密钥内容粘贴进Key的输入框，Title随便取：</p>
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000122494-931212452.png" alt="img"></p>
-<p>回到gitbush，测试输入： ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#98;&#x2e;&#99;&#x6f;&#109;">&#103;&#105;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#98;&#x2e;&#99;&#x6f;&#109;</a></p>
+<p>回到gitbush，测试输入： ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#x63;&#111;&#109;">&#103;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#x63;&#111;&#109;</a></p>
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000409948-1462846742.png" alt="img"></p>
 <p>如果遇到 yes&#x2F;no 的选项，输入yes。最后看到 “Hi ….”表示设置成功。</p>
 ]]></content>
