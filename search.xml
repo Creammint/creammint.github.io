@@ -41,6 +41,9 @@
       <categories>
         <category>hexo</category>
       </categories>
+      <tags>
+        <tag>valine</tag>
+      </tags>
   </entry>
   <entry>
     <title>解决每次Github部署完成后都需要重新绑定域名的问题</title>
