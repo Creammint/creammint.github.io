@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo增加Valine评论系统</title>
-    <url>/2024/01/11/hexoaddvalinesystem/</url>
+    <title>Butterfily主题安装文档</title>
+    <url>/2024/01/12/hexo_installdocument/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>hexo</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Git SSH公钥配置</title>
-    <url>/2024/01/09/githubshhpeizhi/</url>
-    <content><![CDATA[]]></content>
+      <tags>
+        <tag>butterfily</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java/jdk详细安装教程</title>
@@ -23,6 +21,36 @@
       <tags>
         <tag>Java</tag>
         <tag>Jdk</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在 Hexo 中添加豆瓣个人主页</title>
+    <url>/2024/01/12/hexo-douban/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>douban</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo增加Valine评论系统</title>
+    <url>/2024/01/11/hexoaddvalinesystem/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>解决每次Github部署完成后都需要重新绑定域名的问题</title>
+    <url>/2024/01/10/githubyuming/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
       </tags>
   </entry>
   <entry>
@@ -39,36 +67,8 @@
       </categories>
   </entry>
   <entry>
-    <title>在 Hexo 中添加豆瓣个人主页</title>
-    <url>/2024/01/12/hexo-douban/</url>
+    <title>Git SSH公钥配置</title>
+    <url>/2024/01/09/githubshhpeizhi/</url>
     <content><![CDATA[]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>douban</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决每次Github部署完成后都需要重新绑定域名的问题</title>
-    <url>/2024/01/10/githubyuming/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>Github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Butterfily主题安装文档</title>
-    <url>/2024/01/12/hexo_installdocument/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>butterfily</tag>
-      </tags>
   </entry>
 </search>
