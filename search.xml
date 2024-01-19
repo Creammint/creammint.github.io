@@ -1,29 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>解决每次Github部署完成后都需要重新绑定域名的问题</title>
-    <url>/posts/52420/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>解决每次Github部署完成后都需要重新绑定域名的问题！！！</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
-<li><p>在博客根目录的配置文件 <code>config.yml</code>中找到<code>skip_render</code>，添加值<code>GNAME</code>,用来置顶不进行渲染的文件</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">skip_render:</span> <span class="string">CNAME</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在**&#x2F;source<strong>的目录中创建一个文件，文件名为</strong>CNAME**，里边的内容写你的域名。</p>
-</li>
-<li><p>只写域名，例如 creammint.cn，不需要添加http(s):&#x2F;&#x2F;前缀。</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">creammint.cn</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>hexo g 重新生成一下</p>
-</li>
-<li><p>hexo d 部署到Github上</p>
-</li>
-</ol>
+    <title>Java-jdk详细安装教程</title>
+    <url>/posts/5819/</url>
+    <content><![CDATA[<h2 id="Java-jdk详细安装教程"><a href="#Java-jdk详细安装教程" class="headerlink" title="Java&#x2F;jdk详细安装教程"></a>Java&#x2F;jdk详细安装教程</h2><h3 id="一、java历史简介"><a href="#一、java历史简介" class="headerlink" title="一、java历史简介"></a>一、java历史简介</h3><p>1991 年Sun公司的James Gosling等人开始开发名称为 Oak （橡树）的语言。希望用于控制嵌入在有线电视交换盒、PDA等的微处理器，</p>
+<p>1994年将Oak语言更名为Java</p>
+<p>1998年JDK1.2时，更名为Java 2 Platform</p>
+<p>分为标准版J2SE,企业版J2EE,微型版J2ME</p>
+<p>Java 既安全、可移植，又可跨平台，而且人们发现它能够解决Internet 上的大型应用问题，Internet使Java成为网上最流行的编程语言，Java对Internet的影响也意义深远。后来java被Oracle（甲骨文）公司收购。java实际是个地名，乃印度尼西亚的一个岛屿，当地盛产咖啡，因此标志也用了一个咖啡的标志。</p>
+<h3 id="二、Java安装过程（以java8-0为例）"><a href="#二、Java安装过程（以java8-0为例）" class="headerlink" title="二、Java安装过程（以java8.0为例）"></a>二、Java安装过程（以java8.0为例）</h3><p>1、Oracle官网： <a href="https://www.oracle.com/index.html">Oracle | Cloud Applications and Cloud Platform</a> </p>
+<p>如何在官网下载JDK8：<a href="https://jingyan.baidu.com/article/afd8f4de20588975e286e9e7.html">如何在Oracle官网找到并下载JDK8-百度经验 (baidu.com)</a> </p>
+<p>JDK官网地址跳转：<a href="http://java.sun.com/">http://java.sun.com/</a></p>
+<p>2、在官网下载太麻烦了，我这里为大家提供了两种版本的jdk；</p>
+<blockquote>
+<p>链接：<a href="https://pan.baidu.com/s/1qwFfkgx4fPOX43PqiaI3eg?pwd=gztx">https://pan.baidu.com/s/1qwFfkgx4fPOX43PqiaI3eg?pwd=gztx</a><br>提取码：gztx </p>
+</blockquote>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/fbac42341d7b1905ead95cbbea9dd118.png" alt="img"></p>
+<p><strong>3、开始安装</strong></p>
+<p>双击 <code>jdk-8u181-windows-x64.exe</code> 进入JAVA运行环境安装界面，如下图所示： </p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/95b0e702d45801f19e6a2de6af3c33f0.png" alt="img"></p>
+<p><strong>大致步骤为：以管理员运行  下一步下一步……</strong></p>
+<p>点击“下一步”按钮开始安装，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ae5e06848c325da9638945d27ed4f411.png" alt="img"></p>
+<p>点击“下一步”按钮继续，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/403f33635534276ef51a2da3668c3cc1.png" alt="img"></p>
+<p>选择安装路径后，点击“下一步”继续，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ef999dd502be1b59c4bcf12b5d44b18d.png" alt="img"></p>
+<p>JAVA运行环境正在安装，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/2fa74403f12a9d1df7fcd401cf913803.png" alt="img"></p>
+<p>点击“关闭”按钮，安装完成，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/3c50623d03e2a4f41412e46dcdbc7422.png" alt="img"></p>
+<p>JAVA运行环境安装完成后，需要配置系统变量。</p>
+<p>在电脑图标上的右键菜单中选择“属性”菜单进行系统配置，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/b716c980249e7ee590654e12eebeed55.png" alt="img"></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/8ea9f03ac0a1688d263ceb58cd6d90a2.png" alt="img"></p>
+<p>点击“新建”按钮，在【系统变量】，分别设置三个环境变量，即：</p>
+<p>变量名1：<code>JAVA_HOME</code></p>
+<p>变量值1： 电脑上JDK安装的绝对路径（我的路径是 <code>C:\Program Files\Java\jdk1.8.0_181</code> ） </p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/2b097295458490bc5894170e9e84bad2.png" alt="img"></p>
+<p>变量名2：<code>PATH</code></p>
+<p>变量值2： 新建两条路径 ：<code>%JAVA_HOME%\bin</code>、<code>%JAVA_HOME%\jre\bin</code></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ae384b4861aaa19877e50a6972d1d6e9.png" alt="img"></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/52733ae6be43affaa66672a152372580.png" alt="img"></p>
+<p>变量名3：<code>CLASSPATH</code></p>
+<p>变量值3：<code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code>  （注意分号和小点）可复制我的变量值 </p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/52733ae6be43affaa66672a152372580.png"></p>
+<p>三个环境变量添加完成之后，如下图所示。</p>
+<p>点击“确定”按钮，完成环境变量设置。</p>
+<p>接下来需要检测JAVA运行环境是否安装成功。</p>
+<p>同时按键盘上的“Win+R”键，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/360a5c533c03b174d88293a85c088a0a.png" alt="img"></p>
+<p>在显示的对话框中输入“cmd”命令，并点击“确定”，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/5e2fe946c64cfa471a12e5eb7812ef37.png" alt="img"></p>
+<p>在显示的命令窗口中输入 <code>java -version</code> 命令并回车，如果能正常显示版本信息，说明JAVA运行环境安装成功，如下图所示：<br><strong>注意：</strong> <code>使用管理员身份运行cmd命令窗口</code></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/56831eb7088b46999a93f3b5965907fc.png" alt="img">a93f3b5965907fc.png)</p>
 ]]></content>
       <categories>
-        <category>Github</category>
+        <category>system</category>
       </categories>
       <tags>
-        <tag>域名</tag>
+        <tag>Java</tag>
+        <tag>Jdk</tag>
       </tags>
   </entry>
   <entry>
@@ -511,6 +548,114 @@
       </categories>
   </entry>
   <entry>
+    <title>Hexo+Butterfly 动态修改网站的标题</title>
+    <url>/posts/32273/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>可以在切换至其他网页时动态修改网站的标题，引起访问者的注意，当再次回来时修改网站标题表示欢迎；</p>
+<h2 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h2><h3 id="新建脚本文件"><a href="#新建脚本文件" class="headerlink" title="新建脚本文件"></a>新建脚本文件</h3><p>Root\source\js\title.js，写入一下内容：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">//动态标题</span></span><br><span class="line"><span class="string">var</span> <span class="string">OriginTitile</span> <span class="string">=</span> <span class="string">document.title;</span></span><br><span class="line"><span class="string">var</span> <span class="string">titleTime;</span></span><br><span class="line"><span class="string">document.addEventListener(&#x27;visibilitychange&#x27;,</span> <span class="string">function</span> <span class="string">()</span> &#123;</span><br><span class="line">  <span class="string">if</span> <span class="string">(document.hidden)</span> &#123;</span><br><span class="line">    <span class="string">//离开当前页面时标签显示内容</span></span><br><span class="line">    <span class="string">document.title</span> <span class="string">=</span> <span class="string">&#x27;👀不要走嘛~&#x27;</span><span class="string">;</span></span><br><span class="line">    <span class="string">clearTimeout(titleTime);</span></span><br><span class="line">  &#125; <span class="string">else</span> &#123;</span><br><span class="line">    <span class="string">//返回当前页面时标签显示内容</span></span><br><span class="line">    <span class="string">document.title</span> <span class="string">=</span> <span class="string">&#x27;🐖欢迎你回来～&#x27;</span><span class="string">;</span></span><br><span class="line">    <span class="string">//两秒后变回正常标题</span></span><br><span class="line">    <span class="string">titleTime</span> <span class="string">=</span> <span class="string">setTimeout(function</span> <span class="string">()</span> &#123;</span><br><span class="line">      <span class="string">document.title</span> <span class="string">=</span> <span class="string">OriginTitile;</span></span><br><span class="line">    &#125;, <span class="number">2000</span><span class="string">);</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;<span class="string">);</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="引用脚本文件"><a href="#引用脚本文件" class="headerlink" title="引用脚本文件"></a>引用脚本文件</h3><p>在主题配置文件<code>_config.butterfly.yml</code>引入该文件：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span> </span><br><span class="line">  <span class="attr">bottom:</span> </span><br><span class="line"><span class="string">+</span>    <span class="bullet">-</span> <span class="string">&lt;script</span> <span class="string">async</span> <span class="string">src=&quot;/js/title.js&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看和验证效果"><a href="#查看和验证效果" class="headerlink" title="查看和验证效果"></a>查看和验证效果</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">cl</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">s</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<p>参考链接：<a href="https://www.fomal.cc/posts/d1927166.html">https://www.fomal.cc/posts/d1927166.html</a></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>腾讯云COS+PicGo+Typora图床搭建</title>
+    <url>/posts/59423/</url>
+    <content><![CDATA[<h3 id="腾讯云COS"><a href="#腾讯云COS" class="headerlink" title="腾讯云COS"></a>腾讯云COS</h3><h4 id="1-开通COS"><a href="#1-开通COS" class="headerlink" title="1.开通COS"></a>1.开通COS</h4><ul>
+<li>进入腾讯云官网控制台搜索<a href="https://cloud.tencent.com/product/cos?from_column=20065&from=20065">对象存储</a> <a href="https://cloud.tencent.com/?from_column=20421&from=20421">腾讯云 产业智变·云启未来 - 腾讯 (tencent.com)</a></li>
+</ul>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/6884baf546bf0f0766a79ee351b93f8f.png" alt="img"></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/c77a9e0460c21762f6e7108316d58e99.png" alt="img"></p>
+<ul>
+<li><strong>未开通会提示开通</strong> 直接按照要求进行开通即可</li>
+</ul>
+<h4 id="2-创建存储桶"><a href="#2-创建存储桶" class="headerlink" title="2.创建存储桶"></a>2.创建存储桶</h4><ul>
+<li><strong>开通后创建存储桶</strong></li>
+</ul>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/44074fdf58c23ec4d94083cc080d329d.png" alt="img"></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/e4cc07526d9471c3d3db35328c665dd6.png" alt="img"></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/e4cc07526d9471c3d3db35328c665dd6.png" alt="img"></p>
+<ul>
+<li>高级可选配置<strong>默认即可</strong></li>
+<li>配置好之后创建</li>
+</ul>
+<h3 id="PicGo"><a href="#PicGo" class="headerlink" title="PicGo"></a>PicGo</h3><h4 id="1-下载PicGo"><a href="#1-下载PicGo" class="headerlink" title="1.下载PicGo"></a>1.下载PicGo</h4><ul>
+<li>前往官网下载 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://picgo.github.io/PicGo-Doc/zh/guide/%23%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85&source=article&objectId=2175760">PicGo is Here | PicGo</a> 可选多种方式</li>
+<li>Git Hub 下载 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/Molunerfinn/PicGo/releases&source=article&objectId=2175760">https://github.com/Molunerfinn/PicGo/releases</a></li>
+<li>在文档末尾选择对应版本下载即可</li>
+<li><strong>点击直接下载</strong> 2.3.1 版本： <a href="https://picgo-1251750343.cos.ap-chengdu.myqcloud.com/2.3.1/PicGo-Setup-2.3.1-x64.exe?from_column=20421&from=20421">PicGo-Setup-2.3.1-x64.exe</a></li>
+<li>会显示该程序有风险 忽略风险安装即可</li>
+</ul>
+<h4 id="2-配置PicGo"><a href="#2-配置PicGo" class="headerlink" title="2.配置PicGo"></a>2.配置PicGo</h4><ul>
+<li><strong>获取</strong><a href="https://cloud.tencent.com/product/cos?from_column=20065&from=20065"><strong>腾讯云COS</strong></a><strong>密钥</strong></li>
+</ul>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/8bf9a9ff91c60adf5e727a5048e6aa11.png" alt="img"></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/a5e423b8e9002e9ba9769d8f176426ed.png" alt="img"></p>
+<ul>
+<li>在控制台 <strong>对象存储</strong> 中获取基本信息</li>
+</ul>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/967d505fcda18d2c30291b1bcf59a12c.png" alt="img"></p>
+<ul>
+<li><strong>配置 PicGo</strong></li>
+</ul>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ee5e403db868296f83c3571347ad251b.png" alt="img"></p>
+<h3 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h3><h4 id="1-下载Typora"><a href="#1-下载Typora" class="headerlink" title="1.下载Typora"></a>1.下载Typora</h4><ul>
+<li>官网下载即可 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://typoraio.cn/&source=article&objectId=2175760">Typora 官方中文站 (typoraio.cn)</a></li>
+<li>Typora收费了 大家自行寻找下载资源即可</li>
+</ul>
+<h4 id="2-Typora配置"><a href="#2-Typora配置" class="headerlink" title="2.Typora配置"></a>2.Typora配置</h4><ul>
+<li><strong>文件(F) -&gt; 偏好设置</strong></li>
+</ul>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/a1843c4d363d5e30dfa0e74937a322ad.png" alt="img"></p>
+<hr>
+<p><strong>原文链接：</strong><a href="https://cloud.tencent.com/developer/article/2175760?from=15425">https://cloud.tencent.com/developer/article/2175760?from=15425</a></p>
+]]></content>
+      <categories>
+        <category>服务器</category>
+      </categories>
+      <tags>
+        <tag>腾讯云</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决每次Github部署完成后都需要重新绑定域名的问题</title>
+    <url>/posts/52420/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>解决每次Github部署完成后都需要重新绑定域名的问题！！！</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
+<li><p>在博客根目录的配置文件 <code>config.yml</code>中找到<code>skip_render</code>，添加值<code>GNAME</code>,用来置顶不进行渲染的文件</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">skip_render:</span> <span class="string">CNAME</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在**&#x2F;source<strong>的目录中创建一个文件，文件名为</strong>CNAME**，里边的内容写你的域名。</p>
+</li>
+<li><p>只写域名，例如 creammint.cn，不需要添加http(s):&#x2F;&#x2F;前缀。</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">creammint.cn</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hexo g 重新生成一下</p>
+</li>
+<li><p>hexo d 部署到Github上</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Github</category>
+      </categories>
+      <tags>
+        <tag>域名</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git SSH公钥配置</title>
     <url>/posts/58668/</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先下载安装git：<a href="https://git-scm.com/downloads/">https://git-scm.com/downloads/</a></p>
@@ -529,7 +674,7 @@
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240105092825784.png" alt="image-20240105092825784"></p>
 <p>点击“New SSH key”，将复制的密钥内容粘贴进Key的输入框，Title随便取：</p>
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000122494-931212452.png" alt="img"></p>
-<p>回到gitbush，测试输入： ssh -T <a href="mailto:&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;</a></p>
+<p>回到gitbush，测试输入： ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#x68;&#117;&#98;&#x2e;&#99;&#x6f;&#109;">&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#x68;&#117;&#98;&#x2e;&#99;&#x6f;&#109;</a></p>
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000409948-1462846742.png" alt="img"></p>
 <p>如果遇到 yes&#x2F;no 的选项，输入yes。最后看到 “Hi ….”表示设置成功。</p>
 <p>�设置成功。</p>
@@ -539,6 +684,259 @@
       </categories>
       <tags>
         <tag>SSH</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo博客加载时报错‘prism_plugin‘</title>
+    <url>/posts/22942/</url>
+    <content><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>使用命令hexo c &amp; hexo g &amp; hexo s运行hexo时出现一下报错（只截取了部分）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ERROR Plugin load failed: hexo-prism-plugin</span><br><span class="line">Error: `prism_plugin` options should be added to _config.yml file</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>在hexo的文件目录下的_config.yml里的最后加上下面的代码（注意：不是主题下面的 _config.yml）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">prism_plugin:</span><br><span class="line">  mode: &#x27;preprocess&#x27; # realtime/preprocess</span><br><span class="line">  theme: &#x27;default&#x27;</span><br><span class="line">  line_number: false # default false</span><br></pre></td></tr></table></figure>
+
+
+
+<p>default false</p>
+<pre><code>
+
+</code></pre>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>bug</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo增加Valine评论系统</title>
+    <url>/posts/45310/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hexo 博客支持的评论系统其实有很多，本站选用了 Valine，选择原因:轻量级、访问速度快、配置过程简单，以上三个原因足够我选择它了。</p>
+<p>Valine 评论系统的配置其实很简单，在这里就简单介绍一下。</p>
+<h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><ol>
+<li><p>注册帐号<br>在LeanCloud官网<a href="https://www.leancloud.cn/">LeanCloud</a> 免费注册一个帐号，注册后需要实名认证即可使用不同的服务了。</p>
+</li>
+<li><p>创建应用</p>
+<ul>
+<li>点击左上角LeanCloud后选择创建应用</li>
+<li>填写应用名称</li>
+<li>默认选择开发版</li>
+<li>自行选择是否填写应用描述</li>
+<li>最后点击创建按钮</li>
+</ul>
+</li>
+<li><p>修改配置</p>
+<p>打开<code>_config.butterfly.yml</code>配置，找到 valine 配置，修改 <code>appid</code> 和 <code>appkey</code></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># valine</span></span><br><span class="line"><span class="comment"># https://valine.js.org</span></span><br><span class="line"><span class="attr">valine:</span></span><br><span class="line">  <span class="attr">appId:</span> <span class="string">请在这里填写你的appId</span> <span class="comment"># leancloud application app id</span></span><br><span class="line">  <span class="attr">appKey:</span> <span class="string">请在这里填写你的appKey</span> <span class="comment"># leancloud application app key</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">monsterid</span> <span class="comment"># gravatar style https://valine.js.org/#/avatar</span></span><br><span class="line">  <span class="attr">serverURLs:</span> <span class="comment"># This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)</span></span><br><span class="line">  <span class="attr">bg:</span> <span class="comment"># valine background</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">&quot;嘿，别忘了留下你的小脚印哦！&quot;</span>  <span class="comment"># 评论框的默认填充</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment">#每一页显示的评论条数</span></span><br><span class="line">  <span class="attr">option:</span></span><br></pre></td></tr></table></figure>
+
+<p>同时修改选择的评论系统为 <code>Valine</code> 即可</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="comment"># Up to two comments system, the first will be shown as default</span></span><br><span class="line">  <span class="comment"># Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk</span></span><br><span class="line">  <span class="attr">use:</span> <span class="string">Valine</span> <span class="comment"># 请在这里选择你的评论系统类型：Valine,Disqus</span></span><br><span class="line">  <span class="attr">text:</span> <span class="literal">true</span> <span class="comment"># Display the comment name next to the button</span></span><br><span class="line">  <span class="comment"># lazyload: The comment system will be load when comment element enters the browser&#x27;s viewport.</span></span><br><span class="line">  <span class="comment"># If you set it to true, the comment count will be invalid</span></span><br><span class="line">  <span class="attr">lazyload:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">false</span> <span class="comment"># Display comment count in post&#x27;s top_img</span></span><br><span class="line">  <span class="attr">card_post_count:</span> <span class="literal">false</span> <span class="comment"># Display comment count in Home Page</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新生成博客系统即可看到效果</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">cl</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">s</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="评论页面美化"><a href="#评论页面美化" class="headerlink" title="评论页面美化"></a>评论页面美化</h2><p>定义一个myStyle.css放在下面的目录中</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240112152209550.png" alt="image-20240112152209550"></p>
+<p>现在我们在主题文件中引入这个文件</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Inject</span></span><br><span class="line"><span class="comment"># Insert the code to head (before &#x27;&lt;/head&gt;&#x27; tag) and the bottom (before &#x27;&lt;/body&gt;&#x27; tag)</span></span><br><span class="line"><span class="comment"># 插入代码到头部 &lt;/head&gt; 之前 和 底部 &lt;/body&gt; 之前</span></span><br><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;/css/myStyle.css&quot;&gt;</span></span><br><span class="line">  <span class="attr">bottom:</span></span><br><span class="line">    <span class="comment"># - &lt;script src=&quot;xxxx&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在css中写入下面的代码，这里作者的图片放到了css同级目录下的img下，大家也可以直接放超链接,建议大家放动图，这样有感觉吧</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#veditor</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">../img/valineBg.gif</span>);</span><br><span class="line">    <span class="attribute">background-size</span>: contain;</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>: right;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="attribute">resize</span>: vertical</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面的这一行代码，当鼠标聚焦的时候，背景图消失，大家可以选择使用</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#veditor</span><span class="selector-pseudo">:focus</span>&#123;</span><br><span class="line">    <span class="attribute">background-position</span>-y: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">transition</span>: all <span class="number">0.2s</span> ease-in-out <span class="number">0s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p>参考文章：</p>
+<p><a href="https://zsyyblog.com/f01faa9c.html">https://zsyyblog.com/f01faa9c.html</a></p>
+<p><a href="https://valine.js.org/configuration.html">https://valine.js.org/configuration.html</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/581640626">https://zhuanlan.zhihu.com/p/581640626</a></p>
+<p>om&#x2F;p&#x2F;581640626</p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>valine</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客增加本地搜索的功能（hexo-generator-searchdb）</title>
+    <url>/posts/3650/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>“hexo-generator-searchdb””插件功能更为强大，这次来介绍”hexo-generator-searchdb””，其实与”hexo-generator-search”使用的方法非常相似。</p>
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p>前往博客根目录，打开cmd命令窗口执行<code>npm install hexo-generator-searchdb --save</code>。</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="注入配置"><a href="#注入配置" class="headerlink" title="注入配置"></a>注入配置</h2><p>修改站点配置文件<code>_config.yml</code>，添加或修改如下代码:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">content:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure>
+
+<p>参数说明:</p>
+<ul>
+<li>path -文件路径，可以生成xml和json两种格式。默认情况下是<code>search.xml</code>。如果文件扩展名为<code>.json</code>，则输出格式将为JSON。否则，将导出XML格式化文件。</li>
+<li>field -您要搜索的搜索范围，您可以选择:<ul>
+<li>post(默认)-仅涵盖您博客的所有文章。</li>
+<li>page -将仅涵盖您博客的所有页面。</li>
+<li>all -将涵盖您博客的所有文章和页面。</li>
+</ul>
+</li>
+<li>content-是否包含每篇文章的全部内容。如果为<code>false</code>，生成的结果仅涵盖标题和创建时间这些信息，没有文章的内容。默认情况下是:<code>true</code></li>
+<li>format:搜索到的内容、选项的格式。<ul>
+<li>html(默认):将html原文本缩略。</li>
+<li>striptags:将html 原文本缩略，并删除所有标记。</li>
+<li>raw:记下每一篇文章或每一页的文字。</li>
+</ul>
+</li>
+</ul>
+<h2 id="开启搜索"><a href="#开启搜索" class="headerlink" title="开启搜索"></a>开启搜索</h2><p>在主题配置文件<code>_config.butterfly.yml</code> 中修改以下内容:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line"><span class="bullet">-</span>  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line"><span class="string">+</span>  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>重新编译运行，即可看到效果。</p>
+<p>前往博客根目录，打开cmd命令窗口依次执行如下命令:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">cl</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">s</span></span><br></pre></td></tr></table></figure>
+
+<p>搜索插件访问地址:  <a href="https://github.com/wzpan/hexo-generator-search">hexo-generator-searchdb</a>rator-search)</p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo-generator-searchdb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo增加关于、标签、分类、归档页面</title>
+    <url>/posts/39917/</url>
+    <content><![CDATA[<h2 id="增加关于页面"><a href="#增加关于页面" class="headerlink" title="增加关于页面"></a>增加关于页面</h2><p>使用: <code>hexo new page &quot;about&quot;</code> 命令新建一个<code>关于</code>页面。修改博客的<code>_config.yml</code>文件中的menu配置项:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span>                   <span class="comment"># 主页</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories</span>   <span class="comment"># 分类</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives</span>       <span class="comment"># 归档</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags</span>               <span class="comment"># 标签</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about</span>             <span class="comment"># 关于（添加此行即可）</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑about关于页面md文件部署后就能看到了</p>
+<h2 id="增加标签页面"><a href="#增加标签页面" class="headerlink" title="增加标签页面"></a>增加标签页面</h2><p>使用: <code>hexo new page &quot;tags&quot;</code> 命令新建一个<code>标签</code>页面。修改博客的<code>_config.yml</code>文件中的menu配置项:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span>                   <span class="comment"># 主页</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories</span>   <span class="comment"># 分类</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives</span>       <span class="comment"># 归档</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags</span>               <span class="comment"># 标签（添加此行即可）</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about</span>             <span class="comment"># 关于</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑tags标签页面md文件部署后就能看到了</p>
+<p>以下代码是一篇包含<code>标签</code>文章的例子:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标签测试</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">First</span> <span class="string">Tag</span>                 <span class="string">（这个就是文章的标签）</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Another</span> <span class="string">Tag</span>               <span class="string">（这个就是文章的标签）</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>你会找到source&#x2F;tags&#x2F;index.md这个文件</p>
+<p>修改这个文件:记得添加type: “tags”</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018-01-05 00:00:00</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;tags&quot;</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="增加分类页面"><a href="#增加分类页面" class="headerlink" title="增加分类页面"></a>增加分类页面</h2><p>使用: <code>hexo new page &quot;categories&quot;</code>新建一个<code>分类</code>页面。修改博客的<code>_config.yml</code>文件中的menu配置项:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span>                   <span class="comment"># 主页</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories</span>   <span class="comment"># 分类（添加此行即可）</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives</span>       <span class="comment"># 归档</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags</span>               <span class="comment"># 标签</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about</span>             <span class="comment"># 关于</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑categories标签页面md文件部署后就能看到了</p>
+<p>以下代码是一篇包含<code>分类</code>文章的例子:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">分类测试</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Hexo</span>                      <span class="string">（这个就是文章的分类）</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>你会找到source&#x2F;categories&#x2F;index.md这个文件</p>
+<p>修改这个文件:记得添加type: “tags”</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018-01-05 00:00:00</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;categories&quot;</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="增加归档页面"><a href="#增加归档页面" class="headerlink" title="增加归档页面"></a>增加归档页面</h2><p>修改博客的<code>_config.yml</code>文件中的menu配置项:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span>                   <span class="comment"># 主页</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories</span>   <span class="comment"># 分类</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives</span>       <span class="comment"># 归档（添加此行即可）</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags</span>               <span class="comment"># 标签</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about</span>             <span class="comment"># 关于</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑archives标签页面md文件部署后就能看到了</p>
+<h2 id="增加自定义页面"><a href="#增加自定义页面" class="headerlink" title="增加自定义页面"></a>增加自定义页面</h2><p>使用: <code>hexo new page &quot;custom&quot;</code>新建一个<code>自定义</code>页面。主题的<code>_config.yml</code>文件中的menu配置项:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span>                   <span class="comment"># 主页</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories</span>   <span class="comment"># 分类</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives</span>       <span class="comment"># 归档</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags</span>               <span class="comment"># 标签</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about</span>             <span class="comment"># 关于</span></span><br><span class="line">  <span class="attr">custom:</span> <span class="string">/custom</span>           <span class="comment"># 自定义（添加此行即可）</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑custom标签页面md文件部署后就能看到了就能看到了</p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>在Hexo中添加豆瓣个人主页</title>
+    <url>/posts/46282/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一个在 <a href="https://hexo.io/">Hexo</a> 页面中嵌入豆瓣个人主页的小插件。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>hexo-douban 目前升级到了 2.x 版本，将原先由插件客户端自行获取数据的逻辑抽到了一个隐藏的服务端中进行，以统一解决数据获取、数据缓存、风控对抗等问题，提高页面生成的成功率和效率。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-douban --save</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><p>将下面的配置写入站点的配置文件 <code>_config.yml</code> 里(不是主题的配置文件).</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">douban:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="number">209637606</span></span><br><span class="line">  <span class="attr">builtin:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">item_per_page:</span> <span class="number">10</span></span><br><span class="line">  <span class="attr">meta_max_line:</span> <span class="number">4</span></span><br><span class="line">  <span class="attr">customize_layout:</span> <span class="string">page</span></span><br><span class="line">  <span class="attr">book:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">books/index.html</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">&#x27;This is my book title&#x27;</span></span><br><span class="line">    <span class="attr">quote:</span> <span class="string">&#x27;This is my book quote&#x27;</span></span><br><span class="line">    <span class="attr">option:</span></span><br><span class="line">  <span class="attr">movie:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">movies/index.html</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">&#x27;This is my movie title&#x27;</span></span><br><span class="line">    <span class="attr">quote:</span> <span class="string">&#x27;This is my movie quote&#x27;</span></span><br><span class="line">    <span class="attr">option:</span></span><br><span class="line">  <span class="attr">game:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">games/index.html</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">&#x27;This is my game title&#x27;</span></span><br><span class="line">    <span class="attr">quote:</span> <span class="string">&#x27;This is my game quote&#x27;</span></span><br><span class="line">    <span class="attr">option:</span></span><br><span class="line">  <span class="attr">song:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">songs/index.html</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">&#x27;This is my song title&#x27;</span></span><br><span class="line">    <span class="attr">quote:</span> <span class="string">&#x27;This is my song quote&#x27;</span></span><br><span class="line">    <span class="attr">option:</span></span><br><span class="line">  <span class="attr">timeout:</span> <span class="number">10000</span> </span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><strong>id</strong>: 你的豆瓣ID(纯数字格式，不是自定义的域名)。获取方法可以参考<a href="https://www.zhihu.com/question/19634899">怎样获取豆瓣的数字 ID ？</a></li>
+<li><strong>builtin</strong>: 是否将<code>hexo douban</code>命令默认嵌入进<code>hexo g</code>、<code>hexo s</code>，使其自动执行<code>hexo douban</code> 命令。默认关闭。</li>
+<li><strong>item_per_page</strong>: 每页展示的条目数，默认 10 。</li>
+<li><strong>meta_max_line</strong>: 每个条目展示的详细信息的最大行数，超过该行数则会以 “…” 省略，默认 4 。</li>
+<li><strong>customize_layout</strong>: 自定义布局文件。默认值为 page 。无特别需要，留空即可。若配置为 <code>abcd</code>，则表示指定 <code>//theme/hexo-theme/layout/abcd.ejs</code> 文件渲染豆瓣页面。</li>
+<li><strong>path</strong>: 生成页面后的路径，默认生成在 &#x2F;&#x2F;yourblog&#x2F;books&#x2F;index.html 等下面。如需自定义路径，则可以修改这里。</li>
+<li><strong>title</strong>: 该页面的标题。</li>
+<li><strong>quote</strong>: 写在页面开头的一段话,支持html语法。</li>
+<li><strong>timeout</strong>: 爬取数据的超时时间，默认是 10000ms ,如果在使用时发现报了超时的错(ETIMEOUT)可以把这个数据设置的大一点。</li>
+<li><strong>option</strong>: 该页面额外的 Front-matter 配置，参考<a href="https://hexo.io/docs/front-matter.html">Hexo 文档</a>。无特别需要，留空即可。</li>
+</ul>
+<p>如果只想显示某一个页面(比如movie)，那就把其他的配置项注释掉即可。</p>
+<h3 id="Butterfly-主题中使用-hexo-douban-插件"><a href="#Butterfly-主题中使用-hexo-douban-插件" class="headerlink" title="Butterfly 主题中使用 hexo-douban 插件"></a>Butterfly 主题中使用 hexo-douban 插件</h3><p><strong>添加到菜单中</strong><br>如果上面的页面显示都无问题的话，就可以在主题的配置文件 <code>_config.butterfly.yml</code> 中为这些页面添加菜单链接了</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">娱乐||fa</span> <span class="attr">fa-heartbeat:</span></span><br><span class="line">    <span class="string">音乐:</span> <span class="string">/music/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-music</span></span><br><span class="line">    <span class="string">照片:</span> <span class="string">/Gallery/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-images</span></span><br><span class="line">    <span class="string">电影:</span> <span class="string">/movies/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-video</span></span><br><span class="line">    <span class="string">书籍:</span> <span class="string">/books/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-book</span></span><br></pre></td></tr></table></figure>
+
+<p>并且修改主题配置文件 <code>_config.butterfly.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># If you are using hexo-douban, you can configure it (如果你有使用 hexo-douban,可配置這個)</span></span><br><span class="line"><span class="attr">douban:</span></span><br><span class="line">  <span class="attr">meta:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">movies_img:</span> <span class="string">https://cn.bing.com/th?id=OHR.LightPainting_ZH-CN8824196181_1920x1080.jpg</span></span><br><span class="line">  <span class="attr">books_img:</span> <span class="string">https://cn.bing.com/th?id=OHR.MistyTor_ZH-CN7520952555_1920x1080.jpg</span></span><br><span class="line">  <span class="attr">games_img:</span> <span class="string">https://cn.bing.com/th?id=OHR.ZugspitzeGipfelstation_ZH-CN6120971585_1920x1080.jpg</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><strong>展示帮助文档</strong></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">$</span> <span class="string">hexo</span> <span class="string">douban</span> <span class="string">-h</span></span><br><span class="line"><span class="attr">Usage:</span> <span class="string">hexo</span> <span class="string">douban</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Description:</span></span><br><span class="line"><span class="string">Generate</span> <span class="string">pages</span> <span class="string">from</span> <span class="string">douban</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Options:</span></span><br><span class="line">  <span class="string">-b,</span> <span class="string">--books</span>   <span class="string">Generate</span> <span class="string">douban</span> <span class="string">books</span> <span class="string">only</span></span><br><span class="line">  <span class="string">-g,</span> <span class="string">--games</span>   <span class="string">Generate</span> <span class="string">douban</span> <span class="string">games</span> <span class="string">only</span></span><br><span class="line">  <span class="string">-m,</span> <span class="string">--movies</span>  <span class="string">Generate</span> <span class="string">douban</span> <span class="string">movies</span> <span class="string">only</span></span><br><span class="line">  <span class="string">-s,</span> <span class="string">--songs</span>   <span class="string">Generate</span> <span class="string">douban</span> <span class="string">songs</span> <span class="string">only</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>主动生成豆瓣页面</strong></p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$ hexo douban</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  0 (wish), 0 (do),0 (collect) game loaded in 729 ms</span><br><span class="line">INFO  0 (wish), 0 (do),20 (collect) song loaded in 761 ms</span><br><span class="line">INFO  2 (wish), 0 (do),136 (collect) book loaded in 940 ms</span><br><span class="line">INFO  30 (wish), 0 (do),6105 (collect) movie loaded in 4129 ms</span><br><span class="line">INFO  Generated: books/index.html</span><br><span class="line">INFO  Generated: movies/index.html</span><br><span class="line">INFO  Generated: games/index.html</span><br><span class="line">INFO  Generated: songs/index.html</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果不加参数，那么默认参数为<code>-bgms</code>。当然，前提是配置文件中均有这些类型的配置。</p>
+<p><strong>需要注意的是</strong>，通常大家都喜欢用<code>hexo d</code>来作为<code>hexo deploy</code>命令的简化，但是当安装了<code>hexo douban</code>之后，就不能用<code>hexo d</code>了，因为<code>hexo douban</code>跟<code>hexo deploy</code> 的前缀都是<code>hexo d</code>。</p>
+<p>如果 builtin:false 时，执行 hexo g 之后发现将 douban 生成的页面删除了:</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">INFO  Start processing</span><br><span class="line">INFO  Files loaded in 343 ms</span><br><span class="line">INFO  Deleted: games/index.html</span><br><span class="line">INFO  Deleted: books/index.html</span><br><span class="line">INFO  Deleted: movies/index.html</span><br><span class="line">INFO  Deleted: songs/index.html</span><br></pre></td></tr></table></figure>
+
+
+
+<p>那么重新执行 hexo clean 一下即可（原因是 db.json 的数据缓存）。</p>
+<p>第一次使用 hexo douban 时，后台会异步进行数据获取，一般需要等待一段时间（后台访问你的标记页面）才能查到数据。顺利情况下，平均一个页面会花10s。</p>
+<p>例如如果你有 150 个想读、150个已读、150个在读的图书，每页15条，则共需要翻30页。那么大约需要等待 30*10&#x2F;60&#x3D;5 分钟。如果长时间没有更新（一天以上），请及时提 issue 反馈。</p>
+<p>后续如果你的豆瓣数据更新了，hexo douban 同样也会自动进行更新（同样需要等待一段时间才会查到更新数据），不过出于安全考虑，一个用户id<strong>每半小时至多只会同步一次</strong>。</p>
+<p>由于豆瓣本身深分页的 RT 过高（上万条目的翻页 RT 会到 15s 到 60s），为了防止系统同步压力过大，每个用户的每一类条目最多只会同步 1w 条。</p>
+<h2 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h2><p>官方会不定期更新一些功能或者修改一些Bug，所以如果想使用最新的特性，可以用下面的方法来更新:</p>
+<ol>
+<li>修改 package.json 内 hexo-douban 的版本号至最新</li>
+<li>重新安装最新版本<code>npm install hexo-douban --save</code></li>
+</ol>
+<p>或者使用<code>npm install hexo-douban --update --save</code>直接更新。</p>
+<h2 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h2><p>如果上面的配置和操作都没问题，就可以在生成站点之后打开 <code>//yourblog/books</code> 和 <code>//yourblog/movies</code>, <code>//yourblog/games</code>, 来查看结果。</p>
+<h2 id="菜单"><a href="#菜单" class="headerlink" title="菜单"></a>菜单</h2><p>如果上面的显示没有问题就可以在主题的配置文件 <code>_config.yml</code> 里添加如下配置来为这些页面添加菜单链接.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">Home:</span> <span class="string">/</span></span><br><span class="line">  <span class="attr">Archives:</span> <span class="string">/archives</span></span><br><span class="line">  <span class="attr">Books:</span> <span class="string">/books</span>     <span class="comment">#This is your books page</span></span><br><span class="line">  <span class="attr">Movies:</span> <span class="string">/movies</span>   <span class="comment">#This is your movies page</span></span><br><span class="line">  <span class="attr">Games:</span> <span class="string">/games</span>   <span class="comment">#This is your games page</span></span><br><span class="line">  <span class="attr">Songs:</span> <span class="string">/songs</span>   <span class="comment">#This is your songs page</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="通用环境"><a href="#通用环境" class="headerlink" title="通用环境"></a>通用环境</h2><p>如果有非 hexo 环境的部署需求，则可以考虑以引入静态资源的方式接入 <a href="https://github.com/mythsman/idouban">idouban</a> 。</p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>如果仅仅想对自己的豆瓣数据进行备份，可以尝试使用下面的接口，复用后端维护的数据提取服务 <a href="https://github.com/mythsman/mouban">mouban</a> ：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将 &#123;your_douban_id&#125; 改为你的豆瓣数字ID</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用户录入/更新</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/check_user?id=&#123;your_douban_id&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询用户的读书评论</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_book?id=&#123;your_douban_id&#125;&amp;action=wish</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_book?id=&#123;your_douban_id&#125;&amp;action=do</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_book?id=&#123;your_douban_id&#125;&amp;action=collect</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询用户的电影评论</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_movie?id=&#123;your_douban_id&#125;&amp;action=wish</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_movie?id=&#123;your_douban_id&#125;&amp;action=do</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_movie?id=&#123;your_douban_id&#125;&amp;action=collect</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询用户的游戏评论</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_game?id=&#123;your_douban_id&#125;&amp;action=wish</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_game?id=&#123;your_douban_id&#125;&amp;action=do</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_game?id=&#123;your_douban_id&#125;&amp;action=collect</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询用户的音乐评论</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_song?id=&#123;your_douban_id&#125;&amp;action=wish</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_song?id=&#123;your_douban_id&#125;&amp;action=do</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_song?id=&#123;your_douban_id&#125;&amp;action=collect</span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p>参考链接：<a href="https://github.com/mythsman/hexo-douban?tab=readme-ov-filee">https://github.com/mythsman/hexo-douban?tab=readme-ov-filee</a></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>douban</tag>
       </tags>
   </entry>
   <entry>
@@ -630,143 +1028,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo增加关于、标签、分类、归档页面</title>
-    <url>/posts/39917/</url>
-    <content><![CDATA[<h2 id="增加关于页面"><a href="#增加关于页面" class="headerlink" title="增加关于页面"></a>增加关于页面</h2><p>使用: <code>hexo new page &quot;about&quot;</code> 命令新建一个<code>关于</code>页面。修改博客的<code>_config.yml</code>文件中的menu配置项:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span>                   <span class="comment"># 主页</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories</span>   <span class="comment"># 分类</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives</span>       <span class="comment"># 归档</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags</span>               <span class="comment"># 标签</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about</span>             <span class="comment"># 关于（添加此行即可）</span></span><br></pre></td></tr></table></figure>
-
-<p>编辑about关于页面md文件部署后就能看到了</p>
-<h2 id="增加标签页面"><a href="#增加标签页面" class="headerlink" title="增加标签页面"></a>增加标签页面</h2><p>使用: <code>hexo new page &quot;tags&quot;</code> 命令新建一个<code>标签</code>页面。修改博客的<code>_config.yml</code>文件中的menu配置项:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span>                   <span class="comment"># 主页</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories</span>   <span class="comment"># 分类</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives</span>       <span class="comment"># 归档</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags</span>               <span class="comment"># 标签（添加此行即可）</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about</span>             <span class="comment"># 关于</span></span><br></pre></td></tr></table></figure>
-
-<p>编辑tags标签页面md文件部署后就能看到了</p>
-<p>以下代码是一篇包含<code>标签</code>文章的例子:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标签测试</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">First</span> <span class="string">Tag</span>                 <span class="string">（这个就是文章的标签）</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Another</span> <span class="string">Tag</span>               <span class="string">（这个就是文章的标签）</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-
-<p>你会找到source&#x2F;tags&#x2F;index.md这个文件</p>
-<p>修改这个文件:记得添加type: “tags”</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018-01-05 00:00:00</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;tags&quot;</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="增加分类页面"><a href="#增加分类页面" class="headerlink" title="增加分类页面"></a>增加分类页面</h2><p>使用: <code>hexo new page &quot;categories&quot;</code>新建一个<code>分类</code>页面。修改博客的<code>_config.yml</code>文件中的menu配置项:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span>                   <span class="comment"># 主页</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories</span>   <span class="comment"># 分类（添加此行即可）</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives</span>       <span class="comment"># 归档</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags</span>               <span class="comment"># 标签</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about</span>             <span class="comment"># 关于</span></span><br></pre></td></tr></table></figure>
-
-<p>编辑categories标签页面md文件部署后就能看到了</p>
-<p>以下代码是一篇包含<code>分类</code>文章的例子:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">分类测试</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Hexo</span>                      <span class="string">（这个就是文章的分类）</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-
-<p>你会找到source&#x2F;categories&#x2F;index.md这个文件</p>
-<p>修改这个文件:记得添加type: “tags”</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018-01-05 00:00:00</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;categories&quot;</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="增加归档页面"><a href="#增加归档页面" class="headerlink" title="增加归档页面"></a>增加归档页面</h2><p>修改博客的<code>_config.yml</code>文件中的menu配置项:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span>                   <span class="comment"># 主页</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories</span>   <span class="comment"># 分类</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives</span>       <span class="comment"># 归档（添加此行即可）</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags</span>               <span class="comment"># 标签</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about</span>             <span class="comment"># 关于</span></span><br></pre></td></tr></table></figure>
-
-<p>编辑archives标签页面md文件部署后就能看到了</p>
-<h2 id="增加自定义页面"><a href="#增加自定义页面" class="headerlink" title="增加自定义页面"></a>增加自定义页面</h2><p>使用: <code>hexo new page &quot;custom&quot;</code>新建一个<code>自定义</code>页面。主题的<code>_config.yml</code>文件中的menu配置项:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span>                   <span class="comment"># 主页</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories</span>   <span class="comment"># 分类</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives</span>       <span class="comment"># 归档</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags</span>               <span class="comment"># 标签</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about</span>             <span class="comment"># 关于</span></span><br><span class="line">  <span class="attr">custom:</span> <span class="string">/custom</span>           <span class="comment"># 自定义（添加此行即可）</span></span><br></pre></td></tr></table></figure>
-
-<p>编辑custom标签页面md文件部署后就能看到了就能看到了</p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Hexo博客增加本地搜索的功能（hexo-generator-searchdb）</title>
-    <url>/posts/3650/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>“hexo-generator-searchdb””插件功能更为强大，这次来介绍”hexo-generator-searchdb””，其实与”hexo-generator-search”使用的方法非常相似。</p>
-<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p>前往博客根目录，打开cmd命令窗口执行<code>npm install hexo-generator-searchdb --save</code>。</p>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="注入配置"><a href="#注入配置" class="headerlink" title="注入配置"></a>注入配置</h2><p>修改站点配置文件<code>_config.yml</code>，添加或修改如下代码:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">content:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure>
-
-<p>参数说明:</p>
-<ul>
-<li>path -文件路径，可以生成xml和json两种格式。默认情况下是<code>search.xml</code>。如果文件扩展名为<code>.json</code>，则输出格式将为JSON。否则，将导出XML格式化文件。</li>
-<li>field -您要搜索的搜索范围，您可以选择:<ul>
-<li>post(默认)-仅涵盖您博客的所有文章。</li>
-<li>page -将仅涵盖您博客的所有页面。</li>
-<li>all -将涵盖您博客的所有文章和页面。</li>
-</ul>
-</li>
-<li>content-是否包含每篇文章的全部内容。如果为<code>false</code>，生成的结果仅涵盖标题和创建时间这些信息，没有文章的内容。默认情况下是:<code>true</code></li>
-<li>format:搜索到的内容、选项的格式。<ul>
-<li>html(默认):将html原文本缩略。</li>
-<li>striptags:将html 原文本缩略，并删除所有标记。</li>
-<li>raw:记下每一篇文章或每一页的文字。</li>
-</ul>
-</li>
-</ul>
-<h2 id="开启搜索"><a href="#开启搜索" class="headerlink" title="开启搜索"></a>开启搜索</h2><p>在主题配置文件<code>_config.butterfly.yml</code> 中修改以下内容:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line"><span class="bullet">-</span>  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line"><span class="string">+</span>  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>重新编译运行，即可看到效果。</p>
-<p>前往博客根目录，打开cmd命令窗口依次执行如下命令:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">cl</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">s</span></span><br></pre></td></tr></table></figure>
-
-<p>搜索插件访问地址:  <a href="https://github.com/wzpan/hexo-generator-search">hexo-generator-searchdb</a>rator-search)</p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo-generator-searchdb</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo+Butterfly 动态修改网站的标题</title>
-    <url>/posts/32273/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>可以在切换至其他网页时动态修改网站的标题，引起访问者的注意，当再次回来时修改网站标题表示欢迎；</p>
-<h2 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h2><h3 id="新建脚本文件"><a href="#新建脚本文件" class="headerlink" title="新建脚本文件"></a>新建脚本文件</h3><p>Root\source\js\title.js，写入一下内容：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">//动态标题</span></span><br><span class="line"><span class="string">var</span> <span class="string">OriginTitile</span> <span class="string">=</span> <span class="string">document.title;</span></span><br><span class="line"><span class="string">var</span> <span class="string">titleTime;</span></span><br><span class="line"><span class="string">document.addEventListener(&#x27;visibilitychange&#x27;,</span> <span class="string">function</span> <span class="string">()</span> &#123;</span><br><span class="line">  <span class="string">if</span> <span class="string">(document.hidden)</span> &#123;</span><br><span class="line">    <span class="string">//离开当前页面时标签显示内容</span></span><br><span class="line">    <span class="string">document.title</span> <span class="string">=</span> <span class="string">&#x27;👀不要走嘛~&#x27;</span><span class="string">;</span></span><br><span class="line">    <span class="string">clearTimeout(titleTime);</span></span><br><span class="line">  &#125; <span class="string">else</span> &#123;</span><br><span class="line">    <span class="string">//返回当前页面时标签显示内容</span></span><br><span class="line">    <span class="string">document.title</span> <span class="string">=</span> <span class="string">&#x27;🐖欢迎你回来～&#x27;</span><span class="string">;</span></span><br><span class="line">    <span class="string">//两秒后变回正常标题</span></span><br><span class="line">    <span class="string">titleTime</span> <span class="string">=</span> <span class="string">setTimeout(function</span> <span class="string">()</span> &#123;</span><br><span class="line">      <span class="string">document.title</span> <span class="string">=</span> <span class="string">OriginTitile;</span></span><br><span class="line">    &#125;, <span class="number">2000</span><span class="string">);</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;<span class="string">);</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="引用脚本文件"><a href="#引用脚本文件" class="headerlink" title="引用脚本文件"></a>引用脚本文件</h3><p>在主题配置文件<code>_config.butterfly.yml</code>引入该文件：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span> </span><br><span class="line">  <span class="attr">bottom:</span> </span><br><span class="line"><span class="string">+</span>    <span class="bullet">-</span> <span class="string">&lt;script</span> <span class="string">async</span> <span class="string">src=&quot;/js/title.js&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="查看和验证效果"><a href="#查看和验证效果" class="headerlink" title="查看和验证效果"></a>查看和验证效果</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">cl</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">s</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<hr>
-<p>参考链接：<a href="https://www.fomal.cc/posts/d1927166.html">https://www.fomal.cc/posts/d1927166.html</a></p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>hexo博客加载时报错‘prism_plugin‘</title>
-    <url>/posts/22942/</url>
-    <content><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>使用命令hexo c &amp; hexo g &amp; hexo s运行hexo时出现一下报错（只截取了部分）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ERROR Plugin load failed: hexo-prism-plugin</span><br><span class="line">Error: `prism_plugin` options should be added to _config.yml file</span><br></pre></td></tr></table></figure>
-
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>在hexo的文件目录下的_config.yml里的最后加上下面的代码（注意：不是主题下面的 _config.yml）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">prism_plugin:</span><br><span class="line">  mode: &#x27;preprocess&#x27; # realtime/preprocess</span><br><span class="line">  theme: &#x27;default&#x27;</span><br><span class="line">  line_number: false # default false</span><br></pre></td></tr></table></figure>
-
-
-
-<p>default false</p>
-<pre><code>
-
-</code></pre>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>bug</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo博客添加看板娘</title>
     <url>/posts/43162/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>不知道你们有没有这种体验，就是在逛别人的博客的时候，会在页面左下角或者右下角等界面看到一个会跟随鼠标移动而摇摆的图片动画，看起来还蛮不错，今天就为我的博客添加这样的动画效果  ——看板娘。</p>
@@ -839,60 +1100,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Hexo增加Valine评论系统</title>
-    <url>/posts/45310/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hexo 博客支持的评论系统其实有很多，本站选用了 Valine，选择原因:轻量级、访问速度快、配置过程简单，以上三个原因足够我选择它了。</p>
-<p>Valine 评论系统的配置其实很简单，在这里就简单介绍一下。</p>
-<h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><ol>
-<li><p>注册帐号<br>在LeanCloud官网<a href="https://www.leancloud.cn/">LeanCloud</a> 免费注册一个帐号，注册后需要实名认证即可使用不同的服务了。</p>
-</li>
-<li><p>创建应用</p>
-<ul>
-<li>点击左上角LeanCloud后选择创建应用</li>
-<li>填写应用名称</li>
-<li>默认选择开发版</li>
-<li>自行选择是否填写应用描述</li>
-<li>最后点击创建按钮</li>
-</ul>
-</li>
-<li><p>修改配置</p>
-<p>打开<code>_config.butterfly.yml</code>配置，找到 valine 配置，修改 <code>appid</code> 和 <code>appkey</code></p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># valine</span></span><br><span class="line"><span class="comment"># https://valine.js.org</span></span><br><span class="line"><span class="attr">valine:</span></span><br><span class="line">  <span class="attr">appId:</span> <span class="string">请在这里填写你的appId</span> <span class="comment"># leancloud application app id</span></span><br><span class="line">  <span class="attr">appKey:</span> <span class="string">请在这里填写你的appKey</span> <span class="comment"># leancloud application app key</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">monsterid</span> <span class="comment"># gravatar style https://valine.js.org/#/avatar</span></span><br><span class="line">  <span class="attr">serverURLs:</span> <span class="comment"># This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)</span></span><br><span class="line">  <span class="attr">bg:</span> <span class="comment"># valine background</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">&quot;嘿，别忘了留下你的小脚印哦！&quot;</span>  <span class="comment"># 评论框的默认填充</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment">#每一页显示的评论条数</span></span><br><span class="line">  <span class="attr">option:</span></span><br></pre></td></tr></table></figure>
-
-<p>同时修改选择的评论系统为 <code>Valine</code> 即可</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="comment"># Up to two comments system, the first will be shown as default</span></span><br><span class="line">  <span class="comment"># Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk</span></span><br><span class="line">  <span class="attr">use:</span> <span class="string">Valine</span> <span class="comment"># 请在这里选择你的评论系统类型：Valine,Disqus</span></span><br><span class="line">  <span class="attr">text:</span> <span class="literal">true</span> <span class="comment"># Display the comment name next to the button</span></span><br><span class="line">  <span class="comment"># lazyload: The comment system will be load when comment element enters the browser&#x27;s viewport.</span></span><br><span class="line">  <span class="comment"># If you set it to true, the comment count will be invalid</span></span><br><span class="line">  <span class="attr">lazyload:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">false</span> <span class="comment"># Display comment count in post&#x27;s top_img</span></span><br><span class="line">  <span class="attr">card_post_count:</span> <span class="literal">false</span> <span class="comment"># Display comment count in Home Page</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重新生成博客系统即可看到效果</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">cl</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">s</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="评论页面美化"><a href="#评论页面美化" class="headerlink" title="评论页面美化"></a>评论页面美化</h2><p>定义一个myStyle.css放在下面的目录中</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240112152209550.png" alt="image-20240112152209550"></p>
-<p>现在我们在主题文件中引入这个文件</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Inject</span></span><br><span class="line"><span class="comment"># Insert the code to head (before &#x27;&lt;/head&gt;&#x27; tag) and the bottom (before &#x27;&lt;/body&gt;&#x27; tag)</span></span><br><span class="line"><span class="comment"># 插入代码到头部 &lt;/head&gt; 之前 和 底部 &lt;/body&gt; 之前</span></span><br><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;/css/myStyle.css&quot;&gt;</span></span><br><span class="line">  <span class="attr">bottom:</span></span><br><span class="line">    <span class="comment"># - &lt;script src=&quot;xxxx&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>在css中写入下面的代码，这里作者的图片放到了css同级目录下的img下，大家也可以直接放超链接,建议大家放动图，这样有感觉吧</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#veditor</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">../img/valineBg.gif</span>);</span><br><span class="line">    <span class="attribute">background-size</span>: contain;</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>: right;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="attribute">resize</span>: vertical</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>下面的这一行代码，当鼠标聚焦的时候，背景图消失，大家可以选择使用</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#veditor</span><span class="selector-pseudo">:focus</span>&#123;</span><br><span class="line">    <span class="attribute">background-position</span>-y: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">transition</span>: all <span class="number">0.2s</span> ease-in-out <span class="number">0s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<p>参考文章：</p>
-<p><a href="https://zsyyblog.com/f01faa9c.html">https://zsyyblog.com/f01faa9c.html</a></p>
-<p><a href="https://valine.js.org/configuration.html">https://valine.js.org/configuration.html</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/581640626">https://zhuanlan.zhihu.com/p/581640626</a></p>
-<p>om&#x2F;p&#x2F;581640626</p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>valine</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在Hexo中生成唯一的文章链接地址</title>
     <url>/posts/46879/</url>
     <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>Hexo生成博客文章的链接时，默认格式为：</p>
@@ -922,212 +1129,5 @@
       <categories>
         <category>hexo</category>
       </categories>
-  </entry>
-  <entry>
-    <title>腾讯云COS+PicGo+Typora图床搭建</title>
-    <url>/posts/59423/</url>
-    <content><![CDATA[<h3 id="腾讯云COS"><a href="#腾讯云COS" class="headerlink" title="腾讯云COS"></a>腾讯云COS</h3><h4 id="1-开通COS"><a href="#1-开通COS" class="headerlink" title="1.开通COS"></a>1.开通COS</h4><ul>
-<li>进入腾讯云官网控制台搜索<a href="https://cloud.tencent.com/product/cos?from_column=20065&from=20065">对象存储</a> <a href="https://cloud.tencent.com/?from_column=20421&from=20421">腾讯云 产业智变·云启未来 - 腾讯 (tencent.com)</a></li>
-</ul>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/6884baf546bf0f0766a79ee351b93f8f.png" alt="img"></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/c77a9e0460c21762f6e7108316d58e99.png" alt="img"></p>
-<ul>
-<li><strong>未开通会提示开通</strong> 直接按照要求进行开通即可</li>
-</ul>
-<h4 id="2-创建存储桶"><a href="#2-创建存储桶" class="headerlink" title="2.创建存储桶"></a>2.创建存储桶</h4><ul>
-<li><strong>开通后创建存储桶</strong></li>
-</ul>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/44074fdf58c23ec4d94083cc080d329d.png" alt="img"></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/e4cc07526d9471c3d3db35328c665dd6.png" alt="img"></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/e4cc07526d9471c3d3db35328c665dd6.png" alt="img"></p>
-<ul>
-<li>高级可选配置<strong>默认即可</strong></li>
-<li>配置好之后创建</li>
-</ul>
-<h3 id="PicGo"><a href="#PicGo" class="headerlink" title="PicGo"></a>PicGo</h3><h4 id="1-下载PicGo"><a href="#1-下载PicGo" class="headerlink" title="1.下载PicGo"></a>1.下载PicGo</h4><ul>
-<li>前往官网下载 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://picgo.github.io/PicGo-Doc/zh/guide/%23%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85&source=article&objectId=2175760">PicGo is Here | PicGo</a> 可选多种方式</li>
-<li>Git Hub 下载 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/Molunerfinn/PicGo/releases&source=article&objectId=2175760">https://github.com/Molunerfinn/PicGo/releases</a></li>
-<li>在文档末尾选择对应版本下载即可</li>
-<li><strong>点击直接下载</strong> 2.3.1 版本： <a href="https://picgo-1251750343.cos.ap-chengdu.myqcloud.com/2.3.1/PicGo-Setup-2.3.1-x64.exe?from_column=20421&from=20421">PicGo-Setup-2.3.1-x64.exe</a></li>
-<li>会显示该程序有风险 忽略风险安装即可</li>
-</ul>
-<h4 id="2-配置PicGo"><a href="#2-配置PicGo" class="headerlink" title="2.配置PicGo"></a>2.配置PicGo</h4><ul>
-<li><strong>获取</strong><a href="https://cloud.tencent.com/product/cos?from_column=20065&from=20065"><strong>腾讯云COS</strong></a><strong>密钥</strong></li>
-</ul>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/8bf9a9ff91c60adf5e727a5048e6aa11.png" alt="img"></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/a5e423b8e9002e9ba9769d8f176426ed.png" alt="img"></p>
-<ul>
-<li>在控制台 <strong>对象存储</strong> 中获取基本信息</li>
-</ul>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/967d505fcda18d2c30291b1bcf59a12c.png" alt="img"></p>
-<ul>
-<li><strong>配置 PicGo</strong></li>
-</ul>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ee5e403db868296f83c3571347ad251b.png" alt="img"></p>
-<h3 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h3><h4 id="1-下载Typora"><a href="#1-下载Typora" class="headerlink" title="1.下载Typora"></a>1.下载Typora</h4><ul>
-<li>官网下载即可 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://typoraio.cn/&source=article&objectId=2175760">Typora 官方中文站 (typoraio.cn)</a></li>
-<li>Typora收费了 大家自行寻找下载资源即可</li>
-</ul>
-<h4 id="2-Typora配置"><a href="#2-Typora配置" class="headerlink" title="2.Typora配置"></a>2.Typora配置</h4><ul>
-<li><strong>文件(F) -&gt; 偏好设置</strong></li>
-</ul>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/a1843c4d363d5e30dfa0e74937a322ad.png" alt="img"></p>
-<hr>
-<p><strong>原文链接：</strong><a href="https://cloud.tencent.com/developer/article/2175760?from=15425">https://cloud.tencent.com/developer/article/2175760?from=15425</a></p>
-]]></content>
-      <categories>
-        <category>服务器</category>
-      </categories>
-      <tags>
-        <tag>腾讯云</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在Hexo中添加豆瓣个人主页</title>
-    <url>/posts/46282/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一个在 <a href="https://hexo.io/">Hexo</a> 页面中嵌入豆瓣个人主页的小插件。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>hexo-douban 目前升级到了 2.x 版本，将原先由插件客户端自行获取数据的逻辑抽到了一个隐藏的服务端中进行，以统一解决数据获取、数据缓存、风控对抗等问题，提高页面生成的成功率和效率。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-douban --save</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><p>将下面的配置写入站点的配置文件 <code>_config.yml</code> 里(不是主题的配置文件).</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">douban:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="number">209637606</span></span><br><span class="line">  <span class="attr">builtin:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">item_per_page:</span> <span class="number">10</span></span><br><span class="line">  <span class="attr">meta_max_line:</span> <span class="number">4</span></span><br><span class="line">  <span class="attr">customize_layout:</span> <span class="string">page</span></span><br><span class="line">  <span class="attr">book:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">books/index.html</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">&#x27;This is my book title&#x27;</span></span><br><span class="line">    <span class="attr">quote:</span> <span class="string">&#x27;This is my book quote&#x27;</span></span><br><span class="line">    <span class="attr">option:</span></span><br><span class="line">  <span class="attr">movie:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">movies/index.html</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">&#x27;This is my movie title&#x27;</span></span><br><span class="line">    <span class="attr">quote:</span> <span class="string">&#x27;This is my movie quote&#x27;</span></span><br><span class="line">    <span class="attr">option:</span></span><br><span class="line">  <span class="attr">game:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">games/index.html</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">&#x27;This is my game title&#x27;</span></span><br><span class="line">    <span class="attr">quote:</span> <span class="string">&#x27;This is my game quote&#x27;</span></span><br><span class="line">    <span class="attr">option:</span></span><br><span class="line">  <span class="attr">song:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">songs/index.html</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">&#x27;This is my song title&#x27;</span></span><br><span class="line">    <span class="attr">quote:</span> <span class="string">&#x27;This is my song quote&#x27;</span></span><br><span class="line">    <span class="attr">option:</span></span><br><span class="line">  <span class="attr">timeout:</span> <span class="number">10000</span> </span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><strong>id</strong>: 你的豆瓣ID(纯数字格式，不是自定义的域名)。获取方法可以参考<a href="https://www.zhihu.com/question/19634899">怎样获取豆瓣的数字 ID ？</a></li>
-<li><strong>builtin</strong>: 是否将<code>hexo douban</code>命令默认嵌入进<code>hexo g</code>、<code>hexo s</code>，使其自动执行<code>hexo douban</code> 命令。默认关闭。</li>
-<li><strong>item_per_page</strong>: 每页展示的条目数，默认 10 。</li>
-<li><strong>meta_max_line</strong>: 每个条目展示的详细信息的最大行数，超过该行数则会以 “…” 省略，默认 4 。</li>
-<li><strong>customize_layout</strong>: 自定义布局文件。默认值为 page 。无特别需要，留空即可。若配置为 <code>abcd</code>，则表示指定 <code>//theme/hexo-theme/layout/abcd.ejs</code> 文件渲染豆瓣页面。</li>
-<li><strong>path</strong>: 生成页面后的路径，默认生成在 &#x2F;&#x2F;yourblog&#x2F;books&#x2F;index.html 等下面。如需自定义路径，则可以修改这里。</li>
-<li><strong>title</strong>: 该页面的标题。</li>
-<li><strong>quote</strong>: 写在页面开头的一段话,支持html语法。</li>
-<li><strong>timeout</strong>: 爬取数据的超时时间，默认是 10000ms ,如果在使用时发现报了超时的错(ETIMEOUT)可以把这个数据设置的大一点。</li>
-<li><strong>option</strong>: 该页面额外的 Front-matter 配置，参考<a href="https://hexo.io/docs/front-matter.html">Hexo 文档</a>。无特别需要，留空即可。</li>
-</ul>
-<p>如果只想显示某一个页面(比如movie)，那就把其他的配置项注释掉即可。</p>
-<h3 id="Butterfly-主题中使用-hexo-douban-插件"><a href="#Butterfly-主题中使用-hexo-douban-插件" class="headerlink" title="Butterfly 主题中使用 hexo-douban 插件"></a>Butterfly 主题中使用 hexo-douban 插件</h3><p><strong>添加到菜单中</strong><br>如果上面的页面显示都无问题的话，就可以在主题的配置文件 <code>_config.butterfly.yml</code> 中为这些页面添加菜单链接了</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">娱乐||fa</span> <span class="attr">fa-heartbeat:</span></span><br><span class="line">    <span class="string">音乐:</span> <span class="string">/music/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-music</span></span><br><span class="line">    <span class="string">照片:</span> <span class="string">/Gallery/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-images</span></span><br><span class="line">    <span class="string">电影:</span> <span class="string">/movies/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-video</span></span><br><span class="line">    <span class="string">书籍:</span> <span class="string">/books/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-book</span></span><br></pre></td></tr></table></figure>
-
-<p>并且修改主题配置文件 <code>_config.butterfly.yml</code></p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># If you are using hexo-douban, you can configure it (如果你有使用 hexo-douban,可配置這個)</span></span><br><span class="line"><span class="attr">douban:</span></span><br><span class="line">  <span class="attr">meta:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">movies_img:</span> <span class="string">https://cn.bing.com/th?id=OHR.LightPainting_ZH-CN8824196181_1920x1080.jpg</span></span><br><span class="line">  <span class="attr">books_img:</span> <span class="string">https://cn.bing.com/th?id=OHR.MistyTor_ZH-CN7520952555_1920x1080.jpg</span></span><br><span class="line">  <span class="attr">games_img:</span> <span class="string">https://cn.bing.com/th?id=OHR.ZugspitzeGipfelstation_ZH-CN6120971585_1920x1080.jpg</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><strong>展示帮助文档</strong></p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">$</span> <span class="string">hexo</span> <span class="string">douban</span> <span class="string">-h</span></span><br><span class="line"><span class="attr">Usage:</span> <span class="string">hexo</span> <span class="string">douban</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Description:</span></span><br><span class="line"><span class="string">Generate</span> <span class="string">pages</span> <span class="string">from</span> <span class="string">douban</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Options:</span></span><br><span class="line">  <span class="string">-b,</span> <span class="string">--books</span>   <span class="string">Generate</span> <span class="string">douban</span> <span class="string">books</span> <span class="string">only</span></span><br><span class="line">  <span class="string">-g,</span> <span class="string">--games</span>   <span class="string">Generate</span> <span class="string">douban</span> <span class="string">games</span> <span class="string">only</span></span><br><span class="line">  <span class="string">-m,</span> <span class="string">--movies</span>  <span class="string">Generate</span> <span class="string">douban</span> <span class="string">movies</span> <span class="string">only</span></span><br><span class="line">  <span class="string">-s,</span> <span class="string">--songs</span>   <span class="string">Generate</span> <span class="string">douban</span> <span class="string">songs</span> <span class="string">only</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>主动生成豆瓣页面</strong></p>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">$ hexo douban</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  0 (wish), 0 (do),0 (collect) game loaded in 729 ms</span><br><span class="line">INFO  0 (wish), 0 (do),20 (collect) song loaded in 761 ms</span><br><span class="line">INFO  2 (wish), 0 (do),136 (collect) book loaded in 940 ms</span><br><span class="line">INFO  30 (wish), 0 (do),6105 (collect) movie loaded in 4129 ms</span><br><span class="line">INFO  Generated: books/index.html</span><br><span class="line">INFO  Generated: movies/index.html</span><br><span class="line">INFO  Generated: games/index.html</span><br><span class="line">INFO  Generated: songs/index.html</span><br></pre></td></tr></table></figure>
-
-
-
-<p>如果不加参数，那么默认参数为<code>-bgms</code>。当然，前提是配置文件中均有这些类型的配置。</p>
-<p><strong>需要注意的是</strong>，通常大家都喜欢用<code>hexo d</code>来作为<code>hexo deploy</code>命令的简化，但是当安装了<code>hexo douban</code>之后，就不能用<code>hexo d</code>了，因为<code>hexo douban</code>跟<code>hexo deploy</code> 的前缀都是<code>hexo d</code>。</p>
-<p>如果 builtin:false 时，执行 hexo g 之后发现将 douban 生成的页面删除了:</p>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">INFO  Start processing</span><br><span class="line">INFO  Files loaded in 343 ms</span><br><span class="line">INFO  Deleted: games/index.html</span><br><span class="line">INFO  Deleted: books/index.html</span><br><span class="line">INFO  Deleted: movies/index.html</span><br><span class="line">INFO  Deleted: songs/index.html</span><br></pre></td></tr></table></figure>
-
-
-
-<p>那么重新执行 hexo clean 一下即可（原因是 db.json 的数据缓存）。</p>
-<p>第一次使用 hexo douban 时，后台会异步进行数据获取，一般需要等待一段时间（后台访问你的标记页面）才能查到数据。顺利情况下，平均一个页面会花10s。</p>
-<p>例如如果你有 150 个想读、150个已读、150个在读的图书，每页15条，则共需要翻30页。那么大约需要等待 30*10&#x2F;60&#x3D;5 分钟。如果长时间没有更新（一天以上），请及时提 issue 反馈。</p>
-<p>后续如果你的豆瓣数据更新了，hexo douban 同样也会自动进行更新（同样需要等待一段时间才会查到更新数据），不过出于安全考虑，一个用户id<strong>每半小时至多只会同步一次</strong>。</p>
-<p>由于豆瓣本身深分页的 RT 过高（上万条目的翻页 RT 会到 15s 到 60s），为了防止系统同步压力过大，每个用户的每一类条目最多只会同步 1w 条。</p>
-<h2 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h2><p>官方会不定期更新一些功能或者修改一些Bug，所以如果想使用最新的特性，可以用下面的方法来更新:</p>
-<ol>
-<li>修改 package.json 内 hexo-douban 的版本号至最新</li>
-<li>重新安装最新版本<code>npm install hexo-douban --save</code></li>
-</ol>
-<p>或者使用<code>npm install hexo-douban --update --save</code>直接更新。</p>
-<h2 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h2><p>如果上面的配置和操作都没问题，就可以在生成站点之后打开 <code>//yourblog/books</code> 和 <code>//yourblog/movies</code>, <code>//yourblog/games</code>, 来查看结果。</p>
-<h2 id="菜单"><a href="#菜单" class="headerlink" title="菜单"></a>菜单</h2><p>如果上面的显示没有问题就可以在主题的配置文件 <code>_config.yml</code> 里添加如下配置来为这些页面添加菜单链接.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">Home:</span> <span class="string">/</span></span><br><span class="line">  <span class="attr">Archives:</span> <span class="string">/archives</span></span><br><span class="line">  <span class="attr">Books:</span> <span class="string">/books</span>     <span class="comment">#This is your books page</span></span><br><span class="line">  <span class="attr">Movies:</span> <span class="string">/movies</span>   <span class="comment">#This is your movies page</span></span><br><span class="line">  <span class="attr">Games:</span> <span class="string">/games</span>   <span class="comment">#This is your games page</span></span><br><span class="line">  <span class="attr">Songs:</span> <span class="string">/songs</span>   <span class="comment">#This is your songs page</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="通用环境"><a href="#通用环境" class="headerlink" title="通用环境"></a>通用环境</h2><p>如果有非 hexo 环境的部署需求，则可以考虑以引入静态资源的方式接入 <a href="https://github.com/mythsman/idouban">idouban</a> 。</p>
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>如果仅仅想对自己的豆瓣数据进行备份，可以尝试使用下面的接口，复用后端维护的数据提取服务 <a href="https://github.com/mythsman/mouban">mouban</a> ：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将 &#123;your_douban_id&#125; 改为你的豆瓣数字ID</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用户录入/更新</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/check_user?id=&#123;your_douban_id&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询用户的读书评论</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_book?id=&#123;your_douban_id&#125;&amp;action=wish</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_book?id=&#123;your_douban_id&#125;&amp;action=do</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_book?id=&#123;your_douban_id&#125;&amp;action=collect</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询用户的电影评论</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_movie?id=&#123;your_douban_id&#125;&amp;action=wish</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_movie?id=&#123;your_douban_id&#125;&amp;action=do</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_movie?id=&#123;your_douban_id&#125;&amp;action=collect</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询用户的游戏评论</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_game?id=&#123;your_douban_id&#125;&amp;action=wish</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_game?id=&#123;your_douban_id&#125;&amp;action=do</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_game?id=&#123;your_douban_id&#125;&amp;action=collect</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询用户的音乐评论</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_song?id=&#123;your_douban_id&#125;&amp;action=wish</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_song?id=&#123;your_douban_id&#125;&amp;action=do</span></span><br><span class="line"></span><br><span class="line"><span class="string">https://mouban.mythsman.com/guest/user_song?id=&#123;your_douban_id&#125;&amp;action=collect</span></span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<p>参考链接：<a href="https://github.com/mythsman/hexo-douban?tab=readme-ov-filee">https://github.com/mythsman/hexo-douban?tab=readme-ov-filee</a></p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>douban</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java-jdk详细安装教程</title>
-    <url>/posts/5819/</url>
-    <content><![CDATA[<h2 id="Java-jdk详细安装教程"><a href="#Java-jdk详细安装教程" class="headerlink" title="Java&#x2F;jdk详细安装教程"></a>Java&#x2F;jdk详细安装教程</h2><h3 id="一、java历史简介"><a href="#一、java历史简介" class="headerlink" title="一、java历史简介"></a>一、java历史简介</h3><p>1991 年Sun公司的James Gosling等人开始开发名称为 Oak （橡树）的语言。希望用于控制嵌入在有线电视交换盒、PDA等的微处理器，</p>
-<p>1994年将Oak语言更名为Java</p>
-<p>1998年JDK1.2时，更名为Java 2 Platform</p>
-<p>分为标准版J2SE,企业版J2EE,微型版J2ME</p>
-<p>Java 既安全、可移植，又可跨平台，而且人们发现它能够解决Internet 上的大型应用问题，Internet使Java成为网上最流行的编程语言，Java对Internet的影响也意义深远。后来java被Oracle（甲骨文）公司收购。java实际是个地名，乃印度尼西亚的一个岛屿，当地盛产咖啡，因此标志也用了一个咖啡的标志。</p>
-<h3 id="二、Java安装过程（以java8-0为例）"><a href="#二、Java安装过程（以java8-0为例）" class="headerlink" title="二、Java安装过程（以java8.0为例）"></a>二、Java安装过程（以java8.0为例）</h3><p>1、Oracle官网： <a href="https://www.oracle.com/index.html">Oracle | Cloud Applications and Cloud Platform</a> </p>
-<p>如何在官网下载JDK8：<a href="https://jingyan.baidu.com/article/afd8f4de20588975e286e9e7.html">如何在Oracle官网找到并下载JDK8-百度经验 (baidu.com)</a> </p>
-<p>JDK官网地址跳转：<a href="http://java.sun.com/">http://java.sun.com/</a></p>
-<p>2、在官网下载太麻烦了，我这里为大家提供了两种版本的jdk；</p>
-<blockquote>
-<p>链接：<a href="https://pan.baidu.com/s/1qwFfkgx4fPOX43PqiaI3eg?pwd=gztx">https://pan.baidu.com/s/1qwFfkgx4fPOX43PqiaI3eg?pwd=gztx</a><br>提取码：gztx </p>
-</blockquote>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/fbac42341d7b1905ead95cbbea9dd118.png" alt="img"></p>
-<p><strong>3、开始安装</strong></p>
-<p>双击 <code>jdk-8u181-windows-x64.exe</code> 进入JAVA运行环境安装界面，如下图所示： </p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/95b0e702d45801f19e6a2de6af3c33f0.png" alt="img"></p>
-<p><strong>大致步骤为：以管理员运行  下一步下一步……</strong></p>
-<p>点击“下一步”按钮开始安装，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ae5e06848c325da9638945d27ed4f411.png" alt="img"></p>
-<p>点击“下一步”按钮继续，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/403f33635534276ef51a2da3668c3cc1.png" alt="img"></p>
-<p>选择安装路径后，点击“下一步”继续，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ef999dd502be1b59c4bcf12b5d44b18d.png" alt="img"></p>
-<p>JAVA运行环境正在安装，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/2fa74403f12a9d1df7fcd401cf913803.png" alt="img"></p>
-<p>点击“关闭”按钮，安装完成，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/3c50623d03e2a4f41412e46dcdbc7422.png" alt="img"></p>
-<p>JAVA运行环境安装完成后，需要配置系统变量。</p>
-<p>在电脑图标上的右键菜单中选择“属性”菜单进行系统配置，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/b716c980249e7ee590654e12eebeed55.png" alt="img"></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/8ea9f03ac0a1688d263ceb58cd6d90a2.png" alt="img"></p>
-<p>点击“新建”按钮，在【系统变量】，分别设置三个环境变量，即：</p>
-<p>变量名1：<code>JAVA_HOME</code></p>
-<p>变量值1： 电脑上JDK安装的绝对路径（我的路径是 <code>C:\Program Files\Java\jdk1.8.0_181</code> ） </p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/2b097295458490bc5894170e9e84bad2.png" alt="img"></p>
-<p>变量名2：<code>PATH</code></p>
-<p>变量值2： 新建两条路径 ：<code>%JAVA_HOME%\bin</code>、<code>%JAVA_HOME%\jre\bin</code></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ae384b4861aaa19877e50a6972d1d6e9.png" alt="img"></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/52733ae6be43affaa66672a152372580.png" alt="img"></p>
-<p>变量名3：<code>CLASSPATH</code></p>
-<p>变量值3：<code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code>  （注意分号和小点）可复制我的变量值 </p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/52733ae6be43affaa66672a152372580.png"></p>
-<p>三个环境变量添加完成之后，如下图所示。</p>
-<p>点击“确定”按钮，完成环境变量设置。</p>
-<p>接下来需要检测JAVA运行环境是否安装成功。</p>
-<p>同时按键盘上的“Win+R”键，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/360a5c533c03b174d88293a85c088a0a.png" alt="img"></p>
-<p>在显示的对话框中输入“cmd”命令，并点击“确定”，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/5e2fe946c64cfa471a12e5eb7812ef37.png" alt="img"></p>
-<p>在显示的命令窗口中输入 <code>java -version</code> 命令并回车，如果能正常显示版本信息，说明JAVA运行环境安装成功，如下图所示：<br><strong>注意：</strong> <code>使用管理员身份运行cmd命令窗口</code></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/56831eb7088b46999a93f3b5965907fc.png" alt="img">a93f3b5965907fc.png)</p>
-]]></content>
-      <categories>
-        <category>system</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Jdk</tag>
-      </tags>
   </entry>
 </search>
