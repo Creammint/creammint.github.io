@@ -148,3 +148,30 @@ svg.icon {
     left: 50%;
     transform: translate(-50%, -48px);
 }
+
+/* valine评论输入框背景*/
+#veditor {
+    background-image: url(https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/valineBg.gif);
+    /*填写你的图片地址*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: vertical
+}
+
+/*评论框背景图输入时隐藏*/
+#veditor:focus {
+    background-position-y: 200px;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+/*隐藏markdown按钮*/
+.vcol.vcol-30 {
+    visibility: hidden;
+}
+
+/*隐藏valine按钮*/
+.vpower.txt-right {
+    visibility: hidden;
+}
