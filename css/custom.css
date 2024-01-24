@@ -175,3 +175,55 @@ svg.icon {
 .vpower.txt-right {
     visibility: hidden;
 }
+
+.v .vwrap {
+    padding: 0 0 44px;
+}
+
+.v .veditor {
+    min-height: 7rem;
+    resize: none;
+}
+
+.v .vwrap .vedit {
+    padding-top: 0
+}
+
+
+.v .vinput {
+    padding: 10px 15px;
+}
+
+
+
+.v .vwrap .vedit .vctrl {
+    margin-top: -44px;
+    right: 0;
+    position: absolute;
+    margin-right: -3px;
+}
+
+.v .vwrap .vcontrol {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 20%;
+    padding-top: 0px;
+}
+
+.v .vwrap .vcontrol .col.col-80 {
+    width: 100%;
+}
+
+.v .vwrap .vedit .vctrl span.vpreview-btn,
+.v .vwrap .vcontrol .col.col-20,
+.v .vlist .vcard .vhead .vsys {
+    display: none;
+}
+
+@media screen and (max-width: 520px) {
+    .v .vwrap .vheader .vinput {
+        width: 33.33%;
+        padding: 10px 5px;
+    }
+}
