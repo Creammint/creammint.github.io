@@ -157,7 +157,8 @@ svg.icon {
     background-repeat: no-repeat;
     background-position: right;
     background-color: rgba(255, 255, 255, 0);
-    resize: vertical
+    resize: vertical;
+    height: 150px;
 }
 
 /*评论框背景图输入时隐藏*/
