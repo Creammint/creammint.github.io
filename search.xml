@@ -480,6 +480,239 @@
       </tags>
   </entry>
   <entry>
+    <title>基于Hexo的静态博客网站搭建并部署至云服务器</title>
+    <url>/posts/356/</url>
+    <content><![CDATA[<h2 id="Hexo的静态博客网站搭建并部署至云服务器"><a href="#Hexo的静态博客网站搭建并部署至云服务器" class="headerlink" title="Hexo的静态博客网站搭建并部署至云服务器"></a>Hexo的静态博客网站搭建并部署至云服务器</h2><p><a href="https://www.glimound.com/build-hexo-blog/">基于Hexo的静态博客网站搭建并部署至云服务器 | Glimound的个人技术经验分享</a></p>
+<h3 id="搭建博客前的准备"><a href="#搭建博客前的准备" class="headerlink" title="搭建博客前的准备"></a>搭建博客前的准备</h3><p>开始前，你需要购买一台云服务器，并注册好用于博客网站的域名。我选择了腾讯云的轻量应用服务器（2核2G 4M带宽）并预装了CentOS 8.2的系统镜像，用于搭建博客这类轻型网站性能完全足够。我这里购买服务器用了45元&#x2F;年的首单特惠，过期后还可以使用腾讯云的学生优惠来续费，大概也是100元左右一年，对于大部分学生来说也还算负担得起。</p>
+<p>其次，还需要注册好自己的域名并完成实名认证，我是在阿里云的万网注册了 <code>www.glimound.com</code> 这个域名，费用是63元&#x2F;年，供大家参考。通常，非.com后缀的域名会更加便宜，但需要注意的是，<strong>只有在<a href="http://域名.信息/#">工信部域名行业管理信息公示网站</a>上展示的域名后缀才可进行后续的ICP备案</strong>，而未进行备案的域名解析至国内的服务器后将无法正常访问。</p>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/%25E5%258E%259F%25E7%2590%2586%25E5%259B%25BE.png" alt="原理图"></p>
+<p>了解整个博客架构的工作原理有助于理解下面各个步骤的意义。我们需要在本地安装Hexo程序，并在本地hexo目录内书写博客。书写的博客将会保存在source目录内，当我们输入 <code>hexo generate</code> 命令时，hexo将会把我们写的markdown文件渲染成静态文件（即网页文件）；输入 <code>hexo deploy</code> 时，hexo会通过我们配置好的免密登录连接至服务器，并将生成的静态文件推送到服务器的Git仓库内。Git仓库内容的变更触发钩子文件，将仓库内的内容部署至网站根目录下。</p>
+<p>同时，我们还需要配置好nginx服务和域名解析。当用户访问我们博客的域名时，域名将被重定向为服务器的ip地址，并通过nginx服务访问网站根目录里的静态文件。</p>
+<blockquote>
+<p>Git：一个版本管理系统，可供开发者方便地管理不同版本的代码。</p>
+<p>nginx：一个HTTP和反向代理web服务器，本文中我们用到反向代理功能，用户通过该功能以访问服务器内的资源。</p>
+</blockquote>
+<h3 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h3><h4 id="本地配置（Win10）"><a href="#本地配置（Win10）" class="headerlink" title="本地配置（Win10）"></a>本地配置（Win10）</h4><p>开始搭建网站前，需要先在本地计算机安装hexo与其所需的相关环境。注意，<strong>以下步骤全部在本地计算机上完成</strong>。</p>
+<h5 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h5><p>前往<a href="https://git-scm.com/">官网</a>下载较新版本的Git并安装，安装时的各种选项默认即可，或根据自己的需要进行调整。安装完成后右键桌面空白处会多出”Git GUI Here”和”Git Bash Here”两个选项，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/git%25E5%258F%25B3%25E9%2594%25AE%25E8%258F%259C%25E5%258D%2595.png" alt="git右键菜单"></p>
+<p>打开Git Bash，依次输入以下命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;xxx@xxx.com&quot;     # xxx@xxx.com改为你的邮箱</span><br><span class="line">git config --global user.name &quot;xxx&quot;      # xxx改为你的昵称</span><br></pre></td></tr></table></figure>
+
+<p>这两条命令修改了Git配置文件中用户的邮箱和名称，每一个Git提交都会使用这些信息。无需担心，这里的邮箱和名称只用于标识。</p>
+<h5 id="安装Node-js和npm"><a href="#安装Node-js和npm" class="headerlink" title="安装Node.js和npm"></a>安装Node.js和npm</h5><p>前往<a href="https://nodejs.org/">官网</a>下载较新的LTS（即长期支持）版本并安装，Node.js安装过程中会一并将npm包管理工具安装至本地。安装完成后可以在Git Bash中输入 <code>node -v</code> 和 <code>npm -v</code> 查看版本。</p>
+<h5 id="安装Hexo和相关插件"><a href="#安装Hexo和相关插件" class="headerlink" title="安装Hexo和相关插件"></a>安装Hexo和相关插件</h5><p>新建一个文件夹作为博客配置文件存放的目录，如 <code>D:\Blog</code> 。进入该文件夹，右键空白处打开Git Bash，安装hexo。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli hexo-server</span><br></pre></td></tr></table></figure>
+
+<p>npm install -g命令即使用npm包管理工具进行全局安装，这里的hexo-cli为hexo的客户端模块，hexo-server为服务器模块，可以支持在本地服务器生成网页并进行浏览，调试网站时会使用到。</p>
+<h5 id="本地初始化博客站点"><a href="#本地初始化博客站点" class="headerlink" title="本地初始化博客站点"></a>本地初始化博客站点</h5><p>进入上一步建立的博客文件夹，右键打开Git Bash，初始化博客站点。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init myblog</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>第一条命令中的myblog可以改成自己喜欢的名字。这里用npm安装的hexo-deployer-git为自动部署至远程git仓库的插件，用于把我们在本地生成的网站页面push到服务器上。</p>
+<p>初始化后会在myblog文件夹下生成以下目录，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/blog%25E7%259B%25AE%25E5%25BD%2595%25E7%25BB%2593%25E6%259E%2584.PNG" alt="blog目录结构"></p>
+<p>这里有一些比较重要的文件或文件夹：</p>
+<ul>
+<li><code>_config.yml</code> 文件：站点的配置文件</li>
+<li><code>source</code> 文件夹：存放需要进行渲染的文件，该目录下的 <code>_post</code> 文件夹内存放我们写的博文</li>
+<li><code>themes</code> 文件夹：存放主题及其配置文件</li>
+</ul>
+<h5 id="测试网页"><a href="#测试网页" class="headerlink" title="测试网页"></a>测试网页</h5><p>在Git Bash中输入命令，将网页生成至本地服务器上。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo server     #也可输入缩写命令hexo s</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器地址栏中输入 <code>http://localhost:4000</code> 即可访问hexo的默认页面，如下图所示。如能正常访问页面，说明hexo在本地安装正常，按Ctrl+C停止。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/hexo%25E9%25BB%2598%25E8%25AE%25A4%25E9%25A1%25B5%25E9%259D%25A2.png" alt="hexo默认页面"></p>
+<h4 id="服务端配置（CentOS-8-2）"><a href="#服务端配置（CentOS-8-2）" class="headerlink" title="服务端配置（CentOS 8.2）"></a>服务端配置（CentOS 8.2）</h4><p>在这一步骤中，我们将在服务器上安装hexo及其环境，配置git的自动部署和nginx。我们需要在本地计算机上安装XShell和WinSCP以访问我们购买的服务器。注意，<strong>除特殊说明外，以下所有需要输入指令的操作都在服务器上完成</strong>。</p>
+<h5 id="服务器初始设置"><a href="#服务器初始设置" class="headerlink" title="服务器初始设置"></a>服务器初始设置</h5><p>这里以腾讯云服务器为例，进入腾讯云网站的服务器管理后台，记录服务器的公网ip，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/%25E8%2585%25BE%25E8%25AE%25AF%25E4%25BA%2591%25E5%2585%25AC%25E7%25BD%2591ip.png" alt="腾讯云公网ip"></p>
+<p>我们还需要重置密码，这里设置的密码将会是远程登陆服务器时root用户（即管理员账户）的密码。</p>
+<p>检查服务器防火墙设置，查看80端口、443端口和22端口是否开放，如图所示。若无则需添加规则开放这三个端口。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/%25E6%259C%258D%25E5%258A%25A1%25E5%2599%25A8%25E9%2598%25B2%25E7%2581%25AB%25E5%25A2%2599%25E8%25AE%25BE%25E7%25BD%25AE.png" alt="服务器防火墙设置"></p>
+<h5 id="访问实例"><a href="#访问实例" class="headerlink" title="访问实例"></a>访问实例</h5><p>这里的实例可以理解为安装了操作系统的一台服务器。我们需要在本地计算机安装XShell和WinSCP，前者用于访问远程实例的控制终端，后者可以让我们更加便捷地访问服务器上的文件，便于后续操作。</p>
+<p>(1) 打开XShell并新建会话，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/XShell%25E6%2596%25B0%25E5%25BB%25BA%25E4%25BC%259A%25E8%25AF%259D.png" alt="XShell新建会话"></p>
+<p>输入连接信息：</p>
+<ul>
+<li>协议：SSH</li>
+<li>主机：服务器公网ip</li>
+<li>端口号：22</li>
+</ul>
+<p>选择“用户身份验证”选项卡，输入用户名和密码并连接。一般情况下用户名为root，密码则为前面重置密码时设置的密码。连接成功后，会出现实例的控制终端，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/XShell%25E7%25BB%2588%25E7%25AB%25AF.png" alt="XShell终端"></p>
+<p>(2) 打开WinSCP并新建站点，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/WinSCP%25E6%2596%25B0%25E5%25BB%25BA%25E7%25AB%2599%25E7%2582%25B9.png" alt="WinSCP新建站点"></p>
+<p>输入连接信息、用户名、密码：</p>
+<ul>
+<li>文件协议：SFTP或SCP</li>
+<li>主机名：服务器公网ip</li>
+<li>端口号：22</li>
+</ul>
+<p>登录成功后会出现如下界面，左半栏为本地计算机的文件目录，右半栏为服务器的文件目录，可进行上传及下载操作。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/WinSCP%25E7%2595%258C%25E9%259D%25A2.png" alt="WinSCP界面"></p>
+<h5 id="创建Hexo部署目录"><a href="#创建Hexo部署目录" class="headerlink" title="创建Hexo部署目录"></a>创建Hexo部署目录</h5><p>用XShell登录实例后，在终端中输入以下命令创建Hexo部署目录（路径可根据喜好自行设置），博客相关的页面文件将会被存储在此处。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir -p /home/www/hexo</span><br></pre></td></tr></table></figure>
+
+<h5 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h5><p>(1) 在终端中依次输入以下命令，使用yum安装nginx所需的依赖。这里的yum同样为包管理器，不过是CentOS系统内置的，功能与npm基本相同。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install gcc-c++</span><br><span class="line">yum install -y pcre pcre-devel</span><br><span class="line">yum install -y zlib zlib-devel</span><br><span class="line">yum install -y openssl openssl-devel</span><br></pre></td></tr></table></figure>
+
+<p>gcc-c++为编译nginx源码所需的编译器；pcre为正则表达式的支持库；zlib为压缩算法的支持库；Nginx支持http与https协议，如需实现https协议需要用到openssl库。</p>
+<p>(2) 访问官网的<a href="http://nginx.org/en/download.html">下载页面</a>，查看稳定版nginx的版本号，并在终端中输入指令下载nginx的源代码。这里以1.20.2版本为例。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -c http://nginx.org/download/nginx-1.20.2.tar.gz     #用wget命令下载源代码的压缩包</span><br><span class="line">tar -zxvf nginx-1.20.2.tar.gz -C /usr/local     #解压压缩包至/usr/local目录下</span><br></pre></td></tr></table></figure>
+
+<p>解压完成后在WinSCP中刷新页面，可以看到 <code>/usr/local</code> 目录下多出了解压后的nginx源代码文件夹。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/nginx%25E6%25BA%2590%25E4%25BB%25A3%25E7%25A0%2581%25E6%2596%2587%25E4%25BB%25B6%25E5%25A4%25B9.PNG" alt="nginx源代码文件夹"></p>
+<p>(3) 在终端中进入该目录，执行配置文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /usr/local/nginx-1.20.2</span><br><span class="line">./configure --with-http_ssl_module     #http_ssl_module为https模块</span><br></pre></td></tr></table></figure>
+
+<p>(4) 编译安装nginx。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>(5) 若按以上方法安装，默认安装目录为 <code>/usr/local/nginx</code> 。进入sbin目录，启动nginx。注意，启动成功后在终端中不会显示任何信息，而在已启动nginx的情况下再次试图启动会显示错误信息（可据此粗略判断nginx是否启动）。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /usr/local/nginx/sbin</span><br><span class="line">./nginx -v     #显示nginx版本号，说明安装成功</span><br><span class="line">./nginx     #启动nginx</span><br></pre></td></tr></table></figure>
+
+<p>启动后在浏览器地址栏中输入 <code>http://你的服务器ip:80</code> 即可看到nginx的欢迎页面，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/nginx%25E6%25AC%25A2%25E8%25BF%258E%25E9%25A1%25B5%25E9%259D%25A2.PNG" alt="nginx欢迎页面"></p>
+<p>在这里附上一些常用的nginx命令，注意，以下命令均需要在 <code>/usr/local/nginx/sbin</code> 目录下执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./nginx -s stop     #关闭nginx</span><br><span class="line">./nginx -s reload      #重载nginx</span><br><span class="line">./nginx -t      #检查nginx配置文件的语法是否有错误，常在修改配置文件后执行</span><br></pre></td></tr></table></figure>
+
+<h5 id="配置Nginx反向代理"><a href="#配置Nginx反向代理" class="headerlink" title="配置Nginx反向代理"></a>配置Nginx反向代理</h5><p>在WinSCP中进入nginx配置文件所在的目录 <code>/usr/local/nginx/conf</code> ，右键nginx.conf文件并进行编辑。（此处也可在终端中通过vim修改： <code>vim /usr/local/nginx/conf/nginx.conf</code> ；下文凡涉及文件修改的操作均可在终端中完成，这里选择在WinSCP中操作是为了更直观）</p>
+<p>找到server语句块，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/server%25E8%25AF%25AD%25E5%258F%25A5%25E5%259D%2597.PNG" alt="server语句块"></p>
+<p>进行以下修改：</p>
+<ul>
+<li>listen为监听端口，保持默认80即可</li>
+<li>server_name为虚拟服务器的识别标志，修改为自己注册的域名，如 <code>www.glimound.com</code></li>
+<li>root为部署根目录（即用户访问时网页文件所在的目录），修改为前面创建的Hexo部署目录，如 <code>/home/www/hexo</code></li>
+</ul>
+<p>修改完成后检查语法并重载nginx。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./nginx -t</span><br><span class="line">./nginx -s reload</span><br></pre></td></tr></table></figure>
+
+<h5 id="安装Git-1"><a href="#安装Git-1" class="headerlink" title="安装Git"></a>安装Git</h5><p>在终端中用yum安装Git。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y git</span><br><span class="line">git --vesion     #显示git版本号，说明安装成功</span><br></pre></td></tr></table></figure>
+
+<h5 id="添加git用户"><a href="#添加git用户" class="headerlink" title="添加git用户"></a>添加git用户</h5><p>(1) root用户默认的权限过大，出于安全考虑，我们为服务器添加一个名为git的用户，用于将博客自动部署至服务器上。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">useradd git     #添加名为git的用户</span><br><span class="line">passwd git     #修改git用户的密码</span><br></pre></td></tr></table></figure>
+
+<p>(2) 为git用户授予sudo权限，用WinSCP打开 <code>/etc</code> 目录下的 <code>sudoers</code> 文件，在 <code>root ALL=(ALL) ALL</code> 语句下添加 <code>git ALL=(ALL) ALL</code> ，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/sudoers%25E6%2596%2587%25E4%25BB%25B6.PNG" alt="sudoers文件"></p>
+<h5 id="为git用户添加SSH密钥"><a href="#为git用户添加SSH密钥" class="headerlink" title="为git用户添加SSH密钥"></a>为git用户添加SSH密钥</h5><p>目前为止，对git仓库进行的所有操作都需要输入密码，我们可以通过为git用户添加SSH密钥的方式来实现免密登录。原理：在本地生成一对密钥文件（分别是公钥和私钥），将公钥文件上传到服务器上；服务器收到连接请求时，会将本地的公钥与服务器的公钥进行比对，用私钥解密服务器发来的一段信息并将其发回，验证通过后准许连接。</p>
+<p>(1) 在<strong>本地计算机上</strong>打开Git Bash，生成密钥对。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+
+<p>输入指令按enter键后会提示输入密码，这里也可不填，一路按enter即可。运行完后将会在 <code>C:\Users\用户名</code> 目录下生成.ssh文件夹，文件夹内的 <code>id_rsa</code> 为私钥文件，<code>id_rsa.pub</code> 为公钥文件。</p>
+<p>(2) 在linux下，文件名以小数点开头的文件被视为隐藏文件，在WinSCP中设置显示隐藏文件以方便后续操作。打开WinSCP–选项–选项–面板，勾选“显示隐藏文件”，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/WinSCP%25E6%2598%25BE%25E7%25A4%25BA%25E9%259A%2590%25E8%2597%258F%25E6%2596%2587%25E4%25BB%25B6.png" alt="WinSCP显示隐藏文件"></p>
+<p>(3) 在 <code>/home/git</code> 目录下右键新建名为 <code>.ssh</code> 的文件夹，并在该文件夹内新建名为 <code>authorized_keys</code> 的文件，将之前生成的公钥文件中的所有内容复制进去，保存。</p>
+<p>(4) 在XShell中连接实例，登录为root账户，为公钥文件和文件夹设置权限。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod 600 /home/git/.ssh/authorized_keys</span><br><span class="line">chmod 700 /home/git/.ssh</span><br></pre></td></tr></table></figure>
+
+<p>chmod命令可设置文件或文件夹的权限，三位数字为linux中的权限代码，介绍及教程在<a href="https://www.runoob.com/linux/linux-comm-chmod.html">这里</a>。</p>
+<p>(5) 将.ssh文件夹及其内的文件所有权移交给git用户。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chown -R git:git /home/git/.ssh</span><br></pre></td></tr></table></figure>
+
+<p>chown命令可以变更目录或文件的所有者，-R参数是对子目录及其内的所有文件生效。</p>
+<p>(6) 在<strong>本地计算机</strong>测试是否可以用ssh免密登录服务器。打开Git Bash，连接实例，若配置成功则无需输入密码。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -v git@xxx.xxx.xxx.xxx     #git@后填写服务器的公网ip</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-9-创建Git仓库并配置自动部署"><a href="#2-9-创建Git仓库并配置自动部署" class="headerlink" title="2.9 创建Git仓库并配置自动部署"></a>2.9 创建Git仓库并配置自动部署</h5><p>这里的Git仓库（repository）可以理解为一个存放着不同版本代码的代码库，包含了项目所有的源文件和版本控制信息。但我们在这里需要用到的是裸库，即仅包含版本控制信息的仓库。后者不保存文件，常用作服务器仓库，实现数据共享和同步。</p>
+<p>自动部署的核心在于git-hooks（钩子），可以理解为一种脚本，在特定条件下触发时会调用钩子并执行钩子文件中的内容。</p>
+<p>(1) XShell登录为root用户，新建目录并在该目录下创建Git仓库。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir -p /home/repo     #该目录为git仓库所在的位置，可根据喜好自行设置</span><br><span class="line">cd /home/repo     #进入该目录</span><br><span class="line">git init --bare blog.git     #创建一个名为blog的仓库，--bare参数为创建裸库</span><br></pre></td></tr></table></figure>
+
+<p>(2) 在WinSCP中进入 <code>/home/repo/blog.git/hooks</code> 目录，找到 <code>post-receive</code> 钩子文件（若无则新建）。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/%25E9%2592%25A9%25E5%25AD%2590%25E6%2596%2587%25E4%25BB%25B6.png" alt="钩子文件"></p>
+<p>右键编辑，输入 <code>git --work-tree=/home/www/hexo --git-dir=/home/repo/blog.git checkout -f</code> 并保存。（work-tree填写hexo的部署目录，git-dir填写Git仓库的目录）</p>
+<p>这里我们使用的是 <code>post-receive</code> 钩子，当Git收到push请求的时候就会调用这个钩子。这个钩子中添加的语句执行的操作为：删除hexo部署目录中原有的文件，然后将Git仓库中的内容clone至hexo部署目录下。这样我们在本地更新博客并且执行部署命令后，网页文件会被push至服务器的Git仓库内，钩子文件则会将Git仓库内的网页文件复制到hexo部署目录下，从而实现自动部署功能。</p>
+<p>(3) 为钩子文件及Git仓库目录配置权限。这里需要将我们创建的仓库及部署目录的所有权移交给git用户，因为linux下创建文件时默认只有拥有者（即创建者）才具有读写权限，而Git进行push操作时登录的用户为git用户。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x /home/repo/blog.git/hooks/post-receive     #为钩子文件授予可执行权限（+x）</span><br><span class="line">chown -R git:git /home/repo     #将仓库目录的所有权移交给git用户</span><br><span class="line">chown -R git:git /home/www/hexo     #将hexo部署目录的所有权移交给git用户</span><br></pre></td></tr></table></figure>
+
+<h4 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h4><h5 id="Hexo部署插件安装及配置"><a href="#Hexo部署插件安装及配置" class="headerlink" title="Hexo部署插件安装及配置"></a>Hexo部署插件安装及配置</h5><p>在本地计算机的hexo文件夹，这里是 <code>D:\Blog\myblog</code> ，打开 <code>_config.yml</code> 文件，找到 <code>deploy</code> 语句并进行修改，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/deploy%25E8%25AE%25BE%25E7%25BD%25AE.png" alt="deploy设置"></p>
+<p>type改为git，repo改为 <code>git@服务器ip:git仓库目录</code> ，这样在执行部署命令时，hexo就会用git用户登录服务器，并将生成的网页文件push到服务器的git仓库中。</p>
+<p>输入以下命令生成网页文件并部署至服务器上。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>在WinSCP中进入服务器的 <code>/home/www/hexo</code> 目录并刷新，查看是否出现文件（该目录原为空目录），如图所示。若有则说明hexo的部署插件及服务器的Git自动部署运行正常。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/hexo%25E9%2583%25A8%25E7%25BD%25B2%25E7%259B%25AE%25E5%25BD%2595.png" alt="hexo部署目录"></p>
+<p>至此，我们已经可以在浏览器中输入服务器的ip地址来访问博客站点。</p>
+<h5 id="设置域名解析"><a href="#设置域名解析" class="headerlink" title="设置域名解析"></a>设置域名解析</h5><p>域名解析可以将域名指向服务器的ip地址，这样访客输入域名即可访问我们的博客。进入域名管理后台，这里以阿里云的万网为例，在解析设置中添加记录，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/%25E6%25B7%25BB%25E5%258A%25A0%25E8%25A7%25A3%25E6%259E%2590.png" alt="添加解析"></p>
+<p>填写相关信息：</p>
+<ul>
+<li>记录类型：默认为A即可</li>
+<li>主机记录：www，或根据需要自行设置</li>
+<li>解析线路：默认</li>
+<li>记录值：服务器公网ip</li>
+<li>TTL：默认为10分钟即可</li>
+</ul>
+<h5 id="网站备案"><a href="#网站备案" class="headerlink" title="网站备案"></a>网站备案</h5><p>根据法律法规要求，提供非经营性互联网信息服务必须对网站进行ICP备案（需要提交服务器ip、域名、网站信息、网站运营者的身份信息），具体流程详见接入商（即服务器提供商）提供的帮助文档。未进行ICP备案的网站在通过域名进行访问时，会被接入商的检测系统识别并阻断访问。这里以腾讯云为例，进入腾讯云备案页面，根据流程进行ICP备案。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/%25E5%25A4%2587%25E6%25A1%2588.png" alt="备案"></p>
+<p>ICP备案审批会在20个工作日内通过，在备案完成前，仍可通过ip地址的方式访问博客站点。注：解析至境外服务器的域名无需进行备案。</p>
+<p>ICP备案完成后，需将备案号显示在网站页面下方；此外，根据不同省份及地区的政策，可能还会要求进行公安备案，详见接入商提供的帮助文档。<strong>至此，我们已经完成了博客站点的所有基本配置</strong>，等待备案完成后即可从域名访问属于我们自己的博客网站。</p>
+<h5 id="可选操作：为网站配置ssl证书及https协议访问"><a href="#可选操作：为网站配置ssl证书及https协议访问" class="headerlink" title="可选操作：为网站配置ssl证书及https协议访问"></a>可选操作：为网站配置ssl证书及https协议访问</h5><p>https的具体原理在这里不再赘述，简单来说就是一种更加安全的加密通信协议，需要我们在服务器上安装数字证书以建立SSL加密通道。为网站开启https可以提高网站在搜索引擎中的排名，同时浏览器地址栏旁边也会显示一把小锁，说明我们的连接是安全的。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/https%25E5%25B0%258F%25E9%2594%2581.png" alt="https小锁"></p>
+<p>企业级数字证书通常价格较贵，一般用于商业网站的加密，而我们在这里选用免费的DV（域名型）证书。以腾讯云为例，可以在腾讯云网站申请免费数字证书，填写域名信息并进行所有权验证，验证通过后即可下载已签名的数字证书；证书有效期为一年，每年到期前续签即可。</p>
+<p>(1) 申请ssl证书成功后，下载用于nginx服务器的证书，得到四个文件，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/%25E8%25AF%2581%25E4%25B9%25A6%25E6%2596%2587%25E4%25BB%25B6.png" alt="证书文件"></p>
+<ul>
+<li><code>xxx_bundle.crt</code> 证书文件</li>
+<li><code>xxx.key</code> 私钥文件</li>
+<li><code>xxx.pem</code> 证书文件（安装时可忽略该文件）</li>
+<li><code>xxx.csr</code> CSR 文件（安装时可忽略该文件）</li>
+</ul>
+<p>(2) 使用WinCSP登录服务器，将上一步下载到本地的 <code>xxx_bundle.crt</code> 证书文件和 <code>xxx.key</code> 私钥文件复制到 <code>/usr/local/nginx/conf</code> 目录下。</p>
+<p>(3) 在该目录下找到nginx.conf文件，右键编辑，找到HTTPS server代码块，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/https%25E8%25AF%25AD%25E5%258F%25A5%25E5%259D%2597.png" alt="https语句块"></p>
+<p>进行以下修改：</p>
+<ul>
+<li>取消该代码块的注释</li>
+<li>server_name：修改为域名</li>
+<li>ssl_certificate：修改为证书文件的文件名，如 <code>xxx_bundle.crt</code></li>
+<li>ssl_certificate_key：修改为私钥文件的文件名，如 <code>xxx.key</code></li>
+<li>ssl_ciphers：即使用的算法，参照接入商提供的文档进行修改</li>
+<li>root：修改为Hexo部署目录</li>
+<li><strong>注：需要修改的内容可能因服务器提供商不同而有所差异，以接入商提供的文档为准</strong></li>
+</ul>
+<p>(4) 如需访问网站时默认使用https协议，可以设置http重定向为https，在<strong>HTTP的server语句块</strong>中添加 <code>return 301 https://你的域名</code> 即可，如图所示。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/return%25E8%25AF%25AD%25E5%258F%25A5.png" alt="return语句"></p>
+<p>(5) XShell连接服务器，检查nginx语法并重启nginx。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /usr/local/nginx/sbin</span><br><span class="line">./nginx -t</span><br><span class="line">./nginx -s reload</span><br></pre></td></tr></table></figure>
+
+<p>浏览器访问 <code>https://你的域名</code> 就可以看到地址栏的小锁啦。</p>
+<h5 id="附：常用Hexo命令"><a href="#附：常用Hexo命令" class="headerlink" title="附：常用Hexo命令"></a>附：常用Hexo命令</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean     #清除缓存（在本地已渲染的静态文件）</span><br><span class="line">hexo generate     #生成静态文件</span><br><span class="line">hexo deploy     #将静态文件部署至服务器</span><br><span class="line">#上面三个命令常常连用：hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br><span class="line"></span><br><span class="line">hexo server     #将静态文件部署至本地服务器，常用于调试</span><br><span class="line">hexo new &quot;title&quot;     #新建名为title的文章，位置为本地站点文件夹\source\_posts，打开title.md即可编辑文章（.md为markdown文件的后缀名）</span><br></pre></td></tr></table></figure>
+
+<p>更多命令可访问Hexo官网的<a href="https://hexo.io/docs/">帮助文档</a>获取。</p>
+<h5 id="附：错误排除"><a href="#附：错误排除" class="headerlink" title="附：错误排除"></a>附：错误排除</h5><ul>
+<li>hexo部署目录内无文件：检查hexo部署目录、git仓库目录、钩子文件的权限配置；检查本地博客的 <code>public</code> 目录内是否存在成功渲染的网页文件；重启实例</li>
+<li>无法访问服务器ip地址：完成上一步骤的检查；检查nginx是否处于开启状态；检查 <code>nginx.conf</code> 配置文件</li>
+<li>无法访问域名：完成上一步骤的检查；检查域名解析状态；确认ICP备案是否已经完成</li>
+</ul>
+<h2 id="防火墙命令"><a href="#防火墙命令" class="headerlink" title="防火墙命令"></a>防火墙命令</h2><p><a href="https://blog.csdn.net/zhangchaoyang/article/details/109428787">CentOS 7.8 查看和关闭防火墙_7.8系统关闭防火墙‘’-CSDN博客</a></p>
+<p>CentOS 7.X 默认使用的是firewall作为防火墙，防火墙启动和关闭与6不一样。</p>
+<h3 id="查看防火墙状态"><a href="#查看防火墙状态" class="headerlink" title="查看防火墙状态"></a>查看防火墙状态</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">firewall-cmd --state</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动防火墙"><a href="#启动防火墙" class="headerlink" title="启动防火墙"></a>启动防火墙</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">systemctl</span> <span class="string">start</span> <span class="string">firewalld</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="禁止防火墙开机启动"><a href="#禁止防火墙开机启动" class="headerlink" title="禁止防火墙开机启动"></a>禁止防火墙开机启动</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl disable firewalld.service </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Nginx无法访问网页问题"><a href="#Nginx无法访问网页问题" class="headerlink" title="Nginx无法访问网页问题"></a>Nginx无法访问网页问题</h2><p><a href="https://blog.csdn.net/yujing1314/article/details/105225325">【Nginx】启动成功无法访问网页（完整的排除方案）_nginx启动成功但是无法访问-CSDN博客</a>ils&#x2F;105225325)</p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>阿里云</tag>
+        <tag>服务器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo-Admin安装</title>
     <url>/posts/12373/</url>
     <content><![CDATA[<h2 id="Hexo-Admin安装"><a href="#Hexo-Admin安装" class="headerlink" title="Hexo-Admin安装"></a>Hexo-Admin安装</h2><p>参考链接：<a href="https://yaofeiliang.com/article/Hexo-Hexo-admin/">https://yaofeiliang.com/article/Hexo-Hexo-admin/</a></p>
@@ -669,7 +902,7 @@
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240105092825784.png" alt="image-20240105092825784"></p>
 <p>点击“New SSH key”，将复制的密钥内容粘贴进Key的输入框，Title随便取：</p>
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000122494-931212452.png" alt="img"></p>
-<p>回到gitbush，测试输入： ssh -T <a href="mailto:&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#116;&#104;&#x75;&#x62;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#116;&#104;&#x75;&#x62;&#46;&#x63;&#x6f;&#x6d;</a></p>
+<p>回到gitbush，测试输入： ssh -T <a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#x69;&#x74;&#104;&#x75;&#98;&#x2e;&#99;&#x6f;&#x6d;">&#103;&#105;&#x74;&#64;&#103;&#x69;&#x74;&#104;&#x75;&#98;&#x2e;&#99;&#x6f;&#x6d;</a></p>
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000409948-1462846742.png" alt="img"></p>
 <p>如果遇到 yes&#x2F;no 的选项，输入yes。最后看到 “Hi ….”表示设置成功。</p>
 <p>�设置成功。</p>
@@ -706,7 +939,7 @@
   </entry>
   <entry>
     <title>Hexo增加Valine评论系统</title>
-    <url>/posts/45311/</url>
+    <url>/posts/45310/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hexo 博客支持的评论系统其实有很多，本站选用了 Valine，选择原因:轻量级、访问速度快、配置过程简单，以上三个原因足够我选择它了。</p>
 <p>Valine 评论系统的配置其实很简单，在这里就简单介绍一下。</p>
 <h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><ol>
@@ -811,6 +1044,160 @@
 </ul>
 </li>
 </ol>
+<h2 id="valine评论设置邮件通知和valine-admin后台管理"><a href="#valine评论设置邮件通知和valine-admin后台管理" class="headerlink" title="valine评论设置邮件通知和valine-admin后台管理"></a>valine评论设置邮件通知和valine-admin后台管理</h2><p><a href="https://cloud.tencent.com/developer/article/2122077">valine评论设置邮件通知和valine-admin后台管理-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+<h4 id="云引擎部署"><a href="#云引擎部署" class="headerlink" title="云引擎部署"></a>云引擎部署</h4><p>leancloud国际版进入后台，【云引擎】-》【部署】-》选择Git部署，输入<code>Valine-Admin</code>项目地址，保存，手动部署。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">https://github.com/DesertsP/Valine-Admin</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/bd40d82bf3fb45b4ab02bb57e0aa7860.png" alt="https://s.imgkb.xyz/abcdocker/2022/08/30/25a0565930021/25a0565930021.png"></p>
+<h4 id="添加变量"><a href="#添加变量" class="headerlink" title="添加变量"></a>添加变量</h4><p>添加一大批环境变量，这里有些要注意的点。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/779404afd646de9f86d60c12ec872285.png" alt="https://s.imgkb.xyz/abcdocker/2022/08/30/e068a055e993f/e068a055e993f.png"></p>
+<p>详细说明如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">变量</th>
+<th align="left">示例</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">SITE_NAME</td>
+<td align="left">Cream薄荷糖的博客</td>
+<td align="left">[必填] 博客名称</td>
+</tr>
+<tr>
+<td align="left">SITE_URL</td>
+<td align="left"><a href="https://kingpo.netlify.app/">https://kingpo.netlify.app/</a></td>
+<td align="left">[必填] 首页地址</td>
+</tr>
+<tr>
+<td align="left">SMTP_SERVICE</td>
+<td align="left">QQ</td>
+<td align="left">[必填] 邮件服务提供商，参照 Supported services</td>
+</tr>
+<tr>
+<td align="left">SMTP_USER</td>
+<td align="left"><a href="mailto:&#120;&#120;&#x78;&#x78;&#120;&#120;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d;">&#120;&#120;&#x78;&#x78;&#120;&#120;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
+<td align="left">[必填] SMTP 用户名</td>
+</tr>
+<tr>
+<td align="left">SMTP_PASS</td>
+<td align="left">ccxxxxxxxxch</td>
+<td align="left">[必填] SMTP 授权码（非邮箱独立密码！），参照客户端设置：<a href="https://www.zhihu.com/tardis/sogou/ans/2616660809">邮箱授权码</a></td>
+</tr>
+<tr>
+<td align="left">SENDER_NAME</td>
+<td align="left">Cream薄荷糖</td>
+<td align="left">[必填] 发件人</td>
+</tr>
+<tr>
+<td align="left">SENDER_EMAIL</td>
+<td align="left"><a href="mailto:&#120;&#120;&#x78;&#x78;&#120;&#120;&#x40;&#113;&#113;&#46;&#99;&#111;&#x6d;">&#120;&#120;&#x78;&#x78;&#120;&#120;&#x40;&#113;&#113;&#46;&#99;&#111;&#x6d;</a></td>
+<td align="left">[必填] 发件邮箱</td>
+</tr>
+<tr>
+<td align="left">MAIL_SUBJECT</td>
+<td align="left">${PARENT_NICK}，您在${SITE_NAME}上的评论收到了回复</td>
+<td align="left">[必填]@通知邮件主题（标题）模板</td>
+</tr>
+<tr>
+<td align="left">MAIL_TEMPLATE</td>
+<td align="left">填下文MAIL_TEMPLATE代码块</td>
+<td align="left">[必填]@通知邮件内容模板</td>
+</tr>
+<tr>
+<td align="left">MAIL_SUBJECT_ADMIN</td>
+<td align="left">${SITE_NAME}上有新评论了</td>
+<td align="left">[必填] 博主邮件通知主题模板</td>
+</tr>
+<tr>
+<td align="left">MAIL_TEMPLATE_ADMIN</td>
+<td align="left">填下文MAIL_TEMPLATE_ADMIN代码块</td>
+<td align="left">[必填] 博主邮件通知内容模板</td>
+</tr>
+<tr>
+<td align="left">SMTP_HOST</td>
+<td align="left">smtp.qq.com</td>
+<td align="left">[必填] SMTP_SERVICE 留空时，自定义 SMTP 服务器地址</td>
+</tr>
+<tr>
+<td align="left">SMTP_PORT</td>
+<td align="left">465或587，参照 POP3 与 SMTP</td>
+<td align="left">[必填] SMTP_SERVICE 留空时，自定义 SMTP 端口</td>
+</tr>
+<tr>
+<td align="left">SMTP_SECURE</td>
+<td align="left">true</td>
+<td align="left">[选填] SMTP_SERVICE 留空时填写</td>
+</tr>
+<tr>
+<td align="left">BLOGGER_EMAIL</td>
+<td align="left"><a href="mailto:&#120;&#x78;&#120;&#120;&#120;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#120;&#x78;&#120;&#120;&#120;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a></td>
+<td align="left">[选填] 博主通知收件地址，默认使用 SENDER_EMAIL</td>
+</tr>
+<tr>
+<td align="left">ADMIN_URL</td>
+<td align="left"><a href="https://lean.kinpo.eu.org/">https://lean.kinpo.eu.org/</a></td>
+<td align="left">评论管理后台地址</td>
+</tr>
+<tr>
+<td align="left">COMMENT</td>
+<td align="left"></td>
+<td align="left">新评论内容</td>
+</tr>
+<tr>
+<td align="left">NICK</td>
+<td align="left"></td>
+<td align="left">新评论者昵称</td>
+</tr>
+<tr>
+<td align="left">PARENT_COMMENT</td>
+<td align="left"></td>
+<td align="left">父级评论内容</td>
+</tr>
+<tr>
+<td align="left">PARENT_NICK</td>
+<td align="left"></td>
+<td align="left">收件人昵称（被@者，父级评论人）</td>
+</tr>
+<tr>
+<td align="left">POST_URL</td>
+<td align="left"></td>
+<td align="left">评论文章地址（完整路径）</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong><code>MAIL_TEMPLATE</code>代码块：</strong></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;border-radius: 10px 10px 10px 10px;font-size:13px; color: #555555;width: 666px;font-family:&#x27;Century Gothic&#x27;,&#x27;Trebuchet MS&#x27;,&#x27;Hiragino Sans GB&#x27;,微软雅黑,&#x27;Microsoft Yahei&#x27;,Tahoma,Helvetica,Arial,&#x27;SimSun&#x27;,sans-serif;margin:50px auto;border:1px solid #eee;max-width:100%;background: #ffffff repeating-linear-gradient(-45deg,#fff,#fff 1.125rem,transparent 1.125rem,transparent 2.25rem);box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);&quot;</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;width:100%;background:#49BDAD;color:#ffffff;border-radius: 10px 10px 0 0;background-image: -moz-linear-gradient(0deg, rgb(67, 198, 184), rgb(255, 209, 244));background-image: -webkit-linear-gradient(0deg, rgb(67, 198, 184), rgb(255, 209, 244));height: 66px;&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;font-size:15px;word-break:break-all;padding: 23px 32px;margin:0;background-color: hsla(0,0%,100%,.4);border-radius: 10px 10px 0 0;color:#257db9&quot;</span>&gt;</span>您在<span class="tag">&lt;<span class="name">a</span> <span class="attr">style</span>=<span class="string">&quot;text-decoration:none;color:#257db9&quot;</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;SITE_URL&#125;&quot;</span>&gt;</span>「Kingpo&#x27;s Note」<span class="tag">&lt;/<span class="name">a</span>&gt;</span>上的留言有新回复啦！<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;margin:40px auto;width:90%&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>亲爱的 <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;color:#7777ff&quot;</span>&gt;</span>$&#123;PARENT_NICK&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span> 同学，您曾在该页面/文章：<span class="tag">&lt;/<span class="name">p</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;background: #fafafa repeating-linear-gradient(-45deg,#fff,#fff 1.125rem,transparent 1.125rem,transparent 2.25rem);box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);margin:20px 0px;padding:15px;border-radius:5px;font-size:14px;color:#555555;&quot;</span>&gt;</span> </span><br><span class="line">    $&#123;POST_URL&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>发布了以下评论：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;background: #fafafa repeating-linear-gradient(-45deg,#fff,#fff 1.125rem,transparent 1.125rem,transparent 2.25rem);box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);margin:20px 0px;padding:15px;border-radius:5px;font-size:14px;color:#555555;&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">b</span>&gt;</span>$&#123;PARENT_COMMENT&#125; <span class="tag">&lt;/<span class="name">b</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>刚刚，用户 <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;color:#7777ff&quot;</span>&gt;</span>$&#123;NICK&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span> 给您的回复如下：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;background: #fafafa repeating-linear-gradient(-45deg,#fff,#fff 1.125rem,transparent 1.125rem,transparent 2.25rem);box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);margin:20px 0px;padding:15px;border-radius:5px;font-size:14px;color:#555555;&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">b</span>&gt;</span>$&#123;COMMENT&#125;<span class="tag">&lt;/<span class="name">b</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>您可以点击 <span class="tag">&lt;<span class="name">a</span> <span class="attr">style</span>=<span class="string">&quot;text-decoration:none; color:#12addb&quot;</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;POST_URL&#125;#comments&quot;</span>&gt;</span>查看回复的完整內容<span class="tag">&lt;/<span class="name">a</span>&gt;</span>，欢迎再次光临<span class="tag">&lt;<span class="name">a</span> <span class="attr">style</span>=<span class="string">&quot;text-decoration:none; color:#9fefaf&quot;</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;SITE_URL&#125;&quot;</span>&gt;</span> $&#123;SITE_NAME&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span>。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span>&#123;<span class="attribute">text-decoration</span>:none&#125;<span class="selector-tag">a</span><span class="selector-pseudo">:visited</span>&#123;<span class="attribute">text-decoration</span>:none&#125;<span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">text-decoration</span>:none&#125;<span class="selector-tag">a</span><span class="selector-pseudo">:active</span>&#123;<span class="attribute">text-decoration</span>:none&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">center</span>&gt;</span> </span><br><span class="line">  Powered by LeanCloud</span><br><span class="line"><span class="tag">&lt;/<span class="name">br</span>&gt;</span></span><br><span class="line">  Copyright <span class="symbol">&amp;copy;</span> 2022 <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://kingpo.netlify.app&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color:auto;&quot;</span>&gt;</span>六月长河<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span> /&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://kingpo.netlify.app&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">style</span>=<span class="string">&quot;height:70px !important;&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://kingpo.netlify.app/images/avatar.png&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">center</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span> /&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span> /&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong><code>MAIL_TEMPLATE_ADMIN</code>代码块：</strong></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;border-top:2px solid #12ADDB;box-shadow:0 1px 3px #AAAAAA;line-height:180%;padding:0 15px 12px;margin:50px auto;font-size:12px;&quot;</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span> <span class="attr">style</span>=<span class="string">&quot;border-bottom:1px solid #DDD;font-size:14px;font-weight:normal;padding:13px 0 10px 0px;&quot;</span>&gt;</span>您在<span class="tag">&lt;<span class="name">a</span> <span class="attr">style</span>=<span class="string">&quot;text-decoration:none;color: #12ADDB;&quot;</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;SITE_URL&#125;&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>$&#123;SITE_NAME&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span>上的文章有了新的评论<span class="tag">&lt;/<span class="name">h2</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>$&#123;NICK&#125;<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>回复说：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;background-color: #f5f5f5;padding: 10px 15px;margin:18px 0;word-wrap:break-word;&quot;</span>&gt;</span></span><br><span class="line">    $&#123;COMMENT&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span> 您可以点击<span class="tag">&lt;<span class="name">a</span> <span class="attr">style</span>=<span class="string">&quot;text-decoration:none; color:#12addb&quot;</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;POST_URL&#125;&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>查看回复的完整內容<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>评论页面为<span class="tag">&lt;/<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>$&#123;POST_URL&#125;<span class="tag">&lt;/<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里注意，**<code>MAIL_TEMPLATE_ADMIN</code>代码块：** 和 <strong><code>MAIL_TEMPLATE</code>代码块：</strong> 两个模板的内容不要搞反，我参考<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://deserts.io/valine-admin-document/&source=article&objectId=2122077">valine-admin-document&#x2F;</a>发现是填反了，会报错，报错日志如下 !</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/e82b6da7acb30730507420e1c6541fce.png" alt="https://s.imgkb.xyz/abcdocker/2022/08/30/9c835599213b5/9c835599213b5.png"></p>
+<h4 id="绑定自定义域名"><a href="#绑定自定义域名" class="headerlink" title="绑定自定义域名"></a>绑定自定义域名</h4><p>这里需要绑定自定义域名一个域名，它是你后台评论管理的地址，在你定义的<a href="https://cloud.tencent.com/product/cns?from_column=20065&from=20065">域名解析</a>中添加一条CNAME记录。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/3dc72d202811f34b3ffda9ee7704785c.png" alt="https://s.imgkb.xyz/abcdocker/2022/08/30/3ffa42977f820/3ffa42977f820.png"></p>
+<h4 id="评论管理"><a href="#评论管理" class="headerlink" title="评论管理"></a>评论管理</h4><p>绑定自定义域名后，第1步也部署好后，即可进行评论管理。</p>
+<p>首次使用需要先<a href="https://cloud.tencent.com/product/cam?from_column=20065&from=20065">访问管理</a>员注册页面<code>https://绑定的域名/sign-up</code>，注册管理员登录信息，然后直接使用域名就可以登录了。功能也比较简单，标记垃圾评论，删除，跳转查看。</p>
+<h4 id="定时任务设置"><a href="#定时任务设置" class="headerlink" title="定时任务设置"></a>定时任务设置</h4><p>因为leancloud免费版本提供的实例，有休眠策略，如果没有请求，会自动休眠。为了保持实例一直在线，我们可以设置定时任务函数来来唤醒。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/9200afd6b79c0e00d0dbc7177d18a037.png" alt="https://s.imgkb.xyz/abcdocker/2022/08/31/84b8963c89ba4/84b8963c89ba4.png"></p>
+<ul>
+<li><strong>两个定时任务函数设置</strong></li>
+</ul>
+<p>参看<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://deserts.io/valine-admin-document/%23%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%AE%BE%E7%BD%AE&source=article&objectId=2122077">Valine Admin 配置手册定时任务设置</a></p>
+<ul>
+<li><strong>利用github actions设置定时</strong></li>
+</ul>
+<p>设置定时任务函数，很多人运行几天后会遇到leancloud平台因为流控原因无法激活定时唤醒任务的问题。</p>
+<p>另一种方式是利用github actions中的workflow定时执行命令访问leancloud的web域名，实现唤醒。</p>
+<p>仓库-&gt;settings-&gt;secrets-&gt;actions-&gt;New repository secret Name: DOMAIN Value: 你的web域名</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">&#x27;wake comment system&#x27;</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">  <span class="attr">schedule:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">cron:</span> <span class="string">&#x27;7,33,53 0-15,23 * * *&#x27;</span></span><br><span class="line">    </span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">bot:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">run:</span> <span class="string">curl</span> <span class="string">-sLo</span> <span class="string">/dev/null</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.DOMAIN</span> <span class="string">&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
 <hr>
 <p>参考文章：</p>
 <p><a href="https://zsyyblog.com/f01faa9c.html">https://zsyyblog.com/f01faa9c.html</a></p>
@@ -1002,8 +1389,9 @@
   </entry>
   <entry>
     <title>Hexo优化butterfly主题配置文章版本</title>
-    <url>/posts/60036/</url>
+    <url>/posts/60038/</url>
     <content><![CDATA[<h2 id="文章版面设计"><a href="#文章版面设计" class="headerlink" title="文章版面设计"></a>文章版面设计</h2><p>先来了解下文章的版面有哪些内容。</p>
+<p><a href="https://blog.csdn.net/liudonglovehemin/article/details/131176749">基于Hexo和Butterfly创建个人技术博客，(9) 优化butterfly主题配置文章版本_butterfly搭建博客修改副标题-CSDN博客</a></p>
 <h3 id="列表页"><a href="#列表页" class="headerlink" title="列表页"></a>列表页</h3><p>主要包括cover图、标题、摘要、meta信息，以及右侧目录结构显示，如下图所示：</p>
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/949542c847564019b2f927af79af0b3e.png" alt="在这里插入图片描述"></p>
 <h3 id="详情页"><a href="#详情页" class="headerlink" title="详情页"></a>详情页</h3><p>文章详情页，主要包含三部分：头、内容、脚三部分，详细如下图所示：</p>
@@ -1073,14 +1461,7 @@
 <h3 id="代码样式"><a href="#代码样式" class="headerlink" title="代码样式"></a>代码样式</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight_theme:</span> <span class="string">light</span> <span class="comment"># 代码高亮：darker、light、ocean、mac、pale night、mac light</span></span><br><span class="line"><span class="attr">highlight_copy:</span> <span class="literal">true</span> <span class="comment"># 代码支持复制</span></span><br><span class="line"><span class="attr">highlight_shrink:</span> <span class="literal">false</span> <span class="comment">#代码框是否默认展开，true表示不展开，需点击 &#x27;&gt;&#x27; 打开，可选值还有none，不显示 &#x27;&gt;&#x27;</span></span><br><span class="line"><span class="attr">highlight_lang:</span> <span class="literal">true</span> <span class="comment">#是否显示语言</span></span><br><span class="line"><span class="attr">code_word_wrap:</span> <span class="literal">false</span> <span class="comment"># 代码自动换行，不会出现滚动条，但如果上传代码的人代码不规范格式可能会乱；同时也要改动_config.yml中相应高亮显示代码配置的 line_number 设置成false</span></span><br><span class="line"><span class="attr">highlight_height_limit:</span> <span class="literal">false</span> <span class="comment"># unit: px，代码高度配置，超出部分会隐藏</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="图片标题"><a href="#图片标题" class="headerlink" title="图片标题"></a>图片标题</h3><p>如果开启图片Figcaption描述文字显示功能，则优先显示图片的 title 属性，然后是 alt 属性</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">photofigcaption:</span> <span class="literal">true</span> </span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<p>参考链接：<a href="https://blog.csdn.net/liudonglovehemin/article/details/131176749">https://blog.csdn.net/liudonglovehemin/article/details/131176749</a></p>
-<p>e&#x2F;details&#x2F;131176749</p>
-]]></content>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">photofigcaption:</span> <span class="literal">true</span> </span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>hexo</category>
       </categories>
