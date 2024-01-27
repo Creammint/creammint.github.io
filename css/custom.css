@@ -20,15 +20,11 @@
 
 /* 侧边栏个人信息卡片动态渐变色 */
 #aside-content>.card-widget.card-info {
-    background: linear-gradient(-45deg,
-            #e8d8b9,
-            #eccec5,
-            #a3e9eb,
-            #bdbdf0,
-            #eec1ea);
+    background: url(https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/basicdata_img%2Fhome_card.webp);
     box-shadow: 0 0 5px rgb(66, 68, 68);
     position: relative;
-    background-size: 400% 400%;
+    opacity: 0.9;
+    background-size: 100% 100%;
     -webkit-animation: Gradient 10s ease infinite;
     -moz-animation: Gradient 10s ease infinite;
     animation: Gradient 10s ease infinite !important;
