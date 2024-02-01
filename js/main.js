@@ -117,7 +117,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const highlightToolsFn = function (e) {
       const $target = e.target.classList
       if ($target.contains('expand')) highlightShrinkFn(this)
-      else if ($target.contains('copy-button')) highlightCopyFn(this)
+      else if ($target.contains('copy-button'))
+        new Vue({
+          data: function () {
+            this.$notify({
+              title: "哎嘿！复制成功🍬",
+              message: "若要转载最好保留原文链接哦，给你一个大大的赞！",
+              position: 'top-left',
+              offset: 50,
+              showClose: true,
+              type: "success",
+              duration: 5000
+            });
+          }
+        })
     }
 
     const expandCode = function () {
