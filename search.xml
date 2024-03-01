@@ -480,6 +480,72 @@
       </tags>
   </entry>
   <entry>
+    <title>oracle查看死锁以及处理死锁</title>
+    <url>/posts/55052/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>参考于：</p>
+<p><a href="https://blog.csdn.net/qq_46645079/article/details/135219181">oracle数据库什么是表的死锁，死锁的产生原因，怎么查询死锁的表信息，解决死锁的方法；给出具体业务场景与代码示例_oracle死锁查询和处理-CSDN博客</a></p>
+<p><a href="https://www.cnblogs.com/String-song/p/15909325.html">“ORA-00054: 资源正忙，锁表”以及“ORA-00031：标记要终止的会话”的解决方法 - 弦歌雅意 - 博客园 (cnblogs.com)</a></p>
+<h3 id="什么是表的死锁以及死锁的产生原因"><a href="#什么是表的死锁以及死锁的产生原因" class="headerlink" title="什么是表的死锁以及死锁的产生原因"></a>什么是表的死锁以及死锁的产生原因</h3><p>表的死锁是指在Oracle数据库中，两个或多个事务相互等待对方持有的锁资源，导致它们无法继续执行下去，从而形成死锁现象。</p>
+<p>死锁的产生原因通常是因为事务在操作数据时，对数据进行了锁定，但是由于事务执行顺序或者并发操作的原因导致了互相等待对方持有的锁资源，从而形成死锁。</p>
+<h3 id="产生死锁的案例"><a href="#产生死锁的案例" class="headerlink" title="产生死锁的案例"></a>产生死锁的案例</h3><p>具体业务场景及代码示例：<br>假设有两个用户同时对同一张表进行更新操作，用户A执行UPDATE语句锁住了表中的某些行，而用户B也执行UPDATE语句锁住了表中的另一些行，此时就可能发生死锁。</p>
+<p>代码示例：<br>用户A的更新操作：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">UPDATE</span> table_name <span class="keyword">SET</span> column1 <span class="operator">=</span> <span class="string">&#x27;value1&#x27;</span> <span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br><span class="line">  <span class="keyword">COMMIT</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<p>用户B的更新操作：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">UPDATE</span> table_name <span class="keyword">SET</span> column2 <span class="operator">=</span> <span class="string">&#x27;value2&#x27;</span> <span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br><span class="line">  <span class="keyword">COMMIT</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在这种情况下，用户A和用户B可能会出现死锁。为了避免死锁，可以考虑修改事务的执行顺序，或者使用数据库的锁机制和事务隔离级别来避免死锁的发生。</p>
+<h2 id="查看死锁"><a href="#查看死锁" class="headerlink" title="查看死锁"></a>查看死锁</h2><p>1、下面的语句用来查询哪些对象被锁： </p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.object_name,b.session_id,c.serial#,c.program,c.username,c.command,c.machine,c.lockwait </span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> all_objects a,v$locked_object b,v$session c <span class="keyword">where</span> a.object_id<span class="operator">=</span>b.object_id <span class="keyword">and</span> c.sid<span class="operator">=</span>b.session_id;</span><br></pre></td></tr></table></figure>
+
+<p>2、查询锁表原因以及sid、serial#</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> l.session_id sid, s.serial#, l.locked_mode, l.oracle_username, s.user#, l.os_user_name, s.machine, s.terminal, a.sql_text, a.action</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> v$sqlarea a, v$session s, v$locked_object l </span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span> l.session_id <span class="operator">=</span> s.sid <span class="keyword">and</span> s.prev_sql_addr <span class="operator">=</span> a.address </span><br><span class="line"></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> sid, s.serial#;</span><br></pre></td></tr></table></figure>
+
+<p>3、用下面的语句用来杀死引起死锁的进程： </p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">system</span> kill session <span class="string">&#x27;sid,serial#&#x27;</span>； </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><strong>ORA-00054: 资源正忙，锁表”以及“ORA-00031：标记要终止的会话”的解决方法</strong></p>
+<h3 id="现象描述"><a href="#现象描述" class="headerlink" title="现象描述"></a>现象描述</h3><p>在ORACLE数据处理过程中，当某个PL&#x2F;SQL developer正在运行创建一个临时表对大的数据进行暂存处理时，由于处理速度很慢，这时突然做了中断处理，甚至于直接从“任务管理器”中关掉PL&#x2F;SQL developer。再次对该数据临时表进行处理时，会发现无论是删除、更新、查询等操作，都处于一直的执行等待状态。这种情况，很有可能是表已经被锁住了。但是当查询到死锁会话，采用<code>alter system kill session&#39;sid,serial#&#39;;</code>来处理时，却提示报错，无法杀掉线程，只能到操作系统级杀掉线程了。下面就对这种情况的处理过程进行详细的说明。</p>
+<p> <img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1875512-20220218155418508-1041493563.png" alt="img"></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
+<li>可以通过下列语句查询：</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.spid,b.sid,b.serial#,b.username </span><br><span class="line"><span class="keyword">from</span> v$process a,v$session b </span><br><span class="line"><span class="keyword">where</span> a.addr<span class="operator">=</span>b.paddr </span><br><span class="line"><span class="keyword">and</span> b.status<span class="operator">=</span><span class="string">&#x27;KILLED&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1875512-20220218161428300-662981761.png" alt="img"></p>
+<ol start="2">
+<li>如果利用上面的命令杀死一个进程后，进程状态被置为”killed”，但是锁定的资源很长时间没有被释放，那么可以在OS级再杀死相应的进程（线程），首先执行下面的语句获得进程（线程）号：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select b.spid,a.osuser,b.program </span><br><span class="line">  from v$session a,v$process b </span><br><span class="line"> where a.paddr=b.addr </span><br><span class="line">   and a.sid=176     --176就是上面的sid</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1875512-20220218161605390-1686124764.png" alt="img"></p>
+<ol start="3">
+<li>在OS上杀死这个进程（线程）</li>
+</ol>
+<p>1)、在unix&#x2F;linux上，用root身份执行命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#kill -9 9532（9532 即第4步查询出的spid） </span><br></pre></td></tr></table></figure>
+
+<p>2)、在windows（unix也适用）用orakill杀死线程，orakill是oracle提供的一个可执行命令，语法为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">orakill sid thread </span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<p>sid：表示要杀死的进程属于的实例名 </p>
+<p>thread：是要杀掉的线程号，即第3步查询出的spid。 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">例：C:&gt;orakill ACVS 9532</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1875512-20220218161852049-245548292.png" alt="img"></p>
+<p><strong>注意：</strong>这里要注意的是kill OS进程是在服务端操作，而不是你程序所在客户机。</p>
+]]></content>
+      <categories>
+        <category>oracle</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>chrome浏览器，屏蔽http文件下载，已阻止不安全的下载，如何解除</title>
     <url>/posts/14141/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为有需要下载文件，很多文件，但是每次都会弹出这个提示，虽然可以手动点击保留，但是以后每次都要点击，实在是太难受了！！！</p>
@@ -997,7 +1063,7 @@
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240105092825784.png" alt="image-20240105092825784"></p>
 <p>点击“New SSH key”，将复制的密钥内容粘贴进Key的输入框，Title随便取：</p>
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000122494-931212452.png" alt="img"></p>
-<p>回到gitbush，测试输入： ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#x74;&#x68;&#117;&#98;&#46;&#99;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#x74;&#x68;&#117;&#98;&#46;&#99;&#x6f;&#x6d;</a></p>
+<p>回到gitbush，测试输入： ssh -T <a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;">&#x67;&#x69;&#116;&#x40;&#103;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;</a></p>
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000409948-1462846742.png" alt="img"></p>
 <p>如果遇到 yes&#x2F;no 的选项，输入yes。最后看到 “Hi ….”表示设置成功。</p>
 <p>�设置成功。</p>
@@ -1172,7 +1238,7 @@
 </tr>
 <tr>
 <td align="left">SMTP_USER</td>
-<td align="left"><a href="mailto:&#x78;&#x78;&#120;&#x78;&#x78;&#120;&#x40;&#x71;&#113;&#46;&#99;&#111;&#x6d;">&#x78;&#x78;&#120;&#x78;&#x78;&#120;&#x40;&#x71;&#113;&#46;&#99;&#111;&#x6d;</a></td>
+<td align="left"><a href="mailto:&#120;&#120;&#x78;&#x78;&#120;&#120;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;">&#120;&#120;&#x78;&#x78;&#120;&#120;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;</a></td>
 <td align="left">[必填] SMTP 用户名</td>
 </tr>
 <tr>
@@ -1187,7 +1253,7 @@
 </tr>
 <tr>
 <td align="left">SENDER_EMAIL</td>
-<td align="left"><a href="mailto:&#120;&#x78;&#120;&#120;&#120;&#x78;&#x40;&#x71;&#113;&#46;&#99;&#111;&#109;">&#120;&#x78;&#120;&#120;&#120;&#x78;&#x40;&#x71;&#113;&#46;&#99;&#111;&#109;</a></td>
+<td align="left"><a href="mailto:&#120;&#x78;&#120;&#x78;&#120;&#120;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#109;">&#120;&#x78;&#120;&#x78;&#120;&#120;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#109;</a></td>
 <td align="left">[必填] 发件邮箱</td>
 </tr>
 <tr>
@@ -1227,7 +1293,7 @@
 </tr>
 <tr>
 <td align="left">BLOGGER_EMAIL</td>
-<td align="left"><a href="mailto:&#x78;&#120;&#120;&#x78;&#120;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x78;&#120;&#120;&#x78;&#120;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a></td>
+<td align="left"><a href="mailto:&#x78;&#x78;&#120;&#x78;&#x78;&#64;&#x67;&#109;&#x61;&#105;&#108;&#46;&#x63;&#111;&#x6d;">&#x78;&#x78;&#120;&#x78;&#x78;&#64;&#x67;&#109;&#x61;&#105;&#108;&#46;&#x63;&#111;&#x6d;</a></td>
 <td align="left">[选填] 博主通知收件地址，默认使用 SENDER_EMAIL</td>
 </tr>
 <tr>
