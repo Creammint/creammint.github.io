@@ -1,6 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Git SSH公钥配置</title>
+    <url>/posts/58668/</url>
+    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先下载安装git：<a href="https://git-scm.com/downloads/">https://git-scm.com/downloads/</a></p>
+<p>一路默认，安装完成后，在任意文件夹内右键选择“Git Bush Here” ，打开gitbush。</p>
+<p>配置用户名和邮箱：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name &quot;your_name&quot;</span><br><span class="line"></span><br><span class="line">$ git config --global user.email &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>生成密钥对：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>一路默认点Enter，C:\Users\Administrator.ssh（Administrator是当前用户名）文件夹中会生成两个密钥文件：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181106235426595-857406464.png" alt="img"></p>
+<p>打开id_rsa.pub，将文件内容全选复制，准备粘贴到github上：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181106235534357-1259001712.png" alt="img"></p>
+<p>登陆github，点击右上角头像，选择Settings，选择SSH and GPG keys：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240105092825784.png" alt="image-20240105092825784"></p>
+<p>点击“New SSH key”，将复制的密钥内容粘贴进Key的输入框，Title随便取：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000122494-931212452.png" alt="img"></p>
+<p>回到gitbush，测试输入： ssh -T <a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#105;&#x74;&#104;&#117;&#x62;&#46;&#99;&#111;&#x6d;">&#x67;&#x69;&#116;&#x40;&#103;&#105;&#x74;&#104;&#117;&#x62;&#46;&#99;&#111;&#x6d;</a></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000409948-1462846742.png" alt="img"></p>
+<p>如果遇到 yes&#x2F;no 的选项，输入yes。最后看到 “Hi ….”表示设置成功。</p>
+<p>�设置成功。</p>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>SSH</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决每次Github部署完成后都需要重新绑定域名的问题</title>
+    <url>/posts/52420/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>解决每次Github部署完成后都需要重新绑定域名的问题！！！</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
+<li><p>在博客根目录的配置文件 <code>config.yml</code>中找到<code>skip_render</code>，添加值<code>GNAME</code>,用来置顶不进行渲染的文件</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">skip_render:</span> <span class="string">CNAME</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在**&#x2F;source<strong>的目录中创建一个文件，文件名为</strong>CNAME**，里边的内容写你的域名。</p>
+</li>
+<li><p>只写域名，例如 creammint.cn，不需要添加http(s):&#x2F;&#x2F;前缀。</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">creammint.cn</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hexo g 重新生成一下</p>
+</li>
+<li><p>hexo d 部署到Github上</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Github</category>
+      </categories>
+      <tags>
+        <tag>域名</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PL/SQL Developer使用技巧、快捷键PL/SQL Developer使用技巧、快捷键</title>
+    <url>/posts/4023/</url>
+    <content><![CDATA[<p>原文：<a href="https://www.cnblogs.com/linjiqin/p/3152538.html">PL&#x2F;SQL Developer使用技巧、快捷键</a></p>
+<h2 id="类SQL-PLUS窗口"><a href="#类SQL-PLUS窗口" class="headerlink" title="类SQL PLUS窗口"></a>类SQL PLUS窗口</h2><p>File-&gt;New-&gt;Command Window，这个类似于oracle的客户端工具sql plus，但比它好用多了。</p>
+<h2 id="设置关键字自动大写"><a href="#设置关键字自动大写" class="headerlink" title="设置关键字自动大写"></a>设置关键字自动大写</h2><p>Tools-&gt;Preferences-&gt;Editor，将Keyword case选择Uppercase。这样在窗口中输入sql语句时，关键字会自动大写，而其它都是小写。这样阅读代码比较容易，且保持良好得编码风格，同理，在Tools-&gt;Preferences-&gt;Code Assistant(助手)里可以设置代码提示延迟时间、输入几个字符时提示、数据库对象的大写、小写，首字母大写等；</p>
+<h2 id="查看执行计划"><a href="#查看执行计划" class="headerlink" title="查看执行计划"></a>查看执行计划</h2><p>选中需要分析的SQL语句，然后点击工具栏的Explain plan按钮(即执行计划)，或者直接按F5；这个主要用于分析SQL语句执行效率，分析表的结构，便于为sql调优提供直观依据；</p>
+<h2 id="自动替换"><a href="#自动替换" class="headerlink" title="自动替换"></a>自动替换</h2><p>快捷输入SQL语句，例如输入s，按下空格，自动替换成SELECT；再例如，输入sf，按下空格，自动替换成SELECT * FROM，非常方便，节省了大量的时间去编写重复的SQL语句。</p>
+<p><strong>设置方法：</strong></p>
+<p>菜单<code>Tools–&gt;Preferences–&gt;Editor–&gt;AutoReplace(自动替换)–&gt;Edit</code></p>
+<ol>
+<li>建立一个文本文件shortcuts.txt，并写入如下内容：<br>s&#x3D;SELECT<br>复制代码另存到PL&#x2F;SQL Developer的安装路径下的~&#x2F;PlugIns目录下</li>
+<li><code>Tools–&gt;Preferences–&gt;User Interface–&gt;Editor–&gt;AutoReplace</code>，选中Enable复选框，然后浏览文件选中之前创建的shortcuts.txt，点击Apply。</li>
+<li>重启PL&#x2F;SQL Developer，在sql窗口中输入s+空格，sc+空格做测试。<br>注意：shortcuts.txt不可删除掉，否则快捷键无法用</li>
+</ol>
+<p>下面定义了一些规则作为参考：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">i=INSERT</span><br><span class="line">u=UPDATE</span><br><span class="line">s=SELECT</span><br><span class="line">f=FROM</span><br><span class="line">w=WHERE</span><br><span class="line">o=ORDER BY</span><br><span class="line">d=DELETE</span><br><span class="line">df=DELETE FROM</span><br><span class="line">sf=SELECT * FROM</span><br><span class="line">sc=SELECT COUNT(*) FROM</span><br><span class="line">sfu=SELECT * FROM FOR UPDATE</span><br><span class="line">cor=CREATE OR REPLACE</span><br><span class="line">p=PROCEDURE</span><br><span class="line">fn=FUNCTION</span><br><span class="line">t=TIGGER</span><br><span class="line">v=VIEW</span><br><span class="line">sso=SET serveroutput ON;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="设置快捷键"><a href="#设置快捷键" class="headerlink" title="设置快捷键"></a>设置快捷键</h2><p>(设置方法：菜单Tools–&gt;Preferences–&gt;用户界面–&gt;键配置)<br>新建sql窗口：ctrl+shift+s<br>新建命令窗口：ctrl+shift+c<br>新建测试窗口：ctrl+shift+t<br>PL&#x2F;SQL Developer美化器：ctrl+shift+f<br>重做：ctrl+shift+z<br>撤销：ctrl+z<br>清除：ctrl+d(慎用，不可恢复，俺是禁用哦O(∩_∩)O~)<br>选中所有：ctrl+a<br>缩进：tab<br>取消缩进：shift+tab<br>大写：ctrl+shift+x<br>小写：ctrl+shift+y<br>注释：ctrl+h<br>取消注释：ctrl+m<br>查找：ctrl+f<br>显示表结构：ctrl+鼠标悬停在表名上<br>模板列表：shift+alt+r<br>窗口列表：ctrl+w</p>
+<h2 id="执行单条SQL语句"><a href="#执行单条SQL语句" class="headerlink" title="执行单条SQL语句"></a>执行单条SQL语句</h2><p>按F8键</p>
+<h2 id="TNS-Names"><a href="#TNS-Names" class="headerlink" title="TNS Names"></a>TNS Names</h2><p>菜单Help-&gt;Support Info(支持信息)-&gt;TNS Names，可以查看Oracle的tnsnames.ora;</p>
+<h2 id="调试存储过程"><a href="#调试存储过程" class="headerlink" title="调试存储过程"></a>调试存储过程</h2><p>在使用PL&#x2F;SQL Developer操作Oracle时，有时候调用某些存储过程，或者调试存储过程；<br>调用存储过程的方法：</p>
+<ol>
+<li><p>首先，在PL&#x2F;SQL Developer左边的Browser中选择Procedures，查找需要调用的存储过程；</p>
+</li>
+<li><p>然后，选中调试的存储过程，点击右键，选择Test，在弹出来的Test scrīpt窗口中，对于定义为in类型的参数，需要给该参数的Value输入值；最后点击上面的条数按钮：Start debugger或者按F9；</p>
+</li>
+<li><p>最后点击：RUN 或者Ctrl+R 。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">调试快捷键</span><br><span class="line">切换断点：ctrl+b</span><br><span class="line">开始：f9</span><br><span class="line">运行：ctrl+r</span><br><span class="line">单步进入：ctrl+n</span><br><span class="line">单步跳过：ctrl+o</span><br><span class="line">单步退出：ctrl+t</span><br><span class="line">运行到异常：ctrl+y</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="登录后默认自动选中My-Objects"><a href="#登录后默认自动选中My-Objects" class="headerlink" title="登录后默认自动选中My Objects"></a>登录后默认自动选中My Objects</h2><p>默认情况下，PLSQL Developer登录后，Brower里会选择All objects，如果你登录的用户是dba，要展开tables目录，正常情况都需要Wait几秒钟，而选择My Objects后响应速率则是以毫秒计算的。</p>
+<p>设置方法：<br>Tools菜单–&gt;Brower Filters，会打开Brower Folders的定单窗口，把“My Objects”设为默认即可。<br>Tools菜单–&gt;Brower Folders中把你经常点的几个目录（比如：Tables Views Seq Functions Procedures）移得靠上一点，并加上颜色区分，这样你的平均寻表时间会大大缩短，试试看。</p>
+<p>优先级，从左往右<br>Tables–&gt;Tablespaces–&gt;Procedures–&gt;Users–&gt;Roless–&gt;Roles</p>
+]]></content>
+      <categories>
+        <category>oracle</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>oracle查看死锁以及处理死锁</title>
+    <url>/posts/55052/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>参考于：</p>
+<p><a href="https://blog.csdn.net/qq_46645079/article/details/135219181">oracle数据库什么是表的死锁，死锁的产生原因，怎么查询死锁的表信息，解决死锁的方法；给出具体业务场景与代码示例_oracle死锁查询和处理-CSDN博客</a></p>
+<p><a href="https://www.cnblogs.com/String-song/p/15909325.html">“ORA-00054: 资源正忙，锁表”以及“ORA-00031：标记要终止的会话”的解决方法 - 弦歌雅意 - 博客园 (cnblogs.com)</a></p>
+<h3 id="什么是表的死锁以及死锁的产生原因"><a href="#什么是表的死锁以及死锁的产生原因" class="headerlink" title="什么是表的死锁以及死锁的产生原因"></a>什么是表的死锁以及死锁的产生原因</h3><p>表的死锁是指在Oracle数据库中，两个或多个事务相互等待对方持有的锁资源，导致它们无法继续执行下去，从而形成死锁现象。</p>
+<p>死锁的产生原因通常是因为事务在操作数据时，对数据进行了锁定，但是由于事务执行顺序或者并发操作的原因导致了互相等待对方持有的锁资源，从而形成死锁。</p>
+<h3 id="产生死锁的案例"><a href="#产生死锁的案例" class="headerlink" title="产生死锁的案例"></a>产生死锁的案例</h3><p>具体业务场景及代码示例：<br>假设有两个用户同时对同一张表进行更新操作，用户A执行UPDATE语句锁住了表中的某些行，而用户B也执行UPDATE语句锁住了表中的另一些行，此时就可能发生死锁。</p>
+<p>代码示例：<br>用户A的更新操作：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">UPDATE</span> table_name <span class="keyword">SET</span> column1 <span class="operator">=</span> <span class="string">&#x27;value1&#x27;</span> <span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br><span class="line">  <span class="keyword">COMMIT</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<p>用户B的更新操作：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">UPDATE</span> table_name <span class="keyword">SET</span> column2 <span class="operator">=</span> <span class="string">&#x27;value2&#x27;</span> <span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br><span class="line">  <span class="keyword">COMMIT</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在这种情况下，用户A和用户B可能会出现死锁。为了避免死锁，可以考虑修改事务的执行顺序，或者使用数据库的锁机制和事务隔离级别来避免死锁的发生。</p>
+<h2 id="查看死锁"><a href="#查看死锁" class="headerlink" title="查看死锁"></a>查看死锁</h2><p>1、下面的语句用来查询哪些对象被锁： </p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.object_name,b.session_id,c.serial#,c.program,c.username,c.command,c.machine,c.lockwait </span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> all_objects a,v$locked_object b,v$session c <span class="keyword">where</span> a.object_id<span class="operator">=</span>b.object_id <span class="keyword">and</span> c.sid<span class="operator">=</span>b.session_id;</span><br></pre></td></tr></table></figure>
+
+<p>2、查询锁表原因以及sid、serial#</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> l.session_id sid, s.serial#, l.locked_mode, l.oracle_username, s.user#, l.os_user_name, s.machine, s.terminal, a.sql_text, a.action</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> v$sqlarea a, v$session s, v$locked_object l </span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span> l.session_id <span class="operator">=</span> s.sid <span class="keyword">and</span> s.prev_sql_addr <span class="operator">=</span> a.address </span><br><span class="line"></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> sid, s.serial#;</span><br></pre></td></tr></table></figure>
+
+<p>3、用下面的语句用来杀死引起死锁的进程： </p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">system</span> kill session <span class="string">&#x27;sid,serial#&#x27;</span>； </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><strong>ORA-00054: 资源正忙，锁表”以及“ORA-00031：标记要终止的会话”的解决方法</strong></p>
+<h3 id="现象描述"><a href="#现象描述" class="headerlink" title="现象描述"></a>现象描述</h3><p>在ORACLE数据处理过程中，当某个PL&#x2F;SQL developer正在运行创建一个临时表对大的数据进行暂存处理时，由于处理速度很慢，这时突然做了中断处理，甚至于直接从“任务管理器”中关掉PL&#x2F;SQL developer。再次对该数据临时表进行处理时，会发现无论是删除、更新、查询等操作，都处于一直的执行等待状态。这种情况，很有可能是表已经被锁住了。但是当查询到死锁会话，采用<code>alter system kill session&#39;sid,serial#&#39;;</code>来处理时，却提示报错，无法杀掉线程，只能到操作系统级杀掉线程了。下面就对这种情况的处理过程进行详细的说明。</p>
+<p> <img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1875512-20220218155418508-1041493563.png" alt="img"></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
+<li>可以通过下列语句查询：</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.spid,b.sid,b.serial#,b.username </span><br><span class="line"><span class="keyword">from</span> v$process a,v$session b </span><br><span class="line"><span class="keyword">where</span> a.addr<span class="operator">=</span>b.paddr </span><br><span class="line"><span class="keyword">and</span> b.status<span class="operator">=</span><span class="string">&#x27;KILLED&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1875512-20220218161428300-662981761.png" alt="img"></p>
+<ol start="2">
+<li>如果利用上面的命令杀死一个进程后，进程状态被置为”killed”，但是锁定的资源很长时间没有被释放，那么可以在OS级再杀死相应的进程（线程），首先执行下面的语句获得进程（线程）号：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select b.spid,a.osuser,b.program </span><br><span class="line">  from v$session a,v$process b </span><br><span class="line"> where a.paddr=b.addr </span><br><span class="line">   and a.sid=176     --176就是上面的sid</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1875512-20220218161605390-1686124764.png" alt="img"></p>
+<ol start="3">
+<li>在OS上杀死这个进程（线程）</li>
+</ol>
+<p>1)、在unix&#x2F;linux上，用root身份执行命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#kill -9 9532（9532 即第4步查询出的spid） </span><br></pre></td></tr></table></figure>
+
+<p>2)、在windows（unix也适用）用orakill杀死线程，orakill是oracle提供的一个可执行命令，语法为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">orakill sid thread </span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<p>sid：表示要杀死的进程属于的实例名 </p>
+<p>thread：是要杀掉的线程号，即第3步查询出的spid。 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">例：C:&gt;orakill ACVS 9532</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1875512-20220218161852049-245548292.png" alt="img"></p>
+<p><strong>注意：</strong>这里要注意的是kill OS进程是在服务端操作，而不是你程序所在客户机。��户机。</p>
+]]></content>
+      <categories>
+        <category>oracle</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo-Admin安装</title>
+    <url>/posts/12373/</url>
+    <content><![CDATA[<h2 id="Hexo-Admin安装"><a href="#Hexo-Admin安装" class="headerlink" title="Hexo-Admin安装"></a>Hexo-Admin安装</h2><p>参考链接：<a href="https://yaofeiliang.com/article/Hexo-Hexo-admin/">https://yaofeiliang.com/article/Hexo-Hexo-admin/</a></p>
+<p>需要说明的是，hexo-admin 管理是本地用的，就是你需要在本地编辑完之后再上传到 github，而不能直接在线编辑保存，因为 github pages 只支持静态页面的；</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-admin</span><br><span class="line">hexo server -d</span><br><span class="line">open http://localhost:4000/admin/</span><br></pre></td></tr></table></figure>
+
+<h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><p>hexo根目录配置文件</p>
+<p>bcrypt hash生成链接：<a href="https://www.bejson.com/encrypt/bcrpyt_encode/">在线Bcrypt密码生成工具-Bejson.com</a></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">admin:</span></span><br><span class="line">   <span class="attr">username:</span> <span class="string">zoro</span></span><br><span class="line">   <span class="attr">password_hash:</span> <span class="string">be121740bf988b2225a313fa1f107ca1</span> <span class="comment"># t205456 //用户名密码不喜欢的可以不设置，这里通过bcrypt hash</span></span><br><span class="line">   <span class="attr">secret:</span> <span class="string">hey</span> <span class="string">hexo</span></span><br><span class="line">   <span class="attr">deployCommand:</span> <span class="string">&#x27;./admin_script/hexo-generate.sh&#x27;</span></span><br><span class="line">  <span class="comment"># expire: 60*1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="命令脚本"><a href="#命令脚本" class="headerlink" title="命令脚本"></a>命令脚本</h3><p>这里的command对应于界面中的deploy按钮，在下面写上脚本，可以一键生成html页面，并提交到托管的地址，这就是hexo admin的核心思想！<br>commad后续操作：</p>
+<p>在根目录新建admin_script，文件夹，进入执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">touch hexo-generate.sh;</span><br><span class="line">vim hexo-generate.sh;</span><br></pre></td></tr></table></figure>
+
+<p>在里面加入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/env sh</span><br><span class="line">hexo clean</span><br><span class="line">hexo g  -d</span><br><span class="line">//想加什么命令都可以，一键完成。</span><br></pre></td></tr></table></figure>
+
+<p>最后，修改权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x hexo-generate.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="主页中的按钮"><a href="#主页中的按钮" class="headerlink" title="主页中的按钮"></a>主页中的按钮</h3><p>还有一个publish按钮，点击的话会出现在blog相应的文件夹中，unpublish的话就会在文件夹中消失！！！！！！</p>
+<ul>
+<li>Post：博客文章列表，包括已经发布的和还在草稿箱等待宠幸的；</li>
+<li>Pages：就是诸如标签云之类的页面管理；</li>
+<li>About：关于admin插件的说明</li>
+<li>Deploy：关键节点；</li>
+<li>Settings：配置；</li>
+</ul>
+<h2 id="安装Hexo-Admin-中文版"><a href="#安装Hexo-Admin-中文版" class="headerlink" title="安装Hexo-Admin 中文版"></a>安装Hexo-Admin 中文版</h2><p><a href="https://blog.tsinbei.com/archives/1136/">安装 Hexo Admin 中文版 - 清北博客 (tsinbei.com)</a></p>
+<h3 id="检查是否安装hexo-admin"><a href="#检查是否安装hexo-admin" class="headerlink" title="检查是否安装hexo-admin"></a>检查是否安装hexo-admin</h3><p>如果你已经安装了原版再安装中文版将会出现一些问题，所以建议先将原版卸载，先通过下方这个指令判断是否安装了<code>hexo-admin</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm list hexo-admin</span><br></pre></td></tr></table></figure>
+
+<p>如果输出的内容是这样的，就说明安装了<code>hexo-admin</code>，那么就需要卸载</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1700101410.jpg" alt="hexo-admin已安装"></p>
+<p>如果输出的内容是这样的，就说明没有安装<code>hexo-admin</code>，可以跳过卸载步骤</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1700101410.jpg"></p>
+<p>卸载原版hexo-admin</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm remove hexo-admin</span><br></pre></td></tr></table></figure>
+
+<p>这样就卸载完成了</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1700101420.jpg" alt="hexo-admin卸载完成"></p>
+<p>安装hexo-admin中文版</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-admin-sch --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>安装完成后，就可以启动hexo服务器看看效果了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1700101425.jpg" alt="hexo服务器启动"></p>
+<p>启动后访问<code>IP:端口/admin</code>就可以看到效果了</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1700101429.jpg" alt="使用体验"></p>
+<h2 id="Hexo-Admin如何增加文章配置项？"><a href="#Hexo-Admin如何增加文章配置项？" class="headerlink" title="Hexo-Admin如何增加文章配置项？"></a>Hexo-Admin如何增加文章配置项？</h2><p>参考链接：<a href="https://blog.zhheo.com/p/5c3da709.html">https://blog.zhheo.com/p/5c3da709.html</a></p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Hexo-admin如何增加文章配置项？自定义文章配置、在后台直接自定义封面</p>
+<p>在使用Hexoadmin的时候如果要为文章插入封面就变得非常困难，有的时候不得不使用其他的文章编辑器，例如vscode等。这些编辑器虽然也是一个不错的选择，但是hexoadmin在浏览器中编辑的体验还是很不错的。</p>
+<p>如何给Hexo怎么添加参数呢？在最新版本的hexo-admin中，更新了该功能。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240119100752289.png" alt="image-20240119100752289"></p>
+<h3 id="添加方法"><a href="#添加方法" class="headerlink" title="添加方法"></a>添加方法</h3><p>根据官方的文档所述，在博客根目录的配置文件_config.yml中的admin配置项，我们可以定义这个metadata参数</p>
+<p>以下配置就是截图的效果，可以根据你的实际情况来更改为你需要的：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">admin:</span></span><br><span class="line">   <span class="attr">username:</span> <span class="string">zoro</span></span><br><span class="line">   <span class="attr">password_hash:</span> <span class="string">be121740bf988b2225a313fa1f107ca1</span> <span class="comment"># t205456 //用户名密码不喜欢的可以不设置，这里通过bcrypt hash</span></span><br><span class="line">   <span class="attr">secret:</span> <span class="string">hey</span> <span class="string">hexo</span></span><br><span class="line">   <span class="attr">deployCommand:</span> <span class="string">&#x27;./admin_script/hexo-generate.sh&#x27;</span></span><br><span class="line">  <span class="comment"># expire: 60*1</span></span><br><span class="line"><span class="comment"># hexo-admin 默认文章参数</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">top:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">cover:</span> </span><br><span class="line">  <span class="attr">password:</span> </span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Butterfily主题安装文档</title>
     <url>/posts/14518/</url>
     <content><![CDATA[<h2 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h2><p>修改项目配置文件 <code>_config.yml</code><br>默认语言是 en</p>
@@ -417,67 +646,109 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo-Admin安装</title>
-    <url>/posts/12373/</url>
-    <content><![CDATA[<h2 id="Hexo-Admin安装"><a href="#Hexo-Admin安装" class="headerlink" title="Hexo-Admin安装"></a>Hexo-Admin安装</h2><p>参考链接：<a href="https://yaofeiliang.com/article/Hexo-Hexo-admin/">https://yaofeiliang.com/article/Hexo-Hexo-admin/</a></p>
-<p>需要说明的是，hexo-admin 管理是本地用的，就是你需要在本地编辑完之后再上传到 github，而不能直接在线编辑保存，因为 github pages 只支持静态页面的；</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-admin</span><br><span class="line">hexo server -d</span><br><span class="line">open http://localhost:4000/admin/</span><br></pre></td></tr></table></figure>
+    <title>Hexo+Butterfly 动态修改网站的标题</title>
+    <url>/posts/32273/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>可以在切换至其他网页时动态修改网站的标题，引起访问者的注意，当再次回来时修改网站标题表示欢迎；</p>
+<h2 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h2><h3 id="新建脚本文件"><a href="#新建脚本文件" class="headerlink" title="新建脚本文件"></a>新建脚本文件</h3><p>Root\source\js\title.js，写入一下内容：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">//动态标题</span></span><br><span class="line"><span class="string">var</span> <span class="string">OriginTitile</span> <span class="string">=</span> <span class="string">document.title;</span></span><br><span class="line"><span class="string">var</span> <span class="string">titleTime;</span></span><br><span class="line"><span class="string">document.addEventListener(&#x27;visibilitychange&#x27;,</span> <span class="string">function</span> <span class="string">()</span> &#123;</span><br><span class="line">  <span class="string">if</span> <span class="string">(document.hidden)</span> &#123;</span><br><span class="line">    <span class="string">//离开当前页面时标签显示内容</span></span><br><span class="line">    <span class="string">document.title</span> <span class="string">=</span> <span class="string">&#x27;👀不要走嘛~&#x27;</span><span class="string">;</span></span><br><span class="line">    <span class="string">clearTimeout(titleTime);</span></span><br><span class="line">  &#125; <span class="string">else</span> &#123;</span><br><span class="line">    <span class="string">//返回当前页面时标签显示内容</span></span><br><span class="line">    <span class="string">document.title</span> <span class="string">=</span> <span class="string">&#x27;🐖欢迎你回来～&#x27;</span><span class="string">;</span></span><br><span class="line">    <span class="string">//两秒后变回正常标题</span></span><br><span class="line">    <span class="string">titleTime</span> <span class="string">=</span> <span class="string">setTimeout(function</span> <span class="string">()</span> &#123;</span><br><span class="line">      <span class="string">document.title</span> <span class="string">=</span> <span class="string">OriginTitile;</span></span><br><span class="line">    &#125;, <span class="number">2000</span><span class="string">);</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;<span class="string">);</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><p>hexo根目录配置文件</p>
-<p>bcrypt hash生成链接：<a href="https://www.bejson.com/encrypt/bcrpyt_encode/">在线Bcrypt密码生成工具-Bejson.com</a></p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">admin:</span></span><br><span class="line">   <span class="attr">username:</span> <span class="string">zoro</span></span><br><span class="line">   <span class="attr">password_hash:</span> <span class="string">be121740bf988b2225a313fa1f107ca1</span> <span class="comment"># t205456 //用户名密码不喜欢的可以不设置，这里通过bcrypt hash</span></span><br><span class="line">   <span class="attr">secret:</span> <span class="string">hey</span> <span class="string">hexo</span></span><br><span class="line">   <span class="attr">deployCommand:</span> <span class="string">&#x27;./admin_script/hexo-generate.sh&#x27;</span></span><br><span class="line">  <span class="comment"># expire: 60*1</span></span><br></pre></td></tr></table></figure>
+<h3 id="引用脚本文件"><a href="#引用脚本文件" class="headerlink" title="引用脚本文件"></a>引用脚本文件</h3><p>在主题配置文件<code>_config.butterfly.yml</code>引入该文件：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span> </span><br><span class="line">  <span class="attr">bottom:</span> </span><br><span class="line"><span class="string">+</span>    <span class="bullet">-</span> <span class="string">&lt;script</span> <span class="string">async</span> <span class="string">src=&quot;/js/title.js&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="命令脚本"><a href="#命令脚本" class="headerlink" title="命令脚本"></a>命令脚本</h3><p>这里的command对应于界面中的deploy按钮，在下面写上脚本，可以一键生成html页面，并提交到托管的地址，这就是hexo admin的核心思想！<br>commad后续操作：</p>
-<p>在根目录新建admin_script，文件夹，进入执行：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">touch hexo-generate.sh;</span><br><span class="line">vim hexo-generate.sh;</span><br></pre></td></tr></table></figure>
+<h3 id="查看和验证效果"><a href="#查看和验证效果" class="headerlink" title="查看和验证效果"></a>查看和验证效果</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">cl</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">s</span></span><br></pre></td></tr></table></figure>
 
-<p>在里面加入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/env sh</span><br><span class="line">hexo clean</span><br><span class="line">hexo g  -d</span><br><span class="line">//想加什么命令都可以，一键完成。</span><br></pre></td></tr></table></figure>
 
-<p>最后，修改权限</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x hexo-generate.sh</span><br></pre></td></tr></table></figure>
 
-<h3 id="主页中的按钮"><a href="#主页中的按钮" class="headerlink" title="主页中的按钮"></a>主页中的按钮</h3><p>还有一个publish按钮，点击的话会出现在blog相应的文件夹中，unpublish的话就会在文件夹中消失！！！！！！</p>
-<ul>
-<li>Post：博客文章列表，包括已经发布的和还在草稿箱等待宠幸的；</li>
-<li>Pages：就是诸如标签云之类的页面管理；</li>
-<li>About：关于admin插件的说明</li>
-<li>Deploy：关键节点；</li>
-<li>Settings：配置；</li>
-</ul>
-<h2 id="安装Hexo-Admin-中文版"><a href="#安装Hexo-Admin-中文版" class="headerlink" title="安装Hexo-Admin 中文版"></a>安装Hexo-Admin 中文版</h2><p><a href="https://blog.tsinbei.com/archives/1136/">安装 Hexo Admin 中文版 - 清北博客 (tsinbei.com)</a></p>
-<h3 id="检查是否安装hexo-admin"><a href="#检查是否安装hexo-admin" class="headerlink" title="检查是否安装hexo-admin"></a>检查是否安装hexo-admin</h3><p>如果你已经安装了原版再安装中文版将会出现一些问题，所以建议先将原版卸载，先通过下方这个指令判断是否安装了<code>hexo-admin</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm list hexo-admin</span><br></pre></td></tr></table></figure>
 
-<p>如果输出的内容是这样的，就说明安装了<code>hexo-admin</code>，那么就需要卸载</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1700101410.jpg" alt="hexo-admin已安装"></p>
-<p>如果输出的内容是这样的，就说明没有安装<code>hexo-admin</code>，可以跳过卸载步骤</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1700101410.jpg"></p>
-<p>卸载原版hexo-admin</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm remove hexo-admin</span><br></pre></td></tr></table></figure>
 
-<p>这样就卸载完成了</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1700101420.jpg" alt="hexo-admin卸载完成"></p>
-<p>安装hexo-admin中文版</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-admin-sch --save</span><br></pre></td></tr></table></figure>
-
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>安装完成后，就可以启动hexo服务器看看效果了</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1700101425.jpg" alt="hexo服务器启动"></p>
-<p>启动后访问<code>IP:端口/admin</code>就可以看到效果了</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1700101429.jpg" alt="使用体验"></p>
-<h2 id="Hexo-Admin如何增加文章配置项？"><a href="#Hexo-Admin如何增加文章配置项？" class="headerlink" title="Hexo-Admin如何增加文章配置项？"></a>Hexo-Admin如何增加文章配置项？</h2><p>参考链接：<a href="https://blog.zhheo.com/p/5c3da709.html">https://blog.zhheo.com/p/5c3da709.html</a></p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Hexo-admin如何增加文章配置项？自定义文章配置、在后台直接自定义封面</p>
-<p>在使用Hexoadmin的时候如果要为文章插入封面就变得非常困难，有的时候不得不使用其他的文章编辑器，例如vscode等。这些编辑器虽然也是一个不错的选择，但是hexoadmin在浏览器中编辑的体验还是很不错的。</p>
-<p>如何给Hexo怎么添加参数呢？在最新版本的hexo-admin中，更新了该功能。</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240119100752289.png" alt="image-20240119100752289"></p>
-<h3 id="添加方法"><a href="#添加方法" class="headerlink" title="添加方法"></a>添加方法</h3><p>根据官方的文档所述，在博客根目录的配置文件_config.yml中的admin配置项，我们可以定义这个metadata参数</p>
-<p>以下配置就是截图的效果，可以根据你的实际情况来更改为你需要的：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">admin:</span></span><br><span class="line">   <span class="attr">username:</span> <span class="string">zoro</span></span><br><span class="line">   <span class="attr">password_hash:</span> <span class="string">be121740bf988b2225a313fa1f107ca1</span> <span class="comment"># t205456 //用户名密码不喜欢的可以不设置，这里通过bcrypt hash</span></span><br><span class="line">   <span class="attr">secret:</span> <span class="string">hey</span> <span class="string">hexo</span></span><br><span class="line">   <span class="attr">deployCommand:</span> <span class="string">&#x27;./admin_script/hexo-generate.sh&#x27;</span></span><br><span class="line">  <span class="comment"># expire: 60*1</span></span><br><span class="line"><span class="comment"># hexo-admin 默认文章参数</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">top:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">cover:</span> </span><br><span class="line">  <span class="attr">password:</span> </span><br></pre></td></tr></table></figure>]]></content>
+<hr>
+<p>参考链接：<a href="https://www.fomal.cc/posts/d1927166.html">https://www.fomal.cc/posts/d1927166.html</a></p>
+]]></content>
       <categories>
         <category>hexo</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Hexo优化butterfly主题配置文章版本</title>
+    <url>/posts/60038/</url>
+    <content><![CDATA[<h2 id="文章版面设计"><a href="#文章版面设计" class="headerlink" title="文章版面设计"></a>文章版面设计</h2><p>先来了解下文章的版面有哪些内容。</p>
+<p><a href="https://blog.csdn.net/liudonglovehemin/article/details/131176749">基于Hexo和Butterfly创建个人技术博客，(9) 优化butterfly主题配置文章版本_butterfly搭建博客修改副标题-CSDN博客</a></p>
+<h3 id="列表页"><a href="#列表页" class="headerlink" title="列表页"></a>列表页</h3><p>主要包括cover图、标题、摘要、meta信息，以及右侧目录结构显示，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/949542c847564019b2f927af79af0b3e.png" alt="在这里插入图片描述"></p>
+<h3 id="详情页"><a href="#详情页" class="headerlink" title="详情页"></a>详情页</h3><p>文章详情页，主要包含三部分：头、内容、脚三部分，详细如下图所示：</p>
+<h4 id="头部区"><a href="#头部区" class="headerlink" title="头部区"></a><strong>头部区</strong></h4><p>包含标题、meta信息、top图三块内容</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/29685860aadb4679bd32b4ec732b9a36.png" alt="在这里插入图片描述"></p>
+<h4 id="内容区"><a href="#内容区" class="headerlink" title="内容区"></a><strong>内容区</strong></h4><p>主要包括过期提醒、编辑按钮以及文章目录。如下图是在<code>侧边栏</code>显示文章目录的例子。</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/c0bf0216a0104c63b8f9ab2213d6281f.png" alt="在这里插入图片描述"></p>
+<h4 id="脚部区"><a href="#脚部区" class="headerlink" title="脚部区"></a><strong>脚部区</strong></h4><p>这块的内容比较多，主要包括：版本、分享、打赏、分页、相关推荐。详细可参考下图红框内的说明：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/22f14030dfe344d2bec747b0fea0623a.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>接下来就挨个实现上述版本面的设计</p>
+</blockquote>
+<h2 id="列表页-1"><a href="#列表页-1" class="headerlink" title="列表页"></a>列表页</h2><h3 id="cover封面图设计"><a href="#cover封面图设计" class="headerlink" title="cover封面图设计"></a>cover封面图设计</h3><p>也可以称为文章的缩略图片，主要在一些列表地方显示，显示顺序是:<code>文章的cover属性&gt;配置文件的 default_cover</code>，如果不需要显示设置<code>cover=false</code>。当配置多张图片时会随机选择一张作为cover。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">cover:</span></span><br><span class="line">  <span class="attr">index_enable:</span> <span class="literal">true</span>  <span class="comment"># 主页是否显示文章封面图</span></span><br><span class="line">  <span class="attr">aside_enable:</span> <span class="literal">true</span> <span class="comment"># 侧栏是否显示文章封面图</span></span><br><span class="line">  <span class="attr">archives_enable:</span> <span class="literal">true</span> <span class="comment"># 归档页面是否显示文章封面图</span></span><br><span class="line">  <span class="attr">position:</span> <span class="string">both</span> <span class="comment"># 封面顯示的位置，三個值可配置 left , right , both(一左一右)</span></span><br><span class="line">  <span class="attr">default_cover:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">https://cn.bing.com/th?id=OHR.TeaGardensMunnar_ZH-CN9587720369_1366x768.jpg</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">https://cn.bing.com/th?id=OHR.RichmondDeer_ZH-CN0408206629_1920x1080.jpg</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">https://cn.bing.com/th?id=OHR.SvalbardSun_ZH-CN6108396467_1920x1080.jpg</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">https://cn.bing.com/th?id=OHR.VictoriaMemorialKolkata_ZH-CN5801450386_1920x1080.jpg</span></span><br></pre></td></tr></table></figure>
+
+<p>有时这里的<code>default_cover</code>不太好用，可以在文章中配置coverl图，如下：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">abbrlink: 4a17b156</span><br><span class="line"><span class="section">cover: https://file.crazywong.com/gh/jerryc127/CDN/img/Butterfly-docs-02-cover.png</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="meta信息"><a href="#meta信息" class="headerlink" title="meta信息"></a>meta信息</h3><p>把文章的一些meta信息显示在网页上，这个信息会同时显示在列表页，也会显示在详情页上。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">post_meta:</span> <span class="comment"># 页面meta显示</span></span><br><span class="line">  <span class="attr">page:</span> <span class="comment"># Home Page</span></span><br><span class="line">    <span class="attr">date_type:</span> <span class="string">created</span> <span class="comment"># created or updated or both 主頁文章日期是創建日或者更新日或都顯示</span></span><br><span class="line">    <span class="attr">date_format:</span> <span class="string">relative</span> <span class="comment"># date/relative 顯示日期還是相對日期</span></span><br><span class="line">    <span class="attr">categories:</span> <span class="literal">true</span> <span class="comment"># true or false 主頁是否顯示分類</span></span><br><span class="line">    <span class="attr">tags:</span> <span class="literal">false</span> <span class="comment"># true or false 主頁是否顯示標籤</span></span><br><span class="line">    <span class="attr">label:</span> <span class="literal">true</span> <span class="comment"># true or false 顯示描述性文字</span></span><br><span class="line">  <span class="attr">post:</span></span><br><span class="line">    <span class="attr">date_type:</span> <span class="string">created</span> <span class="comment"># created or updated or both 文章頁日期是創建日或者更新日或都顯示</span></span><br><span class="line">    <span class="attr">date_format:</span> <span class="string">relative</span> <span class="comment"># date/relative 顯示日期還是相對日期</span></span><br><span class="line">    <span class="attr">categories:</span> <span class="literal">true</span> <span class="comment"># true or false 文章頁是否顯示分類</span></span><br><span class="line">    <span class="attr">tags:</span> <span class="literal">true</span> <span class="comment"># true or false 文章頁是否顯示標籤</span></span><br><span class="line">    <span class="attr">label:</span> <span class="literal">true</span> <span class="comment"># true or false 顯示描述性文字</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="摘要信息"><a href="#摘要信息" class="headerlink" title="摘要信息"></a>摘要信息</h3><p>是否需要在列表或主页等缩略图的地方显示文章的概述信息，值取自<code>description</code>的值或是自动取文章前多少个字；</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">index_post_content:</span> <span class="comment"># 主页显示文章节选，1：显示描述；2、自动；3、截取一部分正文</span></span><br><span class="line">  <span class="attr">method:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">length:</span> <span class="number">500</span></span><br></pre></td></tr></table></figure>
+
+<p>method的可选值有4个，但建设配置为2，然后每个文章好好写写描述值，因为这与seo有关。</p>
+<ul>
+<li>description： 只显示escription</li>
+<li>both： 优先description，如果沒有配置description，则显示自动节选的內容</li>
+<li>auto_excerpt：只显示自动节选内容<br>false： 不显示文章內容</li>
+</ul>
+<h2 id="详情页-1"><a href="#详情页-1" class="headerlink" title="详情页"></a>详情页</h2><h3 id="头部区-1"><a href="#头部区-1" class="headerlink" title="头部区"></a>头部区</h3><h4 id="top顶图"><a href="#top顶图" class="headerlink" title="top顶图"></a>top顶图</h4><p>此处配置的是默认的top图，还可以通过文章的<code>cover</code>和<code>top_img</code>参数进行修改，如果全站不需要显示top图，可直接配置 <code>disable_top_img: true</code>，文章页頂部图的获取順序：各自配置的 <code>top_img</code> &gt; <code>cover</code> &gt; <code>配置文件的 default_top_img</code> 。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 页面顶图配置</span></span><br><span class="line"><span class="comment"># category_per_img和tag_per_img，可配置多张，每次会随机取一张</span></span><br><span class="line"><span class="comment"># format:</span></span><br><span class="line"><span class="comment">#  - category name: xxxxx</span></span><br><span class="line"><span class="attr">disable_top_img:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="attr">default_top_img:</span> <span class="string">https://file.crazywong.com/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg</span></span><br><span class="line"><span class="attr">archive_img:</span> <span class="string">https://file.crazywong.com/gh/jerryc127/butterfly_cdn@2.1.0/top_img/archive.jpg</span></span><br><span class="line"><span class="attr">tag_img:</span> <span class="string">https://file.crazywong.com/gh/jerryc127/butterfly_cdn@2.1.0/top_img/tag.png</span></span><br><span class="line"><span class="attr">tag_per_img:</span></span><br><span class="line"><span class="attr">category_img:</span> <span class="string">https://file.crazywong.com/gh/jerryc127/butterfly_cdn@2.1.0/top_img/category.jpg</span></span><br><span class="line"><span class="attr">category_per_img:</span></span><br></pre></td></tr></table></figure>
+
+<p>以上配置中的参数值除配置图片外还可以配置以下几个选项：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">、不配置，则不显示；top_img:</span> </span><br><span class="line"><span class="number">2</span><span class="string">、url图片；top_img:</span> <span class="string">/img/top_bg.png</span></span><br><span class="line"><span class="number">3</span><span class="string">、颜色：top_img:</span> <span class="string">orange</span></span><br><span class="line"><span class="number">4</span><span class="string">、渐变色：top_img:</span> <span class="string">&#x27;linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240113152859108.png" alt="image-20240113152859108"></p>
+<h3 id="内容区-1"><a href="#内容区-1" class="headerlink" title="内容区"></a>内容区</h3><h4 id="文章过期提醒"><a href="#文章过期提醒" class="headerlink" title="文章过期提醒"></a>文章过期提醒</h4><p>可设置是否显示文章过期提醒，以更新时间为基准。会在文章最上面提示一个弹出框说明过期信息</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">noticeOutdate:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">flat</span> <span class="comment"># style: simple/flat</span></span><br><span class="line">  <span class="attr">limit_day:</span> <span class="number">365</span> <span class="comment"># 距离更新时间多少天才显示文章过期提醒</span></span><br><span class="line">  <span class="attr">position:</span> <span class="string">top</span> <span class="comment"># position: top/bottom</span></span><br><span class="line">  <span class="attr">message_prev:</span> <span class="string">It</span> <span class="string">has</span> <span class="string">been</span>  <span class="comment"># 天数之前的文字</span></span><br><span class="line">  <span class="attr">message_next:</span> <span class="string">days</span> <span class="string">since</span> <span class="string">the</span> <span class="string">last</span> <span class="string">update,</span> <span class="string">the</span> <span class="string">content</span> <span class="string">of</span> <span class="string">the</span> <span class="string">article</span> <span class="string">may</span> <span class="string">be</span> <span class="string">outdated.</span>  <span class="comment">#天数之后的文字</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="文章是否可编辑"><a href="#文章是否可编辑" class="headerlink" title="文章是否可编辑"></a>文章是否可编辑</h4><p>在文章标题旁边显示一个编辑按钮，点击会跳转到对应的链接去。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Post edit</span></span><br><span class="line"><span class="comment"># Easily browse and edit blog source code online.</span></span><br><span class="line"><span class="attr">post_edit:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># For example: https://github.com/jerryc127/butterfly.js.org/edit/main/source/</span></span><br><span class="line">  <span class="attr">url:</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="文章目录显示toc设置"><a href="#文章目录显示toc设置" class="headerlink" title="文章目录显示toc设置"></a>文章目录显示toc设置</h4><p>这是一个全局配置。设置文章的目录显示。这个值可在文章的Front-matter进行覆盖。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">toc:</span> <span class="comment"># 文章目录显示位置</span></span><br><span class="line">  <span class="attr">post:</span> <span class="literal">true</span> <span class="comment">#文章页是否显示 TOC</span></span><br><span class="line">  <span class="attr">page:</span> <span class="literal">false</span> <span class="comment">#普通页面是否显示 TOC</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">true</span> <span class="comment">#是否显示章节数</span></span><br><span class="line">  <span class="attr">expand:</span> <span class="literal">false</span> <span class="comment">#是否展开 TOC</span></span><br><span class="line">  <span class="attr">style_simple:</span> <span class="literal">false</span> <span class="comment"># 简洁模式（侧边栏只显示 TOC, 只对文章页有效 ）</span></span><br><span class="line">  <span class="attr">scroll_percent:</span> <span class="literal">true</span> <span class="comment">#是否显示滚动进度百分比</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="脚部区-1"><a href="#脚部区-1" class="headerlink" title="脚部区"></a>脚部区</h3><h4 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 文章底部</span></span><br><span class="line"><span class="attr">copy:</span> <span class="comment"># 复制配置，开启后复制内容后会加入版权信息</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">copyright:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">limit_count:</span> <span class="number">50</span> <span class="comment">#复制行数多于50行时会默认添加版本信息</span></span><br><span class="line"></span><br><span class="line"><span class="attr">post_copyright:</span> <span class="comment"># 版权配置</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">decode:</span> <span class="literal">false</span>  <span class="comment">#true来显示中文网址</span></span><br><span class="line">  <span class="attr">author_href:</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">CC</span> <span class="string">BY-NC-SA</span> <span class="number">4.0</span></span><br><span class="line">  <span class="attr">license_url:</span> <span class="string">https://creativecommons.org/licenses/by-nc-sa/4.0/</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="打赏配置"><a href="#打赏配置" class="headerlink" title="打赏配置"></a>打赏配置</h4><p>这里可配置多个打赏二维码图片</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">reward:</span> <span class="comment"># 文章底部的打赏功能</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">QR_code:</span></span><br><span class="line">  <span class="comment">#    - img: https://wechat.jpg</span></span><br><span class="line">  <span class="comment">#      link:</span></span><br><span class="line">  <span class="comment">#      text: 微信</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="下一篇上一篇导航-分页"><a href="#下一篇上一篇导航-分页" class="headerlink" title="下一篇上一篇导航(分页)"></a>下一篇上一篇导航(分页)</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 推送文章分页，1表示左侧推送上一篇，2表示左侧推送上一篇</span></span><br><span class="line"><span class="attr">post_pagination:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="文章分享"><a href="#文章分享" class="headerlink" title="文章分享"></a>文章分享</h4><p>这是一个全局的配置，在你每篇文章的结尾，可以添加打赏按钮。以下配置二选一</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">sharejs:</span> <span class="comment"># Share System (分享)</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">sites:</span> <span class="string">facebook,twitter,wechat,weibo,qq</span></span><br><span class="line"></span><br><span class="line"><span class="attr">addtoany:</span> <span class="comment"># Share System (分享)</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">item:</span> <span class="string">facebook,twitter,wechat,sina_weibo,facebook_messenger,email,copy_link</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="推荐文章"><a href="#推荐文章" class="headerlink" title="推荐文章"></a>推荐文章</h4><p>当文章封面设置为 false 时，或者没有获取到封面配置，相关文章背景将会显示主题色。相关文章推荐的原理是根据文章tags的比重来推荐。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">related_post:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">6</span> <span class="comment"># 显示推荐文章数目</span></span><br><span class="line">  <span class="attr">date_type:</span> <span class="string">created</span> <span class="comment"># or created or updated 文章日期显示创建日或者更新日</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="其它设置"><a href="#其它设置" class="headerlink" title="其它设置"></a>其它设置</h2><h3 id="页面锚点"><a href="#页面锚点" class="headerlink" title="页面锚点"></a>页面锚点</h3><p>开启页面锚点后，当你在进行滚动时，页面链接会根据标题ID进行替换(注意: 每替换一次，会留下一个历史记录。所以如果一篇文章有很多锚点的话，网页的历史记录会很多。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">anchor:</span> <span class="comment"># 开启页面锚点后，当你在进行滚动时，页面链接会根据标题ID进行替换</span></span><br><span class="line">  <span class="attr">button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">always_show:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">icon:</span></span><br><span class="line">  <span class="attr">auto_update:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="代码样式"><a href="#代码样式" class="headerlink" title="代码样式"></a>代码样式</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight_theme:</span> <span class="string">light</span> <span class="comment"># 代码高亮：darker、light、ocean、mac、pale night、mac light</span></span><br><span class="line"><span class="attr">highlight_copy:</span> <span class="literal">true</span> <span class="comment"># 代码支持复制</span></span><br><span class="line"><span class="attr">highlight_shrink:</span> <span class="literal">false</span> <span class="comment">#代码框是否默认展开，true表示不展开，需点击 &#x27;&gt;&#x27; 打开，可选值还有none，不显示 &#x27;&gt;&#x27;</span></span><br><span class="line"><span class="attr">highlight_lang:</span> <span class="literal">true</span> <span class="comment">#是否显示语言</span></span><br><span class="line"><span class="attr">code_word_wrap:</span> <span class="literal">false</span> <span class="comment"># 代码自动换行，不会出现滚动条，但如果上传代码的人代码不规范格式可能会乱；同时也要改动_config.yml中相应高亮显示代码配置的 line_number 设置成false</span></span><br><span class="line"><span class="attr">highlight_height_limit:</span> <span class="literal">false</span> <span class="comment"># unit: px，代码高度配置，超出部分会隐藏</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="图片标题"><a href="#图片标题" class="headerlink" title="图片标题"></a>图片标题</h3><p>如果开启图片Figcaption描述文字显示功能，则优先显示图片的 title 属性，然后是 alt 属性</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">photofigcaption:</span> <span class="literal">true</span> </span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>butterfly</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hexo博客增加本地搜索的功能（hexo-generator-searchdb）</title>
@@ -525,27 +796,99 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo+Butterfly 动态修改网站的标题</title>
-    <url>/posts/32273/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>可以在切换至其他网页时动态修改网站的标题，引起访问者的注意，当再次回来时修改网站标题表示欢迎；</p>
-<h2 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h2><h3 id="新建脚本文件"><a href="#新建脚本文件" class="headerlink" title="新建脚本文件"></a>新建脚本文件</h3><p>Root\source\js\title.js，写入一下内容：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">//动态标题</span></span><br><span class="line"><span class="string">var</span> <span class="string">OriginTitile</span> <span class="string">=</span> <span class="string">document.title;</span></span><br><span class="line"><span class="string">var</span> <span class="string">titleTime;</span></span><br><span class="line"><span class="string">document.addEventListener(&#x27;visibilitychange&#x27;,</span> <span class="string">function</span> <span class="string">()</span> &#123;</span><br><span class="line">  <span class="string">if</span> <span class="string">(document.hidden)</span> &#123;</span><br><span class="line">    <span class="string">//离开当前页面时标签显示内容</span></span><br><span class="line">    <span class="string">document.title</span> <span class="string">=</span> <span class="string">&#x27;👀不要走嘛~&#x27;</span><span class="string">;</span></span><br><span class="line">    <span class="string">clearTimeout(titleTime);</span></span><br><span class="line">  &#125; <span class="string">else</span> &#123;</span><br><span class="line">    <span class="string">//返回当前页面时标签显示内容</span></span><br><span class="line">    <span class="string">document.title</span> <span class="string">=</span> <span class="string">&#x27;🐖欢迎你回来～&#x27;</span><span class="string">;</span></span><br><span class="line">    <span class="string">//两秒后变回正常标题</span></span><br><span class="line">    <span class="string">titleTime</span> <span class="string">=</span> <span class="string">setTimeout(function</span> <span class="string">()</span> &#123;</span><br><span class="line">      <span class="string">document.title</span> <span class="string">=</span> <span class="string">OriginTitile;</span></span><br><span class="line">    &#125;, <span class="number">2000</span><span class="string">);</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;<span class="string">);</span></span><br></pre></td></tr></table></figure>
+    <title>Hexo博客添加看板娘</title>
+    <url>/posts/43162/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>不知道你们有没有这种体验，就是在逛别人的博客的时候，会在页面左下角或者右下角等界面看到一个会跟随鼠标移动而摇摆的图片动画，看起来还蛮不错，今天就为我的博客添加这样的动画效果  ——看板娘。</p>
+<h2 id="普通看板娘"><a href="#普通看板娘" class="headerlink" title="普通看板娘"></a>普通看板娘</h2><p>hexo的官方是支持看板娘的，已经封装好了插件，但只是模型，不能说话、不能换装、功能较少。<br>更多详情请查看<a href="https://github.com/EYHN/hexo-helper-live2d">hexo-helper-live2d官网</a></p>
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
 
-<h3 id="引用脚本文件"><a href="#引用脚本文件" class="headerlink" title="引用脚本文件"></a>引用脚本文件</h3><p>在主题配置文件<code>_config.butterfly.yml</code>引入该文件：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span> </span><br><span class="line">  <span class="attr">bottom:</span> </span><br><span class="line"><span class="string">+</span>    <span class="bullet">-</span> <span class="string">&lt;script</span> <span class="string">async</span> <span class="string">src=&quot;/js/title.js&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="下载模型"><a href="#下载模型" class="headerlink" title="下载模型"></a>下载模型</h3><p>作者各种模型展示地址：<a href="https://huaji8.top/post/live2d-plugin-2.0/">live2d插件</a>，可选择自己喜欢的模型，然后进行下载安装<br><a href="https://github.com/xiazeyu/live2d-widget-models">模型仓库</a></p>
+<ul>
+<li>live2d-widget-model-chitose</li>
+<li>live2d-widget-model-epsilon2_1</li>
+<li>live2d-widget-model-gf</li>
+<li>live2d-widget-model-haru&#x2F;01 (use npm install –save live2d-widget-model-haru)</li>
+<li>live2d-widget-model-haru&#x2F;02 (use npm install –save live2d-widget-model-haru)</li>
+<li>live2d-widget-model-haruto</li>
+<li>live2d-widget-model-hibiki</li>
+<li>live2d-widget-model-hijiki</li>
+<li>live2d-widget-model-izumi</li>
+<li>live2d-widget-model-koharu</li>
+<li>live2d-widget-model-miku</li>
+<li>live2d-widget-model-ni-j</li>
+<li>live2d-widget-model-nico</li>
+<li>live2d-widget-model-nietzsche</li>
+<li>live2d-widget-model-nipsilon</li>
+<li>live2d-widget-model-nito</li>
+<li>live2d-widget-model-shizuku</li>
+<li>live2d-widget-model-tororo</li>
+<li>live2d-widget-model-tsumiki</li>
+<li>live2d-widget-model-unitychan</li>
+<li>live2d-widget-model-wanko</li>
+<li>live2d-widget-model-z16</li>
+</ul>
+<p>使用<code>npm install &#123;packagename&#125;</code>进行安装，如：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">npm install live2d-widget-model-shizuku -S</span><br></pre></td></tr></table></figure>
 
-<h3 id="查看和验证效果"><a href="#查看和验证效果" class="headerlink" title="查看和验证效果"></a>查看和验证效果</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">cl</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">s</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>在站点配置文件<code>_config.yml</code>或者主题配置文件<code>_config.butterfly.yml</code>中新增如下内容：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Live2D</span></span><br><span class="line"><span class="comment">## https://github.com/EYHN/hexo-helper-live2d</span></span><br><span class="line"><span class="attr">live2d:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># enable: false</span></span><br><span class="line">  <span class="attr">scriptFrom:</span> <span class="string">local</span> <span class="comment"># 默认</span></span><br><span class="line">  <span class="attr">pluginRootPath:</span> <span class="string">live2dw/</span> <span class="comment"># 插件在站点上的根目录(相对路径)</span></span><br><span class="line">  <span class="attr">pluginJsPath:</span> <span class="string">lib/</span> <span class="comment"># 脚本文件相对与插件根目录路径</span></span><br><span class="line">  <span class="attr">pluginModelPath:</span> <span class="string">assets/</span> <span class="comment"># 模型文件相对与插件根目录路径</span></span><br><span class="line">  <span class="comment"># scriptFrom: jsdelivr # jsdelivr CDN</span></span><br><span class="line">  <span class="comment"># scriptFrom: unpkg # unpkg CDN</span></span><br><span class="line">  <span class="comment"># scriptFrom: https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js # 你的自定义 url</span></span><br><span class="line">  <span class="attr">tagMode:</span> <span class="literal">false</span> <span class="comment"># 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中</span></span><br><span class="line">  <span class="attr">debug:</span> <span class="literal">false</span> <span class="comment"># 调试, 是否在控制台输出日志</span></span><br><span class="line">  <span class="attr">model:</span></span><br><span class="line">    <span class="attr">use:</span> <span class="string">live2d-widget-model-wanko</span> <span class="comment"># 第二步下载的模型</span></span><br><span class="line">    <span class="comment"># use: wanko # 博客根目录/live2d_models/ 下的目录名</span></span><br><span class="line">    <span class="comment"># use: ./wives/wanko # 相对于博客根目录的路径</span></span><br><span class="line">    <span class="comment"># use: https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json # 你的自定义 url</span></span><br><span class="line">  <span class="attr">display:</span></span><br><span class="line">    <span class="attr">position:</span> <span class="string">right</span></span><br><span class="line">    <span class="attr">width:</span> <span class="number">150</span></span><br><span class="line">    <span class="attr">height:</span> <span class="number">300</span></span><br><span class="line">  <span class="attr">mobile:</span></span><br><span class="line">    <span class="attr">show:</span> <span class="literal">true</span> <span class="comment"># 手机中是否展示</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="升级看板娘-能说话、能换装"><a href="#升级看板娘-能说话、能换装" class="headerlink" title="升级看板娘(能说话、能换装)"></a>升级看板娘(能说话、能换装)</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
+<li><p>下载<a href="https://github.com/stevenjoezhang/live2d-widget">live2d文件</a></p>
+</li>
+<li><p>将下载好的<code>live2d</code>文件解压到</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">首先在/themes/Butterfly/source/下创建live2d-widget目录，</span><br><span class="line">然后将lived2文件解压到 项目根目录/themes/Butterfly/source/live2d-widget</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改<code>live2d-widget</code>下的<code>autoload.js</code>文件。里面的内容已经写好了，注释第二行，取消第三行的注释就行了。</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">//</span> <span class="string">注意：live2d_path</span> <span class="string">参数应使用绝对路径</span></span><br><span class="line"><span class="string">//const</span> <span class="string">live2d_path</span> <span class="string">=</span> <span class="string">&quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;</span><span class="string">;</span></span><br><span class="line"><span class="string">const</span> <span class="string">live2d_path</span> <span class="string">=</span> <span class="string">&quot;/live2d-widget/&quot;</span><span class="string">;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改主题配置文件<code>_config.butterfly.yml</code>:由于<code>live2d-widget</code>内部使用了<code>font-awesome</code>，所以我们需要引入</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css&quot;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">  <span class="comment"># - &lt;link rel=&quot;stylesheet&quot; href=&quot;/xxx.css&quot;&gt;</span></span><br><span class="line">    <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css&quot;&gt;</span></span><br><span class="line">    <span class="string">&lt;script</span> <span class="string">src=&quot;/live2d-widget/autoload.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line">  <span class="attr">bottom:</span></span><br><span class="line">    <span class="comment"># - &lt;script src=&quot;xxxx&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
 
 
+</li>
+<li><p>在站点配置文件<code>_config.yml</code>或者Butterfly主题配置文件<code>_config.butterfly.yml</code>中,新增如下内容：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">live2d:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后在项目根目录进行重新三连跪：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
+<p>然后就可以看到效果了。</p>
+</li>
+<li><p>默认看板娘是在左边，如果想要切换到右边只需要修改<code>根目录/themes/Butterfly/source/live2d-widget/waifu.css</code>:</p>
+</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu</span> &#123;</span><br><span class="line">	<span class="attribute">bottom</span>: -<span class="number">1000px</span>;</span><br><span class="line">	<span class="attribute">right</span>: <span class="number">0</span>; // 这里默认是 <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">margin-bottom</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">position</span>: fixed;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">3px</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform .<span class="number">3s</span> ease-in-out, bottom <span class="number">3s</span> ease-in-out;</span><br><span class="line">	<span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#waifu-tool</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#aaa</span>;</span><br><span class="line">	<span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">left</span>: <span class="number">0px</span>; // 这里默认是 <span class="attribute">right</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">70px</span>;</span><br><span class="line">	<span class="attribute">transition</span>: opacity <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-<hr>
-<p>参考链接：<a href="https://www.fomal.cc/posts/d1927166.html">https://www.fomal.cc/posts/d1927166.html</a></p>
 ]]></content>
       <categories>
         <category>hexo</category>
       </categories>
+  </entry>
+  <entry>
+    <title>hexo博客加载时报错‘prism_plugin‘</title>
+    <url>/posts/22942/</url>
+    <content><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>使用命令hexo c &amp; hexo g &amp; hexo s运行hexo时出现一下报错（只截取了部分）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ERROR Plugin load failed: hexo-prism-plugin</span><br><span class="line">Error: `prism_plugin` options should be added to _config.yml file</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>在hexo的文件目录下的_config.yml里的最后加上下面的代码（注意：不是主题下面的 _config.yml）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">prism_plugin:</span><br><span class="line">  mode: &#x27;preprocess&#x27; # realtime/preprocess</span><br><span class="line">  theme: &#x27;default&#x27;</span><br><span class="line">  line_number: false # default false</span><br></pre></td></tr></table></figure>
+
+
+
+<p>default false</p>
+<pre><code>
+
+</code></pre>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>bug</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hexo增加关于、标签、分类、归档页面</title>
@@ -733,7 +1076,7 @@
 </tr>
 <tr>
 <td align="left">SMTP_USER</td>
-<td align="left"><a href="mailto:&#120;&#120;&#x78;&#x78;&#x78;&#x78;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#120;&#120;&#x78;&#x78;&#x78;&#x78;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
+<td align="left"><a href="mailto:&#x78;&#x78;&#x78;&#x78;&#120;&#120;&#x40;&#113;&#113;&#46;&#99;&#111;&#109;">&#x78;&#x78;&#x78;&#x78;&#120;&#120;&#x40;&#113;&#113;&#46;&#99;&#111;&#109;</a></td>
 <td align="left">[必填] SMTP 用户名</td>
 </tr>
 <tr>
@@ -748,7 +1091,7 @@
 </tr>
 <tr>
 <td align="left">SENDER_EMAIL</td>
-<td align="left"><a href="mailto:&#120;&#x78;&#120;&#x78;&#120;&#x78;&#x40;&#113;&#113;&#46;&#99;&#111;&#109;">&#120;&#x78;&#120;&#x78;&#120;&#x78;&#x40;&#113;&#113;&#46;&#99;&#111;&#109;</a></td>
+<td align="left"><a href="mailto:&#120;&#x78;&#120;&#120;&#120;&#120;&#x40;&#113;&#x71;&#46;&#99;&#x6f;&#109;">&#120;&#x78;&#120;&#120;&#120;&#120;&#x40;&#113;&#x71;&#46;&#99;&#x6f;&#109;</a></td>
 <td align="left">[必填] 发件邮箱</td>
 </tr>
 <tr>
@@ -788,7 +1131,7 @@
 </tr>
 <tr>
 <td align="left">BLOGGER_EMAIL</td>
-<td align="left"><a href="mailto:&#120;&#120;&#x78;&#120;&#x78;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;">&#120;&#120;&#x78;&#120;&#x78;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;</a></td>
+<td align="left"><a href="mailto:&#x78;&#x78;&#x78;&#120;&#x78;&#64;&#103;&#109;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#x6d;">&#x78;&#x78;&#x78;&#120;&#x78;&#64;&#103;&#109;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#x6d;</a></td>
 <td align="left">[选填] 博主通知收件地址，默认使用 SENDER_EMAIL</td>
 </tr>
 <tr>
@@ -866,6 +1209,37 @@
       <tags>
         <tag>valine</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>在Hexo中生成唯一的文章链接地址</title>
+    <url>/posts/46879/</url>
+    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>Hexo生成博客文章的链接时，默认格式为：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span> <span class="comment"># 年：月：日：标题</span></span><br></pre></td></tr></table></figure>
+
+<p>如果标题中含中文的话，复制URL链接的话中文字符就会是一大串编码字符。</p>
+<p>如果想为每一篇文章生成唯一ID(链接地址)的话，推荐使用<code>hexo-abbrlink</code>或<code>hexo-uuid</code></p>
+<h2 id="hexo-abbrlink"><a href="#hexo-abbrlink" class="headerlink" title="hexo-abbrlink"></a>hexo-abbrlink</h2><p>在博客根目录下运行命令安装 <code>hexo-abbrlink</code> 插件</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-abbrlink</span> <span class="string">--save</span></span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件 <code>_config.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:abbrlink/</span></span><br></pre></td></tr></table></figure>
+
+<p>hexo clean -&gt; hexo g -&gt; hexo s在本地查看效果</p>
+<p><a href="https://github.com/rozbo/hexo-abbrlink">hexo-abbrlink官方文档</a>中还介绍了其他配置，可以参考和自行修改。</p>
+<h2 id="hexo-uuid"><a href="#hexo-uuid" class="headerlink" title="hexo-uuid"></a>hexo-uuid</h2><p>在博客根目录下运行命令安装<code>hexo-uuid</code>插件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-uuid --save</span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件 <code>_config.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:uuid/</span></span><br></pre></td></tr></table></figure>
+
+<p>hexo clean -&gt; hexo g -&gt; hexo s在本地查看效果</p>
+<p><a href="https://github.com/chekun/hexo-uuid">hexo-uuid官方文档</a>中还介绍了其他配置，可以参考和自行修改。</p>
+<hr>
+<p>参考链接：<a href="https://zsyyblog.com/562734ea.htmlg.com/562734ea.html">https://zsyyblog.com/562734ea.htmlg.com/562734ea.html</a></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
   </entry>
   <entry>
     <title>在Hexo中添加豆瓣个人主页</title>
@@ -950,494 +1324,6 @@
       </categories>
       <tags>
         <tag>douban</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo优化butterfly主题配置文章版本</title>
-    <url>/posts/60038/</url>
-    <content><![CDATA[<h2 id="文章版面设计"><a href="#文章版面设计" class="headerlink" title="文章版面设计"></a>文章版面设计</h2><p>先来了解下文章的版面有哪些内容。</p>
-<p><a href="https://blog.csdn.net/liudonglovehemin/article/details/131176749">基于Hexo和Butterfly创建个人技术博客，(9) 优化butterfly主题配置文章版本_butterfly搭建博客修改副标题-CSDN博客</a></p>
-<h3 id="列表页"><a href="#列表页" class="headerlink" title="列表页"></a>列表页</h3><p>主要包括cover图、标题、摘要、meta信息，以及右侧目录结构显示，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/949542c847564019b2f927af79af0b3e.png" alt="在这里插入图片描述"></p>
-<h3 id="详情页"><a href="#详情页" class="headerlink" title="详情页"></a>详情页</h3><p>文章详情页，主要包含三部分：头、内容、脚三部分，详细如下图所示：</p>
-<h4 id="头部区"><a href="#头部区" class="headerlink" title="头部区"></a><strong>头部区</strong></h4><p>包含标题、meta信息、top图三块内容</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/29685860aadb4679bd32b4ec732b9a36.png" alt="在这里插入图片描述"></p>
-<h4 id="内容区"><a href="#内容区" class="headerlink" title="内容区"></a><strong>内容区</strong></h4><p>主要包括过期提醒、编辑按钮以及文章目录。如下图是在<code>侧边栏</code>显示文章目录的例子。</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/c0bf0216a0104c63b8f9ab2213d6281f.png" alt="在这里插入图片描述"></p>
-<h4 id="脚部区"><a href="#脚部区" class="headerlink" title="脚部区"></a><strong>脚部区</strong></h4><p>这块的内容比较多，主要包括：版本、分享、打赏、分页、相关推荐。详细可参考下图红框内的说明：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/22f14030dfe344d2bec747b0fea0623a.png" alt="在这里插入图片描述"></p>
-<blockquote>
-<p>接下来就挨个实现上述版本面的设计</p>
-</blockquote>
-<h2 id="列表页-1"><a href="#列表页-1" class="headerlink" title="列表页"></a>列表页</h2><h3 id="cover封面图设计"><a href="#cover封面图设计" class="headerlink" title="cover封面图设计"></a>cover封面图设计</h3><p>也可以称为文章的缩略图片，主要在一些列表地方显示，显示顺序是:<code>文章的cover属性&gt;配置文件的 default_cover</code>，如果不需要显示设置<code>cover=false</code>。当配置多张图片时会随机选择一张作为cover。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">cover:</span></span><br><span class="line">  <span class="attr">index_enable:</span> <span class="literal">true</span>  <span class="comment"># 主页是否显示文章封面图</span></span><br><span class="line">  <span class="attr">aside_enable:</span> <span class="literal">true</span> <span class="comment"># 侧栏是否显示文章封面图</span></span><br><span class="line">  <span class="attr">archives_enable:</span> <span class="literal">true</span> <span class="comment"># 归档页面是否显示文章封面图</span></span><br><span class="line">  <span class="attr">position:</span> <span class="string">both</span> <span class="comment"># 封面顯示的位置，三個值可配置 left , right , both(一左一右)</span></span><br><span class="line">  <span class="attr">default_cover:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">https://cn.bing.com/th?id=OHR.TeaGardensMunnar_ZH-CN9587720369_1366x768.jpg</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">https://cn.bing.com/th?id=OHR.RichmondDeer_ZH-CN0408206629_1920x1080.jpg</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">https://cn.bing.com/th?id=OHR.SvalbardSun_ZH-CN6108396467_1920x1080.jpg</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">https://cn.bing.com/th?id=OHR.VictoriaMemorialKolkata_ZH-CN5801450386_1920x1080.jpg</span></span><br></pre></td></tr></table></figure>
-
-<p>有时这里的<code>default_cover</code>不太好用，可以在文章中配置coverl图，如下：</p>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">abbrlink: 4a17b156</span><br><span class="line"><span class="section">cover: https://file.crazywong.com/gh/jerryc127/CDN/img/Butterfly-docs-02-cover.png</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="meta信息"><a href="#meta信息" class="headerlink" title="meta信息"></a>meta信息</h3><p>把文章的一些meta信息显示在网页上，这个信息会同时显示在列表页，也会显示在详情页上。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">post_meta:</span> <span class="comment"># 页面meta显示</span></span><br><span class="line">  <span class="attr">page:</span> <span class="comment"># Home Page</span></span><br><span class="line">    <span class="attr">date_type:</span> <span class="string">created</span> <span class="comment"># created or updated or both 主頁文章日期是創建日或者更新日或都顯示</span></span><br><span class="line">    <span class="attr">date_format:</span> <span class="string">relative</span> <span class="comment"># date/relative 顯示日期還是相對日期</span></span><br><span class="line">    <span class="attr">categories:</span> <span class="literal">true</span> <span class="comment"># true or false 主頁是否顯示分類</span></span><br><span class="line">    <span class="attr">tags:</span> <span class="literal">false</span> <span class="comment"># true or false 主頁是否顯示標籤</span></span><br><span class="line">    <span class="attr">label:</span> <span class="literal">true</span> <span class="comment"># true or false 顯示描述性文字</span></span><br><span class="line">  <span class="attr">post:</span></span><br><span class="line">    <span class="attr">date_type:</span> <span class="string">created</span> <span class="comment"># created or updated or both 文章頁日期是創建日或者更新日或都顯示</span></span><br><span class="line">    <span class="attr">date_format:</span> <span class="string">relative</span> <span class="comment"># date/relative 顯示日期還是相對日期</span></span><br><span class="line">    <span class="attr">categories:</span> <span class="literal">true</span> <span class="comment"># true or false 文章頁是否顯示分類</span></span><br><span class="line">    <span class="attr">tags:</span> <span class="literal">true</span> <span class="comment"># true or false 文章頁是否顯示標籤</span></span><br><span class="line">    <span class="attr">label:</span> <span class="literal">true</span> <span class="comment"># true or false 顯示描述性文字</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="摘要信息"><a href="#摘要信息" class="headerlink" title="摘要信息"></a>摘要信息</h3><p>是否需要在列表或主页等缩略图的地方显示文章的概述信息，值取自<code>description</code>的值或是自动取文章前多少个字；</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">index_post_content:</span> <span class="comment"># 主页显示文章节选，1：显示描述；2、自动；3、截取一部分正文</span></span><br><span class="line">  <span class="attr">method:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">length:</span> <span class="number">500</span></span><br></pre></td></tr></table></figure>
-
-<p>method的可选值有4个，但建设配置为2，然后每个文章好好写写描述值，因为这与seo有关。</p>
-<ul>
-<li>description： 只显示escription</li>
-<li>both： 优先description，如果沒有配置description，则显示自动节选的內容</li>
-<li>auto_excerpt：只显示自动节选内容<br>false： 不显示文章內容</li>
-</ul>
-<h2 id="详情页-1"><a href="#详情页-1" class="headerlink" title="详情页"></a>详情页</h2><h3 id="头部区-1"><a href="#头部区-1" class="headerlink" title="头部区"></a>头部区</h3><h4 id="top顶图"><a href="#top顶图" class="headerlink" title="top顶图"></a>top顶图</h4><p>此处配置的是默认的top图，还可以通过文章的<code>cover</code>和<code>top_img</code>参数进行修改，如果全站不需要显示top图，可直接配置 <code>disable_top_img: true</code>，文章页頂部图的获取順序：各自配置的 <code>top_img</code> &gt; <code>cover</code> &gt; <code>配置文件的 default_top_img</code> 。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 页面顶图配置</span></span><br><span class="line"><span class="comment"># category_per_img和tag_per_img，可配置多张，每次会随机取一张</span></span><br><span class="line"><span class="comment"># format:</span></span><br><span class="line"><span class="comment">#  - category name: xxxxx</span></span><br><span class="line"><span class="attr">disable_top_img:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="attr">default_top_img:</span> <span class="string">https://file.crazywong.com/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg</span></span><br><span class="line"><span class="attr">archive_img:</span> <span class="string">https://file.crazywong.com/gh/jerryc127/butterfly_cdn@2.1.0/top_img/archive.jpg</span></span><br><span class="line"><span class="attr">tag_img:</span> <span class="string">https://file.crazywong.com/gh/jerryc127/butterfly_cdn@2.1.0/top_img/tag.png</span></span><br><span class="line"><span class="attr">tag_per_img:</span></span><br><span class="line"><span class="attr">category_img:</span> <span class="string">https://file.crazywong.com/gh/jerryc127/butterfly_cdn@2.1.0/top_img/category.jpg</span></span><br><span class="line"><span class="attr">category_per_img:</span></span><br></pre></td></tr></table></figure>
-
-<p>以上配置中的参数值除配置图片外还可以配置以下几个选项：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">、不配置，则不显示；top_img:</span> </span><br><span class="line"><span class="number">2</span><span class="string">、url图片；top_img:</span> <span class="string">/img/top_bg.png</span></span><br><span class="line"><span class="number">3</span><span class="string">、颜色：top_img:</span> <span class="string">orange</span></span><br><span class="line"><span class="number">4</span><span class="string">、渐变色：top_img:</span> <span class="string">&#x27;linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240113152859108.png" alt="image-20240113152859108"></p>
-<h3 id="内容区-1"><a href="#内容区-1" class="headerlink" title="内容区"></a>内容区</h3><h4 id="文章过期提醒"><a href="#文章过期提醒" class="headerlink" title="文章过期提醒"></a>文章过期提醒</h4><p>可设置是否显示文章过期提醒，以更新时间为基准。会在文章最上面提示一个弹出框说明过期信息</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">noticeOutdate:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">flat</span> <span class="comment"># style: simple/flat</span></span><br><span class="line">  <span class="attr">limit_day:</span> <span class="number">365</span> <span class="comment"># 距离更新时间多少天才显示文章过期提醒</span></span><br><span class="line">  <span class="attr">position:</span> <span class="string">top</span> <span class="comment"># position: top/bottom</span></span><br><span class="line">  <span class="attr">message_prev:</span> <span class="string">It</span> <span class="string">has</span> <span class="string">been</span>  <span class="comment"># 天数之前的文字</span></span><br><span class="line">  <span class="attr">message_next:</span> <span class="string">days</span> <span class="string">since</span> <span class="string">the</span> <span class="string">last</span> <span class="string">update,</span> <span class="string">the</span> <span class="string">content</span> <span class="string">of</span> <span class="string">the</span> <span class="string">article</span> <span class="string">may</span> <span class="string">be</span> <span class="string">outdated.</span>  <span class="comment">#天数之后的文字</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="文章是否可编辑"><a href="#文章是否可编辑" class="headerlink" title="文章是否可编辑"></a>文章是否可编辑</h4><p>在文章标题旁边显示一个编辑按钮，点击会跳转到对应的链接去。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Post edit</span></span><br><span class="line"><span class="comment"># Easily browse and edit blog source code online.</span></span><br><span class="line"><span class="attr">post_edit:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># For example: https://github.com/jerryc127/butterfly.js.org/edit/main/source/</span></span><br><span class="line">  <span class="attr">url:</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="文章目录显示toc设置"><a href="#文章目录显示toc设置" class="headerlink" title="文章目录显示toc设置"></a>文章目录显示toc设置</h4><p>这是一个全局配置。设置文章的目录显示。这个值可在文章的Front-matter进行覆盖。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">toc:</span> <span class="comment"># 文章目录显示位置</span></span><br><span class="line">  <span class="attr">post:</span> <span class="literal">true</span> <span class="comment">#文章页是否显示 TOC</span></span><br><span class="line">  <span class="attr">page:</span> <span class="literal">false</span> <span class="comment">#普通页面是否显示 TOC</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">true</span> <span class="comment">#是否显示章节数</span></span><br><span class="line">  <span class="attr">expand:</span> <span class="literal">false</span> <span class="comment">#是否展开 TOC</span></span><br><span class="line">  <span class="attr">style_simple:</span> <span class="literal">false</span> <span class="comment"># 简洁模式（侧边栏只显示 TOC, 只对文章页有效 ）</span></span><br><span class="line">  <span class="attr">scroll_percent:</span> <span class="literal">true</span> <span class="comment">#是否显示滚动进度百分比</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="脚部区-1"><a href="#脚部区-1" class="headerlink" title="脚部区"></a>脚部区</h3><h4 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 文章底部</span></span><br><span class="line"><span class="attr">copy:</span> <span class="comment"># 复制配置，开启后复制内容后会加入版权信息</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">copyright:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">limit_count:</span> <span class="number">50</span> <span class="comment">#复制行数多于50行时会默认添加版本信息</span></span><br><span class="line"></span><br><span class="line"><span class="attr">post_copyright:</span> <span class="comment"># 版权配置</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">decode:</span> <span class="literal">false</span>  <span class="comment">#true来显示中文网址</span></span><br><span class="line">  <span class="attr">author_href:</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">CC</span> <span class="string">BY-NC-SA</span> <span class="number">4.0</span></span><br><span class="line">  <span class="attr">license_url:</span> <span class="string">https://creativecommons.org/licenses/by-nc-sa/4.0/</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="打赏配置"><a href="#打赏配置" class="headerlink" title="打赏配置"></a>打赏配置</h4><p>这里可配置多个打赏二维码图片</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">reward:</span> <span class="comment"># 文章底部的打赏功能</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">QR_code:</span></span><br><span class="line">  <span class="comment">#    - img: https://wechat.jpg</span></span><br><span class="line">  <span class="comment">#      link:</span></span><br><span class="line">  <span class="comment">#      text: 微信</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="下一篇上一篇导航-分页"><a href="#下一篇上一篇导航-分页" class="headerlink" title="下一篇上一篇导航(分页)"></a>下一篇上一篇导航(分页)</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 推送文章分页，1表示左侧推送上一篇，2表示左侧推送上一篇</span></span><br><span class="line"><span class="attr">post_pagination:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="文章分享"><a href="#文章分享" class="headerlink" title="文章分享"></a>文章分享</h4><p>这是一个全局的配置，在你每篇文章的结尾，可以添加打赏按钮。以下配置二选一</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">sharejs:</span> <span class="comment"># Share System (分享)</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">sites:</span> <span class="string">facebook,twitter,wechat,weibo,qq</span></span><br><span class="line"></span><br><span class="line"><span class="attr">addtoany:</span> <span class="comment"># Share System (分享)</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">item:</span> <span class="string">facebook,twitter,wechat,sina_weibo,facebook_messenger,email,copy_link</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="推荐文章"><a href="#推荐文章" class="headerlink" title="推荐文章"></a>推荐文章</h4><p>当文章封面设置为 false 时，或者没有获取到封面配置，相关文章背景将会显示主题色。相关文章推荐的原理是根据文章tags的比重来推荐。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">related_post:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">6</span> <span class="comment"># 显示推荐文章数目</span></span><br><span class="line">  <span class="attr">date_type:</span> <span class="string">created</span> <span class="comment"># or created or updated 文章日期显示创建日或者更新日</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="其它设置"><a href="#其它设置" class="headerlink" title="其它设置"></a>其它设置</h2><h3 id="页面锚点"><a href="#页面锚点" class="headerlink" title="页面锚点"></a>页面锚点</h3><p>开启页面锚点后，当你在进行滚动时，页面链接会根据标题ID进行替换(注意: 每替换一次，会留下一个历史记录。所以如果一篇文章有很多锚点的话，网页的历史记录会很多。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">anchor:</span> <span class="comment"># 开启页面锚点后，当你在进行滚动时，页面链接会根据标题ID进行替换</span></span><br><span class="line">  <span class="attr">button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">always_show:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">icon:</span></span><br><span class="line">  <span class="attr">auto_update:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="代码样式"><a href="#代码样式" class="headerlink" title="代码样式"></a>代码样式</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight_theme:</span> <span class="string">light</span> <span class="comment"># 代码高亮：darker、light、ocean、mac、pale night、mac light</span></span><br><span class="line"><span class="attr">highlight_copy:</span> <span class="literal">true</span> <span class="comment"># 代码支持复制</span></span><br><span class="line"><span class="attr">highlight_shrink:</span> <span class="literal">false</span> <span class="comment">#代码框是否默认展开，true表示不展开，需点击 &#x27;&gt;&#x27; 打开，可选值还有none，不显示 &#x27;&gt;&#x27;</span></span><br><span class="line"><span class="attr">highlight_lang:</span> <span class="literal">true</span> <span class="comment">#是否显示语言</span></span><br><span class="line"><span class="attr">code_word_wrap:</span> <span class="literal">false</span> <span class="comment"># 代码自动换行，不会出现滚动条，但如果上传代码的人代码不规范格式可能会乱；同时也要改动_config.yml中相应高亮显示代码配置的 line_number 设置成false</span></span><br><span class="line"><span class="attr">highlight_height_limit:</span> <span class="literal">false</span> <span class="comment"># unit: px，代码高度配置，超出部分会隐藏</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="图片标题"><a href="#图片标题" class="headerlink" title="图片标题"></a>图片标题</h3><p>如果开启图片Figcaption描述文字显示功能，则优先显示图片的 title 属性，然后是 alt 属性</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">photofigcaption:</span> <span class="literal">true</span> </span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>butterfly</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo博客加载时报错‘prism_plugin‘</title>
-    <url>/posts/22942/</url>
-    <content><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>使用命令hexo c &amp; hexo g &amp; hexo s运行hexo时出现一下报错（只截取了部分）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ERROR Plugin load failed: hexo-prism-plugin</span><br><span class="line">Error: `prism_plugin` options should be added to _config.yml file</span><br></pre></td></tr></table></figure>
-
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>在hexo的文件目录下的_config.yml里的最后加上下面的代码（注意：不是主题下面的 _config.yml）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">prism_plugin:</span><br><span class="line">  mode: &#x27;preprocess&#x27; # realtime/preprocess</span><br><span class="line">  theme: &#x27;default&#x27;</span><br><span class="line">  line_number: false # default false</span><br></pre></td></tr></table></figure>
-
-
-
-<p>default false</p>
-<pre><code>
-
-</code></pre>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>bug</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博客添加看板娘</title>
-    <url>/posts/43162/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>不知道你们有没有这种体验，就是在逛别人的博客的时候，会在页面左下角或者右下角等界面看到一个会跟随鼠标移动而摇摆的图片动画，看起来还蛮不错，今天就为我的博客添加这样的动画效果  ——看板娘。</p>
-<h2 id="普通看板娘"><a href="#普通看板娘" class="headerlink" title="普通看板娘"></a>普通看板娘</h2><p>hexo的官方是支持看板娘的，已经封装好了插件，但只是模型，不能说话、不能换装、功能较少。<br>更多详情请查看<a href="https://github.com/EYHN/hexo-helper-live2d">hexo-helper-live2d官网</a></p>
-<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
-
-<h3 id="下载模型"><a href="#下载模型" class="headerlink" title="下载模型"></a>下载模型</h3><p>作者各种模型展示地址：<a href="https://huaji8.top/post/live2d-plugin-2.0/">live2d插件</a>，可选择自己喜欢的模型，然后进行下载安装<br><a href="https://github.com/xiazeyu/live2d-widget-models">模型仓库</a></p>
-<ul>
-<li>live2d-widget-model-chitose</li>
-<li>live2d-widget-model-epsilon2_1</li>
-<li>live2d-widget-model-gf</li>
-<li>live2d-widget-model-haru&#x2F;01 (use npm install –save live2d-widget-model-haru)</li>
-<li>live2d-widget-model-haru&#x2F;02 (use npm install –save live2d-widget-model-haru)</li>
-<li>live2d-widget-model-haruto</li>
-<li>live2d-widget-model-hibiki</li>
-<li>live2d-widget-model-hijiki</li>
-<li>live2d-widget-model-izumi</li>
-<li>live2d-widget-model-koharu</li>
-<li>live2d-widget-model-miku</li>
-<li>live2d-widget-model-ni-j</li>
-<li>live2d-widget-model-nico</li>
-<li>live2d-widget-model-nietzsche</li>
-<li>live2d-widget-model-nipsilon</li>
-<li>live2d-widget-model-nito</li>
-<li>live2d-widget-model-shizuku</li>
-<li>live2d-widget-model-tororo</li>
-<li>live2d-widget-model-tsumiki</li>
-<li>live2d-widget-model-unitychan</li>
-<li>live2d-widget-model-wanko</li>
-<li>live2d-widget-model-z16</li>
-</ul>
-<p>使用<code>npm install &#123;packagename&#125;</code>进行安装，如：</p>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">npm install live2d-widget-model-shizuku -S</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>在站点配置文件<code>_config.yml</code>或者主题配置文件<code>_config.butterfly.yml</code>中新增如下内容：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Live2D</span></span><br><span class="line"><span class="comment">## https://github.com/EYHN/hexo-helper-live2d</span></span><br><span class="line"><span class="attr">live2d:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># enable: false</span></span><br><span class="line">  <span class="attr">scriptFrom:</span> <span class="string">local</span> <span class="comment"># 默认</span></span><br><span class="line">  <span class="attr">pluginRootPath:</span> <span class="string">live2dw/</span> <span class="comment"># 插件在站点上的根目录(相对路径)</span></span><br><span class="line">  <span class="attr">pluginJsPath:</span> <span class="string">lib/</span> <span class="comment"># 脚本文件相对与插件根目录路径</span></span><br><span class="line">  <span class="attr">pluginModelPath:</span> <span class="string">assets/</span> <span class="comment"># 模型文件相对与插件根目录路径</span></span><br><span class="line">  <span class="comment"># scriptFrom: jsdelivr # jsdelivr CDN</span></span><br><span class="line">  <span class="comment"># scriptFrom: unpkg # unpkg CDN</span></span><br><span class="line">  <span class="comment"># scriptFrom: https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js # 你的自定义 url</span></span><br><span class="line">  <span class="attr">tagMode:</span> <span class="literal">false</span> <span class="comment"># 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中</span></span><br><span class="line">  <span class="attr">debug:</span> <span class="literal">false</span> <span class="comment"># 调试, 是否在控制台输出日志</span></span><br><span class="line">  <span class="attr">model:</span></span><br><span class="line">    <span class="attr">use:</span> <span class="string">live2d-widget-model-wanko</span> <span class="comment"># 第二步下载的模型</span></span><br><span class="line">    <span class="comment"># use: wanko # 博客根目录/live2d_models/ 下的目录名</span></span><br><span class="line">    <span class="comment"># use: ./wives/wanko # 相对于博客根目录的路径</span></span><br><span class="line">    <span class="comment"># use: https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json # 你的自定义 url</span></span><br><span class="line">  <span class="attr">display:</span></span><br><span class="line">    <span class="attr">position:</span> <span class="string">right</span></span><br><span class="line">    <span class="attr">width:</span> <span class="number">150</span></span><br><span class="line">    <span class="attr">height:</span> <span class="number">300</span></span><br><span class="line">  <span class="attr">mobile:</span></span><br><span class="line">    <span class="attr">show:</span> <span class="literal">true</span> <span class="comment"># 手机中是否展示</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="升级看板娘-能说话、能换装"><a href="#升级看板娘-能说话、能换装" class="headerlink" title="升级看板娘(能说话、能换装)"></a>升级看板娘(能说话、能换装)</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
-<li><p>下载<a href="https://github.com/stevenjoezhang/live2d-widget">live2d文件</a></p>
-</li>
-<li><p>将下载好的<code>live2d</code>文件解压到</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">首先在/themes/Butterfly/source/下创建live2d-widget目录，</span><br><span class="line">然后将lived2文件解压到 项目根目录/themes/Butterfly/source/live2d-widget</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改<code>live2d-widget</code>下的<code>autoload.js</code>文件。里面的内容已经写好了，注释第二行，取消第三行的注释就行了。</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">//</span> <span class="string">注意：live2d_path</span> <span class="string">参数应使用绝对路径</span></span><br><span class="line"><span class="string">//const</span> <span class="string">live2d_path</span> <span class="string">=</span> <span class="string">&quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;</span><span class="string">;</span></span><br><span class="line"><span class="string">const</span> <span class="string">live2d_path</span> <span class="string">=</span> <span class="string">&quot;/live2d-widget/&quot;</span><span class="string">;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改主题配置文件<code>_config.butterfly.yml</code>:由于<code>live2d-widget</code>内部使用了<code>font-awesome</code>，所以我们需要引入</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css&quot;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">  <span class="comment"># - &lt;link rel=&quot;stylesheet&quot; href=&quot;/xxx.css&quot;&gt;</span></span><br><span class="line">    <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css&quot;&gt;</span></span><br><span class="line">    <span class="string">&lt;script</span> <span class="string">src=&quot;/live2d-widget/autoload.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line">  <span class="attr">bottom:</span></span><br><span class="line">    <span class="comment"># - &lt;script src=&quot;xxxx&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>在站点配置文件<code>_config.yml</code>或者Butterfly主题配置文件<code>_config.butterfly.yml</code>中,新增如下内容：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">live2d:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后在项目根目录进行重新三连跪：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>然后就可以看到效果了。</p>
-</li>
-<li><p>默认看板娘是在左边，如果想要切换到右边只需要修改<code>根目录/themes/Butterfly/source/live2d-widget/waifu.css</code>:</p>
-</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#waifu</span> &#123;</span><br><span class="line">	<span class="attribute">bottom</span>: -<span class="number">1000px</span>;</span><br><span class="line">	<span class="attribute">right</span>: <span class="number">0</span>; // 这里默认是 <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">margin-bottom</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">position</span>: fixed;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">3px</span>);</span><br><span class="line">	<span class="attribute">transition</span>: transform .<span class="number">3s</span> ease-in-out, bottom <span class="number">3s</span> ease-in-out;</span><br><span class="line">	<span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#waifu-tool</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#aaa</span>;</span><br><span class="line">	<span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">left</span>: <span class="number">0px</span>; // 这里默认是 <span class="attribute">right</span>: -<span class="number">10px</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">70px</span>;</span><br><span class="line">	<span class="attribute">transition</span>: opacity <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>PL/SQL Developer使用技巧、快捷键PL/SQL Developer使用技巧、快捷键</title>
-    <url>/posts/4023/</url>
-    <content><![CDATA[<p>原文：<a href="https://www.cnblogs.com/linjiqin/p/3152538.html">PL&#x2F;SQL Developer使用技巧、快捷键</a></p>
-<h2 id="类SQL-PLUS窗口"><a href="#类SQL-PLUS窗口" class="headerlink" title="类SQL PLUS窗口"></a>类SQL PLUS窗口</h2><p>File-&gt;New-&gt;Command Window，这个类似于oracle的客户端工具sql plus，但比它好用多了。</p>
-<h2 id="设置关键字自动大写"><a href="#设置关键字自动大写" class="headerlink" title="设置关键字自动大写"></a>设置关键字自动大写</h2><p>Tools-&gt;Preferences-&gt;Editor，将Keyword case选择Uppercase。这样在窗口中输入sql语句时，关键字会自动大写，而其它都是小写。这样阅读代码比较容易，且保持良好得编码风格，同理，在Tools-&gt;Preferences-&gt;Code Assistant(助手)里可以设置代码提示延迟时间、输入几个字符时提示、数据库对象的大写、小写，首字母大写等；</p>
-<h2 id="查看执行计划"><a href="#查看执行计划" class="headerlink" title="查看执行计划"></a>查看执行计划</h2><p>选中需要分析的SQL语句，然后点击工具栏的Explain plan按钮(即执行计划)，或者直接按F5；这个主要用于分析SQL语句执行效率，分析表的结构，便于为sql调优提供直观依据；</p>
-<h2 id="自动替换"><a href="#自动替换" class="headerlink" title="自动替换"></a>自动替换</h2><p>快捷输入SQL语句，例如输入s，按下空格，自动替换成SELECT；再例如，输入sf，按下空格，自动替换成SELECT * FROM，非常方便，节省了大量的时间去编写重复的SQL语句。</p>
-<p><strong>设置方法：</strong></p>
-<p>菜单<code>Tools–&gt;Preferences–&gt;Editor–&gt;AutoReplace(自动替换)–&gt;Edit</code></p>
-<ol>
-<li>建立一个文本文件shortcuts.txt，并写入如下内容：<br>s&#x3D;SELECT<br>复制代码另存到PL&#x2F;SQL Developer的安装路径下的~&#x2F;PlugIns目录下</li>
-<li><code>Tools–&gt;Preferences–&gt;User Interface–&gt;Editor–&gt;AutoReplace</code>，选中Enable复选框，然后浏览文件选中之前创建的shortcuts.txt，点击Apply。</li>
-<li>重启PL&#x2F;SQL Developer，在sql窗口中输入s+空格，sc+空格做测试。<br>注意：shortcuts.txt不可删除掉，否则快捷键无法用</li>
-</ol>
-<p>下面定义了一些规则作为参考：</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">i=INSERT</span><br><span class="line">u=UPDATE</span><br><span class="line">s=SELECT</span><br><span class="line">f=FROM</span><br><span class="line">w=WHERE</span><br><span class="line">o=ORDER BY</span><br><span class="line">d=DELETE</span><br><span class="line">df=DELETE FROM</span><br><span class="line">sf=SELECT * FROM</span><br><span class="line">sc=SELECT COUNT(*) FROM</span><br><span class="line">sfu=SELECT * FROM FOR UPDATE</span><br><span class="line">cor=CREATE OR REPLACE</span><br><span class="line">p=PROCEDURE</span><br><span class="line">fn=FUNCTION</span><br><span class="line">t=TIGGER</span><br><span class="line">v=VIEW</span><br><span class="line">sso=SET serveroutput ON;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="设置快捷键"><a href="#设置快捷键" class="headerlink" title="设置快捷键"></a>设置快捷键</h2><p>(设置方法：菜单Tools–&gt;Preferences–&gt;用户界面–&gt;键配置)<br>新建sql窗口：ctrl+shift+s<br>新建命令窗口：ctrl+shift+c<br>新建测试窗口：ctrl+shift+t<br>PL&#x2F;SQL Developer美化器：ctrl+shift+f<br>重做：ctrl+shift+z<br>撤销：ctrl+z<br>清除：ctrl+d(慎用，不可恢复，俺是禁用哦O(∩_∩)O~)<br>选中所有：ctrl+a<br>缩进：tab<br>取消缩进：shift+tab<br>大写：ctrl+shift+x<br>小写：ctrl+shift+y<br>注释：ctrl+h<br>取消注释：ctrl+m<br>查找：ctrl+f<br>显示表结构：ctrl+鼠标悬停在表名上<br>模板列表：shift+alt+r<br>窗口列表：ctrl+w</p>
-<h2 id="执行单条SQL语句"><a href="#执行单条SQL语句" class="headerlink" title="执行单条SQL语句"></a>执行单条SQL语句</h2><p>按F8键</p>
-<h2 id="TNS-Names"><a href="#TNS-Names" class="headerlink" title="TNS Names"></a>TNS Names</h2><p>菜单Help-&gt;Support Info(支持信息)-&gt;TNS Names，可以查看Oracle的tnsnames.ora;</p>
-<h2 id="调试存储过程"><a href="#调试存储过程" class="headerlink" title="调试存储过程"></a>调试存储过程</h2><p>在使用PL&#x2F;SQL Developer操作Oracle时，有时候调用某些存储过程，或者调试存储过程；<br>调用存储过程的方法：</p>
-<ol>
-<li><p>首先，在PL&#x2F;SQL Developer左边的Browser中选择Procedures，查找需要调用的存储过程；</p>
-</li>
-<li><p>然后，选中调试的存储过程，点击右键，选择Test，在弹出来的Test scrīpt窗口中，对于定义为in类型的参数，需要给该参数的Value输入值；最后点击上面的条数按钮：Start debugger或者按F9；</p>
-</li>
-<li><p>最后点击：RUN 或者Ctrl+R 。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">调试快捷键</span><br><span class="line">切换断点：ctrl+b</span><br><span class="line">开始：f9</span><br><span class="line">运行：ctrl+r</span><br><span class="line">单步进入：ctrl+n</span><br><span class="line">单步跳过：ctrl+o</span><br><span class="line">单步退出：ctrl+t</span><br><span class="line">运行到异常：ctrl+y</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="登录后默认自动选中My-Objects"><a href="#登录后默认自动选中My-Objects" class="headerlink" title="登录后默认自动选中My Objects"></a>登录后默认自动选中My Objects</h2><p>默认情况下，PLSQL Developer登录后，Brower里会选择All objects，如果你登录的用户是dba，要展开tables目录，正常情况都需要Wait几秒钟，而选择My Objects后响应速率则是以毫秒计算的。</p>
-<p>设置方法：<br>Tools菜单–&gt;Brower Filters，会打开Brower Folders的定单窗口，把“My Objects”设为默认即可。<br>Tools菜单–&gt;Brower Folders中把你经常点的几个目录（比如：Tables Views Seq Functions Procedures）移得靠上一点，并加上颜色区分，这样你的平均寻表时间会大大缩短，试试看。</p>
-<p>优先级，从左往右<br>Tables–&gt;Tablespaces–&gt;Procedures–&gt;Users–&gt;Roless–&gt;Roles</p>
-]]></content>
-      <categories>
-        <category>oracle</category>
-      </categories>
-      <tags>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>oracle查看死锁以及处理死锁</title>
-    <url>/posts/55052/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>参考于：</p>
-<p><a href="https://blog.csdn.net/qq_46645079/article/details/135219181">oracle数据库什么是表的死锁，死锁的产生原因，怎么查询死锁的表信息，解决死锁的方法；给出具体业务场景与代码示例_oracle死锁查询和处理-CSDN博客</a></p>
-<p><a href="https://www.cnblogs.com/String-song/p/15909325.html">“ORA-00054: 资源正忙，锁表”以及“ORA-00031：标记要终止的会话”的解决方法 - 弦歌雅意 - 博客园 (cnblogs.com)</a></p>
-<h3 id="什么是表的死锁以及死锁的产生原因"><a href="#什么是表的死锁以及死锁的产生原因" class="headerlink" title="什么是表的死锁以及死锁的产生原因"></a>什么是表的死锁以及死锁的产生原因</h3><p>表的死锁是指在Oracle数据库中，两个或多个事务相互等待对方持有的锁资源，导致它们无法继续执行下去，从而形成死锁现象。</p>
-<p>死锁的产生原因通常是因为事务在操作数据时，对数据进行了锁定，但是由于事务执行顺序或者并发操作的原因导致了互相等待对方持有的锁资源，从而形成死锁。</p>
-<h3 id="产生死锁的案例"><a href="#产生死锁的案例" class="headerlink" title="产生死锁的案例"></a>产生死锁的案例</h3><p>具体业务场景及代码示例：<br>假设有两个用户同时对同一张表进行更新操作，用户A执行UPDATE语句锁住了表中的某些行，而用户B也执行UPDATE语句锁住了表中的另一些行，此时就可能发生死锁。</p>
-<p>代码示例：<br>用户A的更新操作：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">UPDATE</span> table_name <span class="keyword">SET</span> column1 <span class="operator">=</span> <span class="string">&#x27;value1&#x27;</span> <span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br><span class="line">  <span class="keyword">COMMIT</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
-
-<p>用户B的更新操作：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">UPDATE</span> table_name <span class="keyword">SET</span> column2 <span class="operator">=</span> <span class="string">&#x27;value2&#x27;</span> <span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br><span class="line">  <span class="keyword">COMMIT</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
-
-<p>在这种情况下，用户A和用户B可能会出现死锁。为了避免死锁，可以考虑修改事务的执行顺序，或者使用数据库的锁机制和事务隔离级别来避免死锁的发生。</p>
-<h2 id="查看死锁"><a href="#查看死锁" class="headerlink" title="查看死锁"></a>查看死锁</h2><p>1、下面的语句用来查询哪些对象被锁： </p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.object_name,b.session_id,c.serial#,c.program,c.username,c.command,c.machine,c.lockwait </span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> all_objects a,v$locked_object b,v$session c <span class="keyword">where</span> a.object_id<span class="operator">=</span>b.object_id <span class="keyword">and</span> c.sid<span class="operator">=</span>b.session_id;</span><br></pre></td></tr></table></figure>
-
-<p>2、查询锁表原因以及sid、serial#</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> l.session_id sid, s.serial#, l.locked_mode, l.oracle_username, s.user#, l.os_user_name, s.machine, s.terminal, a.sql_text, a.action</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> v$sqlarea a, v$session s, v$locked_object l </span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span> l.session_id <span class="operator">=</span> s.sid <span class="keyword">and</span> s.prev_sql_addr <span class="operator">=</span> a.address </span><br><span class="line"></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> sid, s.serial#;</span><br></pre></td></tr></table></figure>
-
-<p>3、用下面的语句用来杀死引起死锁的进程： </p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">system</span> kill session <span class="string">&#x27;sid,serial#&#x27;</span>； </span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><strong>ORA-00054: 资源正忙，锁表”以及“ORA-00031：标记要终止的会话”的解决方法</strong></p>
-<h3 id="现象描述"><a href="#现象描述" class="headerlink" title="现象描述"></a>现象描述</h3><p>在ORACLE数据处理过程中，当某个PL&#x2F;SQL developer正在运行创建一个临时表对大的数据进行暂存处理时，由于处理速度很慢，这时突然做了中断处理，甚至于直接从“任务管理器”中关掉PL&#x2F;SQL developer。再次对该数据临时表进行处理时，会发现无论是删除、更新、查询等操作，都处于一直的执行等待状态。这种情况，很有可能是表已经被锁住了。但是当查询到死锁会话，采用<code>alter system kill session&#39;sid,serial#&#39;;</code>来处理时，却提示报错，无法杀掉线程，只能到操作系统级杀掉线程了。下面就对这种情况的处理过程进行详细的说明。</p>
-<p> <img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1875512-20220218155418508-1041493563.png" alt="img"></p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
-<li>可以通过下列语句查询：</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> a.spid,b.sid,b.serial#,b.username </span><br><span class="line"><span class="keyword">from</span> v$process a,v$session b </span><br><span class="line"><span class="keyword">where</span> a.addr<span class="operator">=</span>b.paddr </span><br><span class="line"><span class="keyword">and</span> b.status<span class="operator">=</span><span class="string">&#x27;KILLED&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<p> <img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1875512-20220218161428300-662981761.png" alt="img"></p>
-<ol start="2">
-<li>如果利用上面的命令杀死一个进程后，进程状态被置为”killed”，但是锁定的资源很长时间没有被释放，那么可以在OS级再杀死相应的进程（线程），首先执行下面的语句获得进程（线程）号：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select b.spid,a.osuser,b.program </span><br><span class="line">  from v$session a,v$process b </span><br><span class="line"> where a.paddr=b.addr </span><br><span class="line">   and a.sid=176     --176就是上面的sid</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1875512-20220218161605390-1686124764.png" alt="img"></p>
-<ol start="3">
-<li>在OS上杀死这个进程（线程）</li>
-</ol>
-<p>1)、在unix&#x2F;linux上，用root身份执行命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#kill -9 9532（9532 即第4步查询出的spid） </span><br></pre></td></tr></table></figure>
-
-<p>2)、在windows（unix也适用）用orakill杀死线程，orakill是oracle提供的一个可执行命令，语法为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">orakill sid thread </span><br></pre></td></tr></table></figure>
-
-<p>其中：</p>
-<p>sid：表示要杀死的进程属于的实例名 </p>
-<p>thread：是要杀掉的线程号，即第3步查询出的spid。 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">例：C:&gt;orakill ACVS 9532</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1875512-20220218161852049-245548292.png" alt="img"></p>
-<p><strong>注意：</strong>这里要注意的是kill OS进程是在服务端操作，而不是你程序所在客户机。��户机。</p>
-]]></content>
-      <categories>
-        <category>oracle</category>
-      </categories>
-      <tags>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在Hexo中生成唯一的文章链接地址</title>
-    <url>/posts/46879/</url>
-    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>Hexo生成博客文章的链接时，默认格式为：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span> <span class="comment"># 年：月：日：标题</span></span><br></pre></td></tr></table></figure>
-
-<p>如果标题中含中文的话，复制URL链接的话中文字符就会是一大串编码字符。</p>
-<p>如果想为每一篇文章生成唯一ID(链接地址)的话，推荐使用<code>hexo-abbrlink</code>或<code>hexo-uuid</code></p>
-<h2 id="hexo-abbrlink"><a href="#hexo-abbrlink" class="headerlink" title="hexo-abbrlink"></a>hexo-abbrlink</h2><p>在博客根目录下运行命令安装 <code>hexo-abbrlink</code> 插件</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-abbrlink</span> <span class="string">--save</span></span><br></pre></td></tr></table></figure>
-
-<p>修改配置文件 <code>_config.yml</code></p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:abbrlink/</span></span><br></pre></td></tr></table></figure>
-
-<p>hexo clean -&gt; hexo g -&gt; hexo s在本地查看效果</p>
-<p><a href="https://github.com/rozbo/hexo-abbrlink">hexo-abbrlink官方文档</a>中还介绍了其他配置，可以参考和自行修改。</p>
-<h2 id="hexo-uuid"><a href="#hexo-uuid" class="headerlink" title="hexo-uuid"></a>hexo-uuid</h2><p>在博客根目录下运行命令安装<code>hexo-uuid</code>插件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-uuid --save</span><br></pre></td></tr></table></figure>
-
-<p>修改配置文件 <code>_config.yml</code></p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:uuid/</span></span><br></pre></td></tr></table></figure>
-
-<p>hexo clean -&gt; hexo g -&gt; hexo s在本地查看效果</p>
-<p><a href="https://github.com/chekun/hexo-uuid">hexo-uuid官方文档</a>中还介绍了其他配置，可以参考和自行修改。</p>
-<hr>
-<p>参考链接：<a href="https://zsyyblog.com/562734ea.htmlg.com/562734ea.html">https://zsyyblog.com/562734ea.htmlg.com/562734ea.html</a></p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Git SSH公钥配置</title>
-    <url>/posts/58668/</url>
-    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先下载安装git：<a href="https://git-scm.com/downloads/">https://git-scm.com/downloads/</a></p>
-<p>一路默认，安装完成后，在任意文件夹内右键选择“Git Bush Here” ，打开gitbush。</p>
-<p>配置用户名和邮箱：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name &quot;your_name&quot;</span><br><span class="line"></span><br><span class="line">$ git config --global user.email &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>生成密钥对：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
-
-<p>一路默认点Enter，C:\Users\Administrator.ssh（Administrator是当前用户名）文件夹中会生成两个密钥文件：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181106235426595-857406464.png" alt="img"></p>
-<p>打开id_rsa.pub，将文件内容全选复制，准备粘贴到github上：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181106235534357-1259001712.png" alt="img"></p>
-<p>登陆github，点击右上角头像，选择Settings，选择SSH and GPG keys：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240105092825784.png" alt="image-20240105092825784"></p>
-<p>点击“New SSH key”，将复制的密钥内容粘贴进Key的输入框，Title随便取：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000122494-931212452.png" alt="img"></p>
-<p>回到gitbush，测试输入： ssh -T <a href="mailto:&#103;&#x69;&#116;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#116;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;</a></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000409948-1462846742.png" alt="img"></p>
-<p>如果遇到 yes&#x2F;no 的选项，输入yes。最后看到 “Hi ….”表示设置成功。</p>
-<p>�设置成功。</p>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>SSH</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java-jdk详细安装教程</title>
-    <url>/posts/5819/</url>
-    <content><![CDATA[<h2 id="Java-jdk详细安装教程"><a href="#Java-jdk详细安装教程" class="headerlink" title="Java&#x2F;jdk详细安装教程"></a>Java&#x2F;jdk详细安装教程</h2><h3 id="一、java历史简介"><a href="#一、java历史简介" class="headerlink" title="一、java历史简介"></a>一、java历史简介</h3><p>1991 年Sun公司的James Gosling等人开始开发名称为 Oak （橡树）的语言。希望用于控制嵌入在有线电视交换盒、PDA等的微处理器，</p>
-<p>1994年将Oak语言更名为Java</p>
-<p>1998年JDK1.2时，更名为Java 2 Platform</p>
-<p>分为标准版J2SE,企业版J2EE,微型版J2ME</p>
-<p>Java 既安全、可移植，又可跨平台，而且人们发现它能够解决Internet 上的大型应用问题，Internet使Java成为网上最流行的编程语言，Java对Internet的影响也意义深远。后来java被Oracle（甲骨文）公司收购。java实际是个地名，乃印度尼西亚的一个岛屿，当地盛产咖啡，因此标志也用了一个咖啡的标志。</p>
-<h3 id="二、Java安装过程（以java8-0为例）"><a href="#二、Java安装过程（以java8-0为例）" class="headerlink" title="二、Java安装过程（以java8.0为例）"></a>二、Java安装过程（以java8.0为例）</h3><p>1、Oracle官网： <a href="https://www.oracle.com/index.html">Oracle | Cloud Applications and Cloud Platform</a> </p>
-<p>如何在官网下载JDK8：<a href="https://jingyan.baidu.com/article/afd8f4de20588975e286e9e7.html">如何在Oracle官网找到并下载JDK8-百度经验 (baidu.com)</a> </p>
-<p>JDK官网地址跳转：<a href="http://java.sun.com/">http://java.sun.com/</a></p>
-<p>2、在官网下载太麻烦了，我这里为大家提供了两种版本的jdk；</p>
-<blockquote>
-<p>链接：<a href="https://pan.baidu.com/s/1qwFfkgx4fPOX43PqiaI3eg?pwd=gztx">https://pan.baidu.com/s/1qwFfkgx4fPOX43PqiaI3eg?pwd=gztx</a><br>提取码：gztx </p>
-</blockquote>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/fbac42341d7b1905ead95cbbea9dd118.png" alt="img"></p>
-<p><strong>3、开始安装</strong></p>
-<p>双击 <code>jdk-8u181-windows-x64.exe</code> 进入JAVA运行环境安装界面，如下图所示： </p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/95b0e702d45801f19e6a2de6af3c33f0.png" alt="img"></p>
-<p><strong>大致步骤为：以管理员运行  下一步下一步……</strong></p>
-<p>点击“下一步”按钮开始安装，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ae5e06848c325da9638945d27ed4f411.png" alt="img"></p>
-<p>点击“下一步”按钮继续，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/403f33635534276ef51a2da3668c3cc1.png" alt="img"></p>
-<p>选择安装路径后，点击“下一步”继续，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ef999dd502be1b59c4bcf12b5d44b18d.png" alt="img"></p>
-<p>JAVA运行环境正在安装，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/2fa74403f12a9d1df7fcd401cf913803.png" alt="img"></p>
-<p>点击“关闭”按钮，安装完成，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/3c50623d03e2a4f41412e46dcdbc7422.png" alt="img"></p>
-<p>JAVA运行环境安装完成后，需要配置系统变量。</p>
-<p>在电脑图标上的右键菜单中选择“属性”菜单进行系统配置，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/b716c980249e7ee590654e12eebeed55.png" alt="img"></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/8ea9f03ac0a1688d263ceb58cd6d90a2.png" alt="img"></p>
-<p>点击“新建”按钮，在【系统变量】，分别设置三个环境变量，即：</p>
-<p>变量名1：<code>JAVA_HOME</code></p>
-<p>变量值1： 电脑上JDK安装的绝对路径（我的路径是 <code>C:\Program Files\Java\jdk1.8.0_181</code> ） </p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/2b097295458490bc5894170e9e84bad2.png" alt="img"></p>
-<p>变量名2：<code>PATH</code></p>
-<p>变量值2： 新建两条路径 ：<code>%JAVA_HOME%\bin</code>、<code>%JAVA_HOME%\jre\bin</code></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ae384b4861aaa19877e50a6972d1d6e9.png" alt="img"></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/52733ae6be43affaa66672a152372580.png" alt="img"></p>
-<p>变量名3：<code>CLASSPATH</code></p>
-<p>变量值3：<code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code>  （注意分号和小点）可复制我的变量值 </p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/52733ae6be43affaa66672a152372580.png"></p>
-<p>三个环境变量添加完成之后，如下图所示。</p>
-<p>点击“确定”按钮，完成环境变量设置。</p>
-<p>接下来需要检测JAVA运行环境是否安装成功。</p>
-<p>同时按键盘上的“Win+R”键，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/360a5c533c03b174d88293a85c088a0a.png" alt="img"></p>
-<p>在显示的对话框中输入“cmd”命令，并点击“确定”，如下图所示：</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/5e2fe946c64cfa471a12e5eb7812ef37.png" alt="img"></p>
-<p>在显示的命令窗口中输入 <code>java -version</code> 命令并回车，如果能正常显示版本信息，说明JAVA运行环境安装成功，如下图所示：<br><strong>注意：</strong> <code>使用管理员身份运行cmd命令窗口</code></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/56831eb7088b46999a93f3b5965907fc.png" alt="img">a93f3b5965907fc.png)</p>
-]]></content>
-      <categories>
-        <category>system</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Jdk</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>chrome浏览器，屏蔽http文件下载，已阻止不安全的下载，如何解除</title>
-    <url>/posts/14141/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为有需要下载文件，很多文件，但是每次都会弹出这个提示，虽然可以手动点击保留，但是以后每次都要点击，实在是太难受了！！！</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240229105201869.png" alt="image-20240229105201869"></p>
-<h2 id="方法1：针对所有网站"><a href="#方法1：针对所有网站" class="headerlink" title="方法1：针对所有网站"></a>方法1：针对所有网站</h2><p>打开谷歌浏览器，输入<code>chrome://flags/</code></p>
-<p>搜索 <code>downloads</code></p>
-<p>找到这个 <code>Warn on insecure downloads</code>，关闭提示修改为 <code>Disabled</code> [禁用]</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240229105430226.png" alt="image-20240229105430226"></p>
-<h2 id="方法2：针对指定网址"><a href="#方法2：针对指定网址" class="headerlink" title="方法2：针对指定网址"></a>方法2：针对指定网址</h2><p>比如我这里只想给我这个网址放行，就点这个<code>不安全</code>的图标，点击下面的<code>网站设置</code></p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240229105827427.png" alt="image-20240229105827427"></p>
-<p>把不安全内容，改为允许（修改之前是屏蔽（默认），重新打开浏览器即可！</p>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240229105946239.png" alt="image-20240229105946239">946239.png)</p>
-]]></content>
-      <categories>
-        <category>chrome</category>
-      </categories>
-      <tags>
-        <tag>浏览器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决每次Github部署完成后都需要重新绑定域名的问题</title>
-    <url>/posts/52420/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>解决每次Github部署完成后都需要重新绑定域名的问题！！！</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
-<li><p>在博客根目录的配置文件 <code>config.yml</code>中找到<code>skip_render</code>，添加值<code>GNAME</code>,用来置顶不进行渲染的文件</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">skip_render:</span> <span class="string">CNAME</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在**&#x2F;source<strong>的目录中创建一个文件，文件名为</strong>CNAME**，里边的内容写你的域名。</p>
-</li>
-<li><p>只写域名，例如 creammint.cn，不需要添加http(s):&#x2F;&#x2F;前缀。</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">creammint.cn</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>hexo g 重新生成一下</p>
-</li>
-<li><p>hexo d 部署到Github上</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Github</category>
-      </categories>
-      <tags>
-        <tag>域名</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Windows 11关闭自动更新</title>
-    <url>/posts/6998/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>电脑系统更新有好有坏，有些用户习惯了目前用的系统，但是电脑到了更新的时候就会自动更新，让他们很困恼。</p>
-<p>   要想彻底关闭Windows电脑的自动更新，仅仅从系统设置里面选择暂停更新是完全不够用的，只有将windows自动更新的服务关闭掉，才能有效阻止其更新。现就教你一招怎么关闭win11的自动更新。</p>
-<h2 id="Win11关闭自动更新的方法："><a href="#Win11关闭自动更新的方法：" class="headerlink" title="Win11关闭自动更新的方法："></a>Win11关闭自动更新的方法：</h2><ol>
-<li>在<code>win+r</code>运行框中输入<code>services.msc</code>，打开windows服务窗口</li>
-</ol>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240224135540473.png" alt="image-20240224135540473"></p>
-<ol start="2">
-<li>在服务窗口中，我们找到<code>Windows update</code>选项</li>
-</ol>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240224135650538.png" alt="image-20240224135650538"></p>
-<ol start="3">
-<li>双击windows update服务，我们把启动类型改为<code>禁用</code>，点击应用和确定</li>
-</ol>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240224135738557.png" alt="image-20240224135738557"></p>
-<ol start="4">
-<li>我们选择恢复选项卡，在恢复选项里面，我们把第一、第二、后续失败，都改为无操作，然后点击应用和确定即可</li>
-</ol>
-<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240224135815267.png" alt="image-20240224135815267"></p>
-<p>通过以上4个步骤，就可以彻底关闭win11电脑自动更新功能了！�能了！</p>
-]]></content>
-      <categories>
-        <category>windows</category>
-      </categories>
-      <tags>
-        <tag>system</tag>
       </tags>
   </entry>
   <entry>
@@ -1731,6 +1617,120 @@
       </categories>
       <tags>
         <tag>腾讯云</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows 11关闭自动更新</title>
+    <url>/posts/6998/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>电脑系统更新有好有坏，有些用户习惯了目前用的系统，但是电脑到了更新的时候就会自动更新，让他们很困恼。</p>
+<p>   要想彻底关闭Windows电脑的自动更新，仅仅从系统设置里面选择暂停更新是完全不够用的，只有将windows自动更新的服务关闭掉，才能有效阻止其更新。现就教你一招怎么关闭win11的自动更新。</p>
+<h2 id="Win11关闭自动更新的方法："><a href="#Win11关闭自动更新的方法：" class="headerlink" title="Win11关闭自动更新的方法："></a>Win11关闭自动更新的方法：</h2><ol>
+<li>在<code>win+r</code>运行框中输入<code>services.msc</code>，打开windows服务窗口</li>
+</ol>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240224135540473.png" alt="image-20240224135540473"></p>
+<ol start="2">
+<li>在服务窗口中，我们找到<code>Windows update</code>选项</li>
+</ol>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240224135650538.png" alt="image-20240224135650538"></p>
+<ol start="3">
+<li>双击windows update服务，我们把启动类型改为<code>禁用</code>，点击应用和确定</li>
+</ol>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240224135738557.png" alt="image-20240224135738557"></p>
+<ol start="4">
+<li>我们选择恢复选项卡，在恢复选项里面，我们把第一、第二、后续失败，都改为无操作，然后点击应用和确定即可</li>
+</ol>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240224135815267.png" alt="image-20240224135815267"></p>
+<p>通过以上4个步骤，就可以彻底关闭win11电脑自动更新功能了！�能了！</p>
+]]></content>
+      <categories>
+        <category>windows</category>
+      </categories>
+      <tags>
+        <tag>system</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java-jdk详细安装教程</title>
+    <url>/posts/5819/</url>
+    <content><![CDATA[<h2 id="Java-jdk详细安装教程"><a href="#Java-jdk详细安装教程" class="headerlink" title="Java&#x2F;jdk详细安装教程"></a>Java&#x2F;jdk详细安装教程</h2><h3 id="一、java历史简介"><a href="#一、java历史简介" class="headerlink" title="一、java历史简介"></a>一、java历史简介</h3><p>1991 年Sun公司的James Gosling等人开始开发名称为 Oak （橡树）的语言。希望用于控制嵌入在有线电视交换盒、PDA等的微处理器，</p>
+<p>1994年将Oak语言更名为Java</p>
+<p>1998年JDK1.2时，更名为Java 2 Platform</p>
+<p>分为标准版J2SE,企业版J2EE,微型版J2ME</p>
+<p>Java 既安全、可移植，又可跨平台，而且人们发现它能够解决Internet 上的大型应用问题，Internet使Java成为网上最流行的编程语言，Java对Internet的影响也意义深远。后来java被Oracle（甲骨文）公司收购。java实际是个地名，乃印度尼西亚的一个岛屿，当地盛产咖啡，因此标志也用了一个咖啡的标志。</p>
+<h3 id="二、Java安装过程（以java8-0为例）"><a href="#二、Java安装过程（以java8-0为例）" class="headerlink" title="二、Java安装过程（以java8.0为例）"></a>二、Java安装过程（以java8.0为例）</h3><p>1、Oracle官网： <a href="https://www.oracle.com/index.html">Oracle | Cloud Applications and Cloud Platform</a> </p>
+<p>如何在官网下载JDK8：<a href="https://jingyan.baidu.com/article/afd8f4de20588975e286e9e7.html">如何在Oracle官网找到并下载JDK8-百度经验 (baidu.com)</a> </p>
+<p>JDK官网地址跳转：<a href="http://java.sun.com/">http://java.sun.com/</a></p>
+<p>2、在官网下载太麻烦了，我这里为大家提供了两种版本的jdk；</p>
+<blockquote>
+<p>链接：<a href="https://pan.baidu.com/s/1qwFfkgx4fPOX43PqiaI3eg?pwd=gztx">https://pan.baidu.com/s/1qwFfkgx4fPOX43PqiaI3eg?pwd=gztx</a><br>提取码：gztx </p>
+</blockquote>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/fbac42341d7b1905ead95cbbea9dd118.png" alt="img"></p>
+<p><strong>3、开始安装</strong></p>
+<p>双击 <code>jdk-8u181-windows-x64.exe</code> 进入JAVA运行环境安装界面，如下图所示： </p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/95b0e702d45801f19e6a2de6af3c33f0.png" alt="img"></p>
+<p><strong>大致步骤为：以管理员运行  下一步下一步……</strong></p>
+<p>点击“下一步”按钮开始安装，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ae5e06848c325da9638945d27ed4f411.png" alt="img"></p>
+<p>点击“下一步”按钮继续，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/403f33635534276ef51a2da3668c3cc1.png" alt="img"></p>
+<p>选择安装路径后，点击“下一步”继续，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ef999dd502be1b59c4bcf12b5d44b18d.png" alt="img"></p>
+<p>JAVA运行环境正在安装，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/2fa74403f12a9d1df7fcd401cf913803.png" alt="img"></p>
+<p>点击“关闭”按钮，安装完成，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/3c50623d03e2a4f41412e46dcdbc7422.png" alt="img"></p>
+<p>JAVA运行环境安装完成后，需要配置系统变量。</p>
+<p>在电脑图标上的右键菜单中选择“属性”菜单进行系统配置，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/b716c980249e7ee590654e12eebeed55.png" alt="img"></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/8ea9f03ac0a1688d263ceb58cd6d90a2.png" alt="img"></p>
+<p>点击“新建”按钮，在【系统变量】，分别设置三个环境变量，即：</p>
+<p>变量名1：<code>JAVA_HOME</code></p>
+<p>变量值1： 电脑上JDK安装的绝对路径（我的路径是 <code>C:\Program Files\Java\jdk1.8.0_181</code> ） </p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/2b097295458490bc5894170e9e84bad2.png" alt="img"></p>
+<p>变量名2：<code>PATH</code></p>
+<p>变量值2： 新建两条路径 ：<code>%JAVA_HOME%\bin</code>、<code>%JAVA_HOME%\jre\bin</code></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/ae384b4861aaa19877e50a6972d1d6e9.png" alt="img"></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/52733ae6be43affaa66672a152372580.png" alt="img"></p>
+<p>变量名3：<code>CLASSPATH</code></p>
+<p>变量值3：<code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code>  （注意分号和小点）可复制我的变量值 </p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/52733ae6be43affaa66672a152372580.png"></p>
+<p>三个环境变量添加完成之后，如下图所示。</p>
+<p>点击“确定”按钮，完成环境变量设置。</p>
+<p>接下来需要检测JAVA运行环境是否安装成功。</p>
+<p>同时按键盘上的“Win+R”键，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/360a5c533c03b174d88293a85c088a0a.png" alt="img"></p>
+<p>在显示的对话框中输入“cmd”命令，并点击“确定”，如下图所示：</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/5e2fe946c64cfa471a12e5eb7812ef37.png" alt="img"></p>
+<p>在显示的命令窗口中输入 <code>java -version</code> 命令并回车，如果能正常显示版本信息，说明JAVA运行环境安装成功，如下图所示：<br><strong>注意：</strong> <code>使用管理员身份运行cmd命令窗口</code></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/56831eb7088b46999a93f3b5965907fc.png" alt="img">a93f3b5965907fc.png)</p>
+]]></content>
+      <categories>
+        <category>system</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Jdk</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>chrome浏览器，屏蔽http文件下载，已阻止不安全的下载，如何解除</title>
+    <url>/posts/14141/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为有需要下载文件，很多文件，但是每次都会弹出这个提示，虽然可以手动点击保留，但是以后每次都要点击，实在是太难受了！！！</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240229105201869.png" alt="image-20240229105201869"></p>
+<h2 id="方法1：针对所有网站"><a href="#方法1：针对所有网站" class="headerlink" title="方法1：针对所有网站"></a>方法1：针对所有网站</h2><p>打开谷歌浏览器，输入<code>chrome://flags/</code></p>
+<p>搜索 <code>downloads</code></p>
+<p>找到这个 <code>Warn on insecure downloads</code>，关闭提示修改为 <code>Disabled</code> [禁用]</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240229105430226.png" alt="image-20240229105430226"></p>
+<h2 id="方法2：针对指定网址"><a href="#方法2：针对指定网址" class="headerlink" title="方法2：针对指定网址"></a>方法2：针对指定网址</h2><p>比如我这里只想给我这个网址放行，就点这个<code>不安全</code>的图标，点击下面的<code>网站设置</code></p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240229105827427.png" alt="image-20240229105827427"></p>
+<p>把不安全内容，改为允许（修改之前是屏蔽（默认），重新打开浏览器即可！</p>
+<p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240229105946239.png" alt="image-20240229105946239">946239.png)</p>
+]]></content>
+      <categories>
+        <category>chrome</category>
+      </categories>
+      <tags>
+        <tag>浏览器</tag>
       </tags>
   </entry>
 </search>
