@@ -1681,7 +1681,6 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo cl; hexo s</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="关于页"><a href="#关于页" class="headerlink" title="关于页"></a>关于页</h2><p><a href="https://meuicat.com/blog/78/">Butterfly的魔改教程：关于本站 | 爱吃肉的猫 (meuicat.com)</a></p>
-<p>log&#x2F;78&#x2F;)</p>
 ]]></content>
       <categories>
         <category>hexo</category>
@@ -2442,7 +2441,7 @@
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/image-20240105092825784.png" alt="image-20240105092825784"></p>
 <p>点击“New SSH key”，将复制的密钥内容粘贴进Key的输入框，Title随便取：</p>
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000122494-931212452.png" alt="img"></p>
-<p>回到gitbush，测试输入： ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#x2e;&#99;&#111;&#109;">&#x67;&#x69;&#x74;&#x40;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#x2e;&#99;&#111;&#109;</a></p>
+<p>回到gitbush，测试输入： ssh -T <a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#105;&#x74;&#104;&#117;&#98;&#x2e;&#x63;&#111;&#x6d;">&#x67;&#x69;&#116;&#x40;&#103;&#105;&#x74;&#104;&#117;&#98;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <p><img src="https://creammint-pic-1304832043.cos.ap-hongkong.myqcloud.com/img/1035310-20181107000409948-1462846742.png" alt="img"></p>
 <p>如果遇到 yes&#x2F;no 的选项，输入yes。最后看到 “Hi ….”表示设置成功。</p>
 <p>�设置成功。</p>
@@ -2617,7 +2616,7 @@
 </tr>
 <tr>
 <td align="left">SMTP_USER</td>
-<td align="left"><a href="mailto:&#x78;&#x78;&#120;&#x78;&#x78;&#x78;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#109;">&#x78;&#x78;&#120;&#x78;&#x78;&#x78;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#109;</a></td>
+<td align="left"><a href="mailto:&#x78;&#120;&#120;&#x78;&#120;&#x78;&#64;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;">&#x78;&#120;&#120;&#x78;&#120;&#x78;&#64;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;</a></td>
 <td align="left">[必填] SMTP 用户名</td>
 </tr>
 <tr>
@@ -2632,7 +2631,7 @@
 </tr>
 <tr>
 <td align="left">SENDER_EMAIL</td>
-<td align="left"><a href="mailto:&#x78;&#x78;&#x78;&#120;&#x78;&#x78;&#64;&#x71;&#x71;&#x2e;&#99;&#x6f;&#109;">&#x78;&#x78;&#x78;&#120;&#x78;&#x78;&#64;&#x71;&#x71;&#x2e;&#99;&#x6f;&#109;</a></td>
+<td align="left"><a href="mailto:&#120;&#x78;&#120;&#120;&#120;&#120;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;">&#120;&#x78;&#120;&#120;&#120;&#120;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;</a></td>
 <td align="left">[必填] 发件邮箱</td>
 </tr>
 <tr>
@@ -2672,7 +2671,7 @@
 </tr>
 <tr>
 <td align="left">BLOGGER_EMAIL</td>
-<td align="left"><a href="mailto:&#120;&#x78;&#120;&#x78;&#x78;&#x40;&#x67;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#120;&#x78;&#120;&#x78;&#x78;&#x40;&#x67;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td align="left"><a href="mailto:&#120;&#x78;&#x78;&#x78;&#120;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;">&#120;&#x78;&#x78;&#x78;&#120;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;</a></td>
 <td align="left">[选填] 博主通知收件地址，默认使用 SENDER_EMAIL</td>
 </tr>
 <tr>
