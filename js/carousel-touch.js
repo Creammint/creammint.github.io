@@ -1,1 +1,106 @@
-var radius=240,autoRotate=!0,rotateSpeed=-60,imgWidth=120,imgHeight=170;function carouselinit(t){setTimeout(o,1e3);var e=document.getElementById(t+"-drag-container");console.log(e);var n=document.getElementById(t+"-spin-container"),i=[...n.getElementsByTagName("img"),...n.getElementsByTagName("video")];n.style.width=imgWidth+"px",n.style.height=imgHeight+"px";var a=document.getElementById(t+"-carousel-ground");function o(t){for(var e=0;e<i.length;e++)i[e].style.transform="rotateY("+e*(360/i.length)+"deg) translateZ("+radius+"px)",i[e].style.transition="transform 1s",i[e].style.transitionDelay=t||(i.length-e)/4+"s"}function r(t){m>180&&(m=180),m<0&&(m=0),t.style.transform="rotateX("+-m+"deg) rotateY("+u+"deg)"}function l(t){n.style.animationPlayState=t?"running":"paused"}a.style.width=3*radius+"px",a.style.height=3*radius+"px";var s=0,d=0,u=0,m=10;autoRotate&&(n.style.animation=`${rotateSpeed>0?"spin":"spinRevert"} ${Math.abs(rotateSpeed)}s infinite linear`);document.getElementById(t).onpointerdown=function(t){clearInterval(e.timer);var n=(t=t||window.event).clientX,i=t.clientY;return this.onpointermove=function(t){var a=(t=t||window.event).clientX,o=t.clientY;u+=.1*(s=a-n),m+=.1*(d=o-i),r(e),n=a,i=o},this.onpointerup=function(t){e.timer=setInterval((function(){u+=.1*(s*=.95),m+=.1*(d*=.95),r(e),l(!1),Math.abs(s)<.5&&Math.abs(d)<.5&&(clearInterval(e.timer),l(!0))}),17),this.onpointermove=this.onpointerup=null},!1},document.getElementById(t).onmousewheel=function(t){return t=t||window.event,radius+=t.wheelDelta/20||-t.detail,o(1),!1}}
+// You can change global variables here:
+var radius = 240; // how big of the radius
+var autoRotate = true; // auto rotate or not
+var rotateSpeed = -60; // unit: seconds/360 degrees
+var imgWidth = 120; // width of images (unit: px)
+var imgHeight = 170; // height of images (unit: px)
+function carouselinit(carouselName){
+// ===================== start =======================
+// animation start after 1000 miliseconds
+setTimeout(init, 1000);
+
+var odrag = document.getElementById(carouselName+'-drag-container');
+console.log(odrag);
+var ospin = document.getElementById(carouselName+'-spin-container');
+var aImg = ospin.getElementsByTagName('img');
+var aVid = ospin.getElementsByTagName('video');
+var aEle = [...aImg, ...aVid]; // combine 2 arrays
+
+// Size of images
+ospin.style.width = imgWidth + "px";
+ospin.style.height = imgHeight + "px";
+
+// Size of ground - depend on radius
+var ground = document.getElementById(carouselName+'-carousel-ground');
+ground.style.width = radius * 3 + "px";
+ground.style.height = radius * 3 + "px";
+
+function init(delayTime) {
+  for (var i = 0; i < aEle.length; i++) {
+    aEle[i].style.transform = "rotateY(" + (i * (360 / aEle.length)) + "deg) translateZ(" + radius + "px)";
+    aEle[i].style.transition = "transform 1s";
+    aEle[i].style.transitionDelay = delayTime || (aEle.length - i) / 4 + "s";
+  }
+}
+
+function applyTranform(obj) {
+  // Constrain the angle of camera (between 0 and 180)
+  if(tY > 180) tY = 180;
+  if(tY < 0) tY = 0;
+
+  // Apply the angle
+  obj.style.transform = "rotateX(" + (-tY) + "deg) rotateY(" + (tX) + "deg)";
+}
+
+function playSpin(yes) {
+  ospin.style.animationPlayState = (yes?'running':'paused');
+}
+
+var sX, sY, nX, nY, desX = 0,
+    desY = 0,
+    tX = 0,
+    tY = 10;
+
+// auto spin
+if (autoRotate) {
+  var animationName = (rotateSpeed > 0 ? 'spin' : 'spinRevert');
+  ospin.style.animation = `${animationName} ${Math.abs(rotateSpeed)}s infinite linear`;
+}
+
+// 监测鼠标拖动动作
+document.getElementById(carouselName).onpointerdown = function (e) {
+  clearInterval(odrag.timer);
+  e = e || window.event;
+  var sX = e.clientX,
+      sY = e.clientY;
+
+  this.onpointermove = function (e) {
+    e = e || window.event;
+    var nX = e.clientX,
+        nY = e.clientY;
+    desX = nX - sX;
+    desY = nY - sY;
+    tX += desX * 0.1;
+    tY += desY * 0.1;
+    applyTranform(odrag);
+    sX = nX;
+    sY = nY;
+  };
+
+  this.onpointerup = function (e) {
+    odrag.timer = setInterval(function () {
+      desX *= 0.95;
+      desY *= 0.95;
+      tX += desX * 0.1;
+      tY += desY * 0.1;
+      applyTranform(odrag);
+      playSpin(false);
+      if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
+        clearInterval(odrag.timer);
+        playSpin(true);
+      }
+    }, 17);
+    this.onpointermove = this.onpointerup = null;
+  };
+
+  return false;
+};
+// 监测鼠标滚轮动作
+document.getElementById(carouselName).onmousewheel = function(e) {
+  e = e || window.event;
+  var d = e.wheelDelta / 20 || -e.detail;
+  radius += d;
+  init(1);
+  return false
+};
+}
