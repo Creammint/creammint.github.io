@@ -1,3 +1,1 @@
-function scrollToTop() {
-    btf.scrollToDest(0, 500);
-}
+function scrollToTop(){btf.scrollToDest(0,500)}
